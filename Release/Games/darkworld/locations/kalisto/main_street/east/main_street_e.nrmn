@@ -24,23 +24,7 @@ It appears to have not been in use for some time.
     }
 
 
-    {evt, type=navigation
-        {mset
-            [msg
-\n\n
-East of you is a park and a circular 'center' of the village.
-\n
-West of you is the western end of the main street.
-\n
-North of you is a small road that branches off of the main road.
-\n
-North east of you is a building with a sign over the main entrance that reads: Armory.
-\n
-South of where you are standing is a building with a sign over its main entrance that reads: Food Market.
-            ]
-        }
-    }
-
+--------------------------------------------------------------------------------
 
     {cmd, syntax=n|*north
         {act, type=travel, newvalue=kalisto_n_street_s }
@@ -60,5 +44,25 @@ South of where you are standing is a building with a sign over its main entrance
 
     {cmd, syntax=story
         {act, type=event, value=enter }
+    }
+
+
+--------------------------------------------------------------------------------
+
+    {evt, type=navigation
+        {mset
+            [msg
+\n\n
+East of you is a park and a circular 'center' of the village.
+\n
+West of you is the western end of the main street.
+\n
+North of you is a small road that branches off of the main road.
+\n
+North east of you is a building with a sign over the main entrance that reads: Armory.
+\n
+South of where you are standing is a building with a sign over its main entrance that reads: Food Market.
+            ]
+        }
     }
 }

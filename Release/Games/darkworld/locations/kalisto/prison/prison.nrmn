@@ -1,0 +1,51 @@
+{room, alias=kalisto_prison_outside, label=Prison
+    {evt, type=enter|look
+        {mset
+            [msg
+You are standing outside a fortified building that appears to be a prison.
+            ]
+        }
+
+        {act, type=event, value=navigation }
+    }
+
+
+--------------------------------------------------------------------------------
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=l|look
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=w|*west
+        {act, type=travel, newvalue=kalisto_n_street_n }
+    }
+
+    {cmd, syntax=enter*
+        {act, type=travel, newvalue=kalisto_prison_reception }
+
+        {mset
+            [msg
+You enter the door into the prison.
+            ]
+        }
+    }
+
+
+--------------------------------------------------------------------------------
+
+    {evt, type=navigation
+        {mset
+            [msg
+\n\n
+West of you is the road that led north from the main street.
+\n
+There is a door in the southern end of the building. It appears you can enter
+the door (Using 'enter').
+            ]
+        }
+    }
+}

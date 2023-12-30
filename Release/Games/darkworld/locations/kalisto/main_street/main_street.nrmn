@@ -21,21 +21,7 @@ You look around. The road extends east into the village and west, exiting Kalist
     }
 
 
-    {evt, type=navigation
-        {mset
-            [msg
-\n\n
-East of you, the road extends deeper into the village.
-\n
-West of you, the road exits Kalisto.
-\n
-North of you is the Old Oak Inn.
-\n
-South of you are some houses.
-            ]
-        }
-    }
-
+--------------------------------------------------------------------------------
 
     {cmd, syntax=story
         {act, type=event, value=enter }
@@ -55,5 +41,23 @@ South of you are some houses.
 
     {cmd, syntax=e|*east
         {act, type=travel, newvalue=kalisto_main_street_e }
+    }
+
+
+--------------------------------------------------------------------------------
+
+    {evt, type=navigation
+        {mset
+            [msg
+\n\n
+East of you, the road extends deeper into the village.
+\n
+West of you, the road exits Kalisto.
+\n
+North of you is the Old Oak Inn.
+\n
+South of you are some houses.
+            ]
+        }
     }
 }
