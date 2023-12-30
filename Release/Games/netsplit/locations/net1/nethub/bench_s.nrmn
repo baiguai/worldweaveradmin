@@ -1,0 +1,40 @@
+{object, alias=nhb_bench_s, label=Bench, type=platform, meta=*s* bench*, location=nethub
+    {evt, type=enter|look
+        [msg
+            Along the south wall you see a bench.
+        ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the bench in the south end of the NET Hub.
+            It is at least five meters wide and made completely of a transparent glass-like substance.
+            No one is currently sitting on the bench.
+        ]
+    }
+
+    {evt, type=on
+        [msg
+            You look on the bench. There is nothing sitting on it.
+        ]
+    }
+
+    {evt, type=under
+        [msg
+            You look under the bench. You see nothing.
+        ]
+    }
+
+
+    {cmd, syntax=*x* s* bench*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*on* s* bench*
+        {act, type=object_event, value=on }
+    }
+
+    {cmd, syntax=*under* s* bench*|*beneath* s* bench*
+        {act, type=object_event, value=under }
+    }
+}

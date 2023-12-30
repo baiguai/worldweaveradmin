@@ -1,0 +1,31 @@
+{object, alias=br_comp1, label=Computer 1, type=object, location=br_desk, parent_type=object
+    {evt, type=on_desk
+        [msg
+            You see a computer sitting on the east side of the desk (east computer).
+        ]
+    }
+
+    {evt, type=examine_comp1
+        [msg
+            You examine the computer on the east side of the desk.
+            It appears to be compiling something. It does not respond to input, just
+            continues to output scrolling compilation notices.
+        ]
+    }
+
+    {evt, type=behind_comp1
+        [msg
+            You lean over the desk and look behind the computer on the east side of the desk.
+            You don't see anything there.
+        ]
+    }
+
+
+    {cmd, syntax=*x* e* comput*
+        {act, type=object_event, value=examine_comp1 }
+    }
+
+    {cmd, syntax=*behind* e* comput*|*back* e* comput*
+        {act, type=object_event, value=behind_comp1 }
+    }
+}

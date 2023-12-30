@@ -1,0 +1,69 @@
+EVENTS
+
+--[EXAMPLE]---------------------------------------------------------------------
+
+<events>
+    <event type="attack">
+        <actionset>
+            <action type="attribute" source="{enemy}:life" newvalue="2"></action>
+        </actionset>
+
+        <messageset>
+            <message>You shoot the {enemy:name} reducing their life to {enemy:life}.</message>
+        </messageset>
+    </event>
+</events>
+
+--------------------------------------------------------------------------------
+
+
+--[EVENT TYPES]-----------------------------------------------------------------
+
+attack
+    Level : any
+    Fired : init, triggered
+    Attack events are typically fired either by commands or as part of en
+    init event, in the case of entering a room containing an enemy.
+
+
+game_init
+    Level : game
+    Fired : game load, triggered
+    The game_init event is designed to fire when the game is loaded. Possible
+    application : to show the game's intro message.
+
+
+kill
+    Level: any
+    Fired : triggered
+    The kill event is typically fired in the course of a fight with an enemy
+    but could occur when an object - or other - fires  it. Used to kill an
+    enemy or NPC.
+
+
+shoot <item>
+    Level: player, any
+    Fired : triggered
+    The shoot <item> event is used to shoot a weapon at a specific item. This
+    is typically done via player command.
+
+--------------------------------------------------------------------------------
+
+
+--[PARENT]----------------------------------------------------------------------
+
+- events
+- game
+- object
+- room
+
+--------------------------------------------------------------------------------
+
+
+--[CHILDREN]--------------------------------------------------------------------
+
+- actionset
+- logicset
+- messageset
+
+--------------------------------------------------------------------------------

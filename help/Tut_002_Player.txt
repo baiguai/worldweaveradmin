@@ -1,0 +1,92 @@
+>>title=Building Your First %title% Game 02 : Player Definition
+>>syntax=tutorial player
+>>tags=defining the player define player build player tutorials building your first game build your first game development game authoring game building
+>>related=creating a game
+>>topic=tutorials
+--------------------------------------------------------------------------------
+
+Step 02
+Defining the Player game element.
+We will define the Player within the following file:
+
+<WorldWeaverAdmin>
+|__ Games
+    |__ MazeMaster
+        |__ game.nrmn
+
+
+01) Create the Player. Within the Game element (Right after the attributes) add:
+
+{player
+    {attr, alias=goal, value=None }
+    {attr, alias=goalid, value=init }
+    {attr, alias=life, type=random, value=10\,20 }
+    {attr, alias=max_life, type=attribute, value={player}:life }
+    {attr, alias=points, value=0 }
+    {attr, alias=level, value=1 }
+}
+
+This creates the Player and sets up the Attributes that belong to the Player.
+Life is initially set to a random value between 10 and 20.
+Max_life is assigned the value that was generated for the Life Attribute.
+
+
+02) Create the ability to punch things (Later other weapons can be found and
+    used by the Player).
+    Right after the Attributes add:
+
+{object, alias=fist, label=Fist, type=weapon
+    {attr, alias=damage, value={random}|2\,4 }
+    {attr, alias=accuracy, value=30 }
+
+    {cmd, syntax=punch *
+        {act, type=object_event, source={params}, value=punch }
+    }
+}
+
+This creates the fist weapon. Because it is defined within the Player element
+it is created like an Object the Player has or is carrying.
+The damage Attribute has a value that is re-evaluated each time it is accessed.
+It generates a random value between 2 and 4.
+The Command uses a source of {params} so that it applies to whatever the
+player enters after 'punch'. The meta property is used to match this to a Game
+element. It then fires that element's punch Event.
+
+
+03) Define the core Player Commands.
+    Right after the fist Object enter the following:
+
+{cmd, syntax=inv|inventory
+    {act, type=inventory }
+}
+
+{cmd, syntax=stats
+    {act, type=stats }
+}
+
+{cmd, syntax=arm*
+    {act, type=arm }
+}
+
+{cmd, syntax=goal
+    [msg
+        Goal:
+        \n
+        {player:goal}
+    ]
+}
+
+{cmd, syntax=quit
+    {act, type=quit }
+}
+
+These define the basic syntax and Actions the player can call at any point
+during game play. Most of them utilize built in Actions.
+
+
+--------------------------------------------------------------------------------
+
+Next step:
+help tutorial init message
+
+--------------------------------------------------------------------------------

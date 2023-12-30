@@ -1,0 +1,99 @@
+{object, alias=undead_ring, type=item, label=Ring, meta=*undead*ring*, location=old_oak_inn_backroom_storage
+    {attr, alias=moved, value=false }
+
+    {evt, type=enter
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+        }
+
+        {mset
+            [msg
+[att?{self}:moved=false]On one of the shelves you see a ring.[/att]
+[att?{self}:moved=true]You see a ring.[/att]
+            ]
+        }
+    }
+
+    {evt, type=look
+        {lset
+            [@eval
+                location@{self}={room}
+            ]
+        }
+
+        {mset
+            [msg
+You see a ring.
+            ]
+        }
+    }
+
+    {evt, type=inspect_ring
+        {mset, repeat=none
+            [msg
+You inspect the ring.
+It is made of a matte finished silver material. There is a skull carved into it.
+On the inside of the ring are runes indicating it can detect undead.
+            ]
+        }
+    }
+
+
+
+
+    {cmd, syntax=*inspect*ring*|*x*ring*
+        {act, type=event, value=inspect_ring }
+    }
+
+    {cmd, syntax=*take*ring*
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+            [fail
+                You are already carrying the ring.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:moved, newvalue=true }
+            {act, type=move, source={self}, newvalue={player}
+                [msg==You pick up the ring and put it on.]
+            }
+        }
+    }
+
+    {cmd, syntax=*drop*ring*
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a ring.
+            ]
+        }
+
+        {aset
+            {act, type=move, source={self}, newvalue={room}
+                [msg==You drop the ring.]
+            }
+        }
+    }
+}
+
+
+
+
+// --------------------------------------------------------------------------------
+// Admin Notes, Etc
+// --------------------------------------------------------------------------------
+{log, type=items
+    [text
+Undead Ring
+If the player uses the command: detect undead
+This ring will tell the player if an undead enemy is in the room.
+To allow for this define a detect undead command on undead enemy NPCs.
+    ]
+}

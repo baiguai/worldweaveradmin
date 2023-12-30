@@ -1,0 +1,50 @@
+>>title=Escaping Special Characters in Norman Notation
+>>syntax=norman escape
+>>tags=norman notation game definitions game authoring game coding escape characters escaping characters special characters
+>>topic=Norman
+--------------------------------------------------------------------------------
+
+Sometimes Norman code may need to contain special characters that aren't
+intended as code characters (Such as {'s or ['s). These characters need to be
+'escaped' in certain circumstances. The need for escaping has been kept to a
+minimum. Below are outlined instances where escaping is necessary.
+
+
+INLINE PROPERTIES
+    Inline properties utilize commas (,) to indicate where a property is being
+    defined. So if a property value contains a comma it will need to be escaped:
+
+    {object, name=sword type=Sword\, long }
+
+    If the last character in a property is a closing curly bracket AND the
+    element is NOT defined on a single line, it will need to be escaped:
+
+    {room name=dungeon_entrance label=Dungeon {entrance\}
+        ...
+    }
+
+    Equal signs (=) do not need to be escaped:
+
+    {object, type=comparison item1=location item2=player comparison== }
+
+    If the first character in a text object is { you will need to escape it:
+
+    {messageset
+        [message
+\{player} ...
+        ]
+    }
+
+
+TEXT ELEMENTS
+    If a line of text within a text element contains only a square bracket (For
+    some reason), it will need to be escaped:
+
+    [sign
+The sign reads:
+[
+Dungeon
+\]
+    ]
+
+--------------------------------------------------------------------------------

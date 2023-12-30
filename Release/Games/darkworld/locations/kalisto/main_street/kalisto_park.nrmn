@@ -1,0 +1,9 @@
+{room, alias=kalisto_park, label=park
+    {evt, type=enter
+        {mset
+            [msg
+You are in the park.
+            ]
+        }
+    }
+}

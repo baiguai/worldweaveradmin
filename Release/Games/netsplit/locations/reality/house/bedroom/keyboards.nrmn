@@ -1,0 +1,60 @@
+{object, alias=br_keyboard1, label=Keyboard 1, type=object, location=br_desk, parent_type=object
+    {evt, type=on_desk
+        [msg
+            In front of the computer you see a thick glass keyboard (east keyboard).
+        ]
+    }
+
+    {evt, type=examine_kbd1
+        [msg
+            You examine the keyboard in front of the computer on the east side of the desk.
+            It is a thick piece of solid glass with ghostly keys glowing within it.
+        ]
+    }
+
+    {evt, type=under_kbd1
+        [msg
+            You pick up the kayboard and look under it. There is nothing there.
+        ]
+    }
+
+
+    {cmd, syntax=*x* e* keyb*
+        {act, type=object_event, value=examine_kbd1 }
+    }
+
+    {cmd, syntax=*under* e* keyb*|*beneath* e* keyb*
+        {act, type=object_event, value=under_kbd1 }
+    }
+}
+
+
+{object, alias=br_keyboard2, label=Keyboard 2, type=object, location=br_desk, parent_type=object
+    {evt, type=on_desk
+        [msg
+            In front of the computer you see a thick glass keyboard (south keyboard).
+        ]
+    }
+
+    {evt, type=examine_kbd2
+        [msg
+            You examine the keyboard in front of the computer on the south side of the desk.
+            It is a thick piece of solid glass with ghostly keys glowing within it.
+        ]
+    }
+
+    {evt, type=under_kbd2
+        [msg
+            You pick up the kayboard and look under it. There is nothing there.
+        ]
+    }
+
+
+    {cmd, syntax=*x* s* keyb*
+        {act, type=object_event, value=examine_kbd2 }
+    }
+
+    {cmd, syntax=*under* s* keyb*|*beneath* s* keyb*
+        {act, type=object_event, value=under_kbd2 }
+    }
+}

@@ -1,0 +1,13 @@
+>>title=Sample Weapon Object
+>>syntax=weapon example
+>>tags=examples samples weapons guns swords
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+FIST EXAMPLE:
+
+{object, type=weapon, label=fist
+    {attr, alias=damage, type=random, value=1\,3 }
+}
+
+--------------------------------------------------------------------------------

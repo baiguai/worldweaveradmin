@@ -1,0 +1,91 @@
+// MAX EXPANSION CAPSULE
+{object, alias=maxlife_capsule_10, label=life expansion capsule, type=item, meta=*life *expansion *capsule*, location=void, parent_type=room
+    // EVENTS
+    {event, type=init|look
+        {logicset
+            {logic, type=location, source={self}, sourcevalue={room}, operand== }
+        }
+
+        {messageset
+            [message
+                You see a life expansion capsule.
+            ]
+        }
+    }
+
+    {event, type=examine_life_capsule
+        {messageset
+            [message
+                You examine the capsule. It is transparent. Inside you can see nano machines,
+                barely visible to the naked eye. They are capable of extending a person's
+                health beyond normal limits.
+            ]
+        }
+    }
+
+    // COMMANDS
+    {command, syntax=*x* life *capsule*
+        {actionset
+            {action, type=object_event, newvalue=examine_life_capsule }
+        }
+    }
+
+    {command, syntax=*take *life *capsule*
+        {logicset
+            {logic, type=location, source={self}, sourcevalue={player}, operand=!= }
+            [fail
+                You are already carrying the life expansion capsule.
+            ]
+        }
+
+        {actionset
+            {action, type=move, source={self}, newvalue={player}
+                {messageset
+                    [message
+                        You pick up the life expansion capsule.
+                    ]
+                }
+            }
+        }
+    }
+
+    {command, syntax=*drop *life *capsule*
+        {logicset
+            {logic, type=location, source={self}, sourcevalue={player}, operand== }
+            [fail
+                You aren't carrying a life expansion capsule.
+            ]
+        }
+
+        {actionset
+            {action, type=move, source={self}, newvalue={room}
+                {messageset
+                    [message
+                        You drop the life expansion capsule.
+                    ]
+                }
+            }
+        }
+    }
+
+    {command, syntax=*use *life *capsule*
+        {logicset
+            {logic, type=location, source={self}, sourcevalue={player}, operand== }
+            [fail
+                You aren't carrying a life expansion capsule.
+            ]
+        }
+
+        {actionset
+            {action, type=attribute, source={player}:max_life, newvalue={+=10} }
+            {action, type=attribute, source={player}:life, newvalue={+=10} }
+            {action, type=move, source={self}, newvalue=void }
+        }
+
+        {messageset
+            [message
+                You take the capsule. Your max-life has been increased by 10.
+            ]
+        }
+    }
+}

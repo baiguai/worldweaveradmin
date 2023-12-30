@@ -1,0 +1,52 @@
+>>title=Message Component Details
+>>syntax=message component
+>>tags=messages message component message element message objects output display text
+>>related=messageset component
+>>related=inline logic
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{messageset
+    [message
+        You see a large ornate torch set into the wall.
+    ]
+}
+
+{mset
+    [msg
+        You see a large ornate torch set into the wall.
+    ]
+}
+
+[msg
+    You see a large ornate torch set into the wall.
+]
+
+
+Description:
+    Messages can be defined within a MessageSet element if there is more than one
+    Message needed, or they can be stand alone if only one Message is to be fired.
+    For more information on MessageSets use:
+
+    help messageset component
+
+    More than one Message can be defined within a MessageSet, and how the
+    MessageSet chooses the Message to fire can be handled in the repeat property.
+
+    Logic and other special values can be defined within the Message text. For
+    more information use:
+
+    help inline logic
+
+
+Syntax:
+    Messages are defined as multi-line text elements using square brackets [].
+    The opening bracket can be followed by an at @ to tell the game to insert
+    line breaks wherever there is a new line in the text and where a new line
+    character \n is present.
+
+
+Allowed Parent Components:
+    messageset
+
+--------------------------------------------------------------------------------

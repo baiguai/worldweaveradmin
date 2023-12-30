@@ -1,0 +1,155 @@
+{object, alias=db_plate, label=Plate, type=item, location=db_tables, parent_type=object
+    {attr, alias=moved, value=false }
+    {attr, alias=inserted, value=false }
+
+    {evt, type=enter|look
+        {lset
+            [@eval
+                attribute@{self}:moved=true
+                &&
+                location@{self}={room}
+            ]
+        }
+
+        [msg
+            You see a data plate sitting on the ground.
+        ]
+    }
+
+    {evt, type=on
+        {lset
+            [@eval
+                attribute@{self}:moved=false
+            ]
+        }
+
+        [msg
+            \n
+            You see a single data plate sitting on one of the tables.
+        ]
+    }
+
+    {evt, type=ex_plate
+        [msg
+            You examine the data plate. It is made of thick glass,
+            imprinted with data. Etched into one of its long edges is the
+            word "structure".
+        ]
+    }
+
+    {evt, type=take
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+            [fail
+                You are already carrying the data plate.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:moved, newvalue=true }
+            {act, type=move, source={self}, newvalue={player}
+                [msg
+                    You pick up the data plate.
+                    \n
+                    (It can be inserted into one of the Databank terminals.)
+                ]
+            }
+        }
+    }
+
+    {evt, type=drop
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a data plate.
+            ]
+        }
+
+        {aset
+            {act, type=move, source={self}, newvalue={room}
+                [msg
+                    You drop the data plate.
+                ]
+            }
+        }
+    }
+
+    {evt, type=insert
+        {lset
+            [@eval
+                attribute@{self}:inserted=false
+            ]
+            [fail
+                The data plate is already inserted into one of the terminals.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:inserted, newvalue=true
+                [msg
+                    You insert the data plate into the nearest terminal.
+                    \n
+                    (It can be removed from the terminal.)
+                    \n
+                    A large excerpt fills the screen. Most of it is gibberish,
+                    however in the midst of the characters you see a quote:
+                    \n
+                    "The architect is a tyrant and must be stopped, even
+                    if the laws of the NET must be broken."
+                    \n
+                ]
+            }
+        }
+    }
+
+    {evt, type=remove
+        {lset
+            [@eval
+                attribute@db_plate:inserted=true
+            ]
+            [fail
+                The data plate is not inserted into any terminal.
+            ]
+        }
+
+        {act, type=attribute, source={self}:inserted, newvalue=false
+            [msg
+                You remove the data plate from the terminal you plugged it into.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=*x* plate*
+        {act, type=object_event, value=ex_plate }
+    }
+
+    {cmd, syntax=take *data*|take *plate*|*pick up* plate*
+        {act, type=object_event, value=take }
+    }
+
+    {cmd, syntax=drop *data*|drop *plate*|*down* plate*
+        {act, type=object_event, value=drop }
+    }
+
+    {cmd, syntax=*insert* plate*
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a data plate.
+            ]
+        }
+
+        {act, type=object_event, value=insert }
+    }
+
+    {cmd, syntax=*remove* plate*
+        {act, type=object_event, value=remove }
+    }
+}

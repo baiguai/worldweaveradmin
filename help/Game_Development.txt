@@ -1,0 +1,51 @@
+>>title=Game Development Help
+>>syntax=game development
+>>tags=developing games authoring games game development game authoring
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+%title% games are defined using a declarative language called NormanNotation.
+It was built specifically for %title% and keeps the definition code concise
+and fun to write. For information on writing in NormanNotation use:
+help norman
+
+For information on file structure and creating a new game use:
+help creating a game
+help components
+help component groups
+
+For information on administrative tools and debugging use:
+help debugging
+
+For information on compiling games use:
+help compiling games
+
+For information on installing games use:
+help installing games
+
+For information on distributing games use:
+help distributing games
+
+
+Other Useful Topics:
+help help topics
+help current issues
+help macros
+help plugins
+help tips and tricks
+help troubleshooting
+help examples
+help escape characters
+
+
+Suggested Help Searches:
+help component
+help detail
+help syntax
+help lookup
+help template
+help branding
+help fighting
+help reusable
+
+--------------------------------------------------------------------------------

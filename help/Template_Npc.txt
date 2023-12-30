@@ -1,0 +1,30 @@
+>>title=Npc Template
+>>syntax=npc template
+>>tags=npc template
+>>topic=Templates
+--------------------------------------------------------------------------------
+
+{npc, alias=, name=, meta=, location=
+    {attr, alias=, value= }
+
+    // EVENTS
+    {evt, type=
+    }
+
+    // COMMANDS
+    {cmd, syntax=
+    }
+
+    // OBJECTS
+    {object, type=, label=
+        // EVENTS
+        {event, type=
+        }
+
+        // COMMANDS
+        {cmd, syntax=
+        }
+    }
+}
+
+--------------------------------------------------------------------------------

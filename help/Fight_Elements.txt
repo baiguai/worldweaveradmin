@@ -1,0 +1,52 @@
+>>title=Elements Required for Fighting
+>>syntax=fight elements
+>>tags=game development fighting fight elements for fighting
+>>topic=Fighting
+--------------------------------------------------------------------------------
+
+If your game utilizes fighting the Player and Npc elements must contain certain
+Attributes. These Attributes are:
+
+life:
+    The player, and any Npcs the Player will be fighting must have an Attribute
+    with an alias of life. The value of this Attribute can be a fixed number,
+    however it is more interesting if it is a randomly generated value.
+
+max_life:
+    Max life is used to cap the Player's life. This is useful when defining
+    Objects that restore the Player's life. If a max_life is set, the Player's
+    life value will never exceed the max_life value. It is a good idea to set
+    this to the initial life value:
+
+    {player
+        {attr, alias=life, type=random, value=10\,20 }
+        {attr, alias=max_life, type=attribute, value={player}:life }
+        ...
+    }
+
+initiative:
+    Initiative determines who attacks first. If the Player has no set initiative
+    the Fight engine uses a default value of 80 out of 100.
+    This Attribute can also be defined in the Npcs the Player will need to
+    fight. If no Npc initiative is set the Fight engine uses a default of 20 out
+    of 100.
+
+fight_label:
+    This Attribute is used by Events such as attack. It can be referenced like:
+    enemy:fight_label
+
+fight_proper_label:
+    This Attribute is used by Events such as attack. It should be used when it
+    is the start of a sentence. It can be referenced like:
+    enemy:fight_proper_label
+
+fight_kill:
+    This Attribute applies to Npcs and provides the verbage used when you kill
+    it. This allows for wording like: 'You have destroyed the golem.' or 'You
+    have killed the knight.' It can be referenced like:
+    enemy:fight_kill
+
+As the player advances in the game, this value can be adjusted using an Action
+element.
+
+--------------------------------------------------------------------------------

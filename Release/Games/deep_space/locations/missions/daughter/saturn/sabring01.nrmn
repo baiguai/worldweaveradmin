@@ -1,0 +1,59 @@
+{room, alias=sabring01, label=Sabring 01
+    {evt, type=enter
+        [@msg
+            You skim over the tops of the tallest buildings in the city. Grids of structures and brilliant points of light and lit windows
+            zip past you. You can see the activity below. Transportation craft snake through the streets and large crowds of people walk among
+            the city's shops, clubs, and restaurants.
+            \n\n
+            You can't decide if you would like to book a hotel room, in case you need to spend more time in Sabring01 than you anticipate, or
+            if you should simply look for parking and begin hunting for the couple's daughter.
+        ]
+    }
+
+    {evt, type=lookout
+        {mset, repeat=random
+            [@msg
+                You look out over the city as it flies past you. It if full of lights and crowds and cars snaking along the streets. The city
+                is full of life.
+            ]
+            [@msg
+                You are skimmming over the city, just above the tallest buildings.
+            ]
+            [@msg
+                You look out the windows of your ship. The city that is zipping past you is breathtaking. Lights and activity all sprawl out
+                beneath you.
+            ]
+        }
+    }
+
+    {evt, type=hotel
+        [@msg
+            You decide to book a room in a hotel.
+        ]
+    }
+
+    {evt, type=park
+        [@msg
+            You decide to park and get to work.
+        ]
+    }
+
+
+    {cmd, syntax=look|l
+        {aset
+            {act, type=event, value=lookout }
+        }
+    }
+
+    {cmd, syntax=*hotel*
+        {aset
+            {act, type=event, value=hotel }
+        }
+    }
+
+    {cmd, syntax=*park*
+        {aset
+            {act, type=event, value=park }
+        }
+    }
+}

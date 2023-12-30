@@ -1,0 +1,19 @@
+>>title=The Current Issues File
+>>syntax=current issues
+>>tags=game development debugging notes admin notes testing notes
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+In the Admin Tool's root directory, there is a special file named
+current_issues.txt
+If you do not wish to use it, leave that file empty. Otherwise, any testing
+notes you want to be reminded about when launching the Admin Tool, should be
+entered there.
+
+When %title% Admin is launched, it reads this file verbatum and displays
+it below the initial splash screen.
+
+You can use it however you like - debugging notes, development notes, release
+dates, anything you like.
+
+--------------------------------------------------------------------------------

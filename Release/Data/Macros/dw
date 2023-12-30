@@ -1,0 +1,2 @@
+build darkworld,darkworld
+copyfile Data/Games/darkworld, Client/Data/Games/darkworld

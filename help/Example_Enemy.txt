@@ -1,0 +1,163 @@
+>>title=Enemy Example
+>>syntax=enemy example
+>>tags=game development fighting fps samples examples opponent enemy enemies
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+{npc, alias=guard_lvl1, name=guard {fired}, meta=*guard*, location=void
+    {attribute, alias=is_enemy, value=true }
+    {attribute, alias=life, type=random, value=3\,11 }
+    {attribute, alias=kill_verb, value=killed }
+
+    // EVENTS
+    {event, type=init|look
+        {logicset
+            {logic, type=attribute, source={self}:life, sourcevalue=0, operand=> }
+        }
+
+        {aset
+            {act, type=fight }
+        }
+    }
+    {event, type=init|look
+        {logicset
+            {logic, type=attribute, source={self}:life, sourcevalue=0, operand=<= }
+        }
+
+        {messageset
+            [message
+                You see a dead guard {fired} lying on the ground.
+            ]
+        }
+    }
+
+    {event, type=fight_init
+        {messageset
+            [message
+                A guard {fired} rushes at you.
+            ]
+        }
+    }
+
+    // COMMANDS
+    {command, syntax=*x* *guard {fired}
+        {messageset
+            [message
+                You examine the dead guard {fired}.
+            ]
+        }
+
+        {actionset
+            {action, type=inventory }
+        }
+    }
+
+    // OBJECTS
+    {object, type=weapon, label=lazergun
+        {event, type=attack
+            {actionset
+                {action, type=attribute, source={player}:life, newvalue={random}|1\,3 }
+            }
+
+            {messageset
+                [message
+                    The {enemy:name} has shot you reducing your life to {player:life}.
+                ]
+            }
+        }
+
+        {event, type=miss
+            {messageset
+                [message
+                    The {enemy:name} shoots at you but misses.
+                ]
+            }
+        }
+
+        {event, type=die
+            {messageset
+                [message
+                    You have been killed by the {enemy:name}.
+                ]
+            }
+        }
+    }
+
+
+    {object, alias=gl1_healthcap, type=random, chance=50, label=health capsule
+        // EVENTS
+        {evt, type=init|look
+            {mset
+                [msg
+                    You see a small health capsule.
+                ]
+            }
+        }
+
+        {evt, type=examinecapsule
+            {mset
+                [msg
+                    You examine the health capsule. It does not appear to be tampered with.
+                ]
+            }
+        }
+
+        // COMMANDS
+        {cmd, syntax=*x* *health capsule
+            {aset
+                {act, type=object_event, newvalue=examinecapsule }
+            }
+        }
+
+        {cmd, syntax=take *health capsule
+            {lset
+                {lgc
+                    [@eval
+                        location@{self}!={player}
+                    ]
+                }
+                [fail
+                    You are already carrying the health capsule.
+                ]
+            }
+
+            {aset
+                {act, type=move, newvalue={player}
+                    {mset
+                        [msg
+                            \n
+                            You pick up the health capsule.
+                            \n
+                        ]
+                    }
+                }
+            }
+        }
+
+        {cmd, syntax=use *health capsule
+            {lset
+                {lgc
+                    [@eval
+                        location@{self}={player}
+                    ]
+                }
+                [fail
+                    You are not carrying a health capsule.
+                ]
+            }
+
+            {aset
+                {act, type=attribute, source={player}:life, newvalue={+=5}
+                    {mset
+                        [msg
+                            Your life has been restored by 5.
+                        ]
+                    }
+                }
+                {act, type=move, newvalue=void }
+            }
+        }
+    }
+}
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,78 @@
+{npc, alias=elcaro, name=Elcaro, meta=*elcaro*, location=limbo
+    {attr, alias=life, type=random, value=10\,20 }
+    {attr, alias=max_life, type=attribute, value=elcaro:life }
+    {attr, alias=armor, type=random, value=5\,10 }
+    {attr, alias=speed, type=random, value=7\,14 }
+    {attr, alias=dexterity, type=random, value=6\,18 }
+
+    {travelset, alias=elcaro_travel, mode=follow
+        {attr, alias=active, value=false }
+    }
+
+    {evt, type=enter
+        {mset
+            [@msg
+
+Elcaro follows you.
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset
+            [@msg
+
+Elcaro is with you.
+            ]
+        }
+    }
+
+    // OBJECTS
+    // Short sword
+    {object, alias=staff, label=staff, type=weapon, meta=*staff*, location={elcaro}
+        {attr, alias=damage, type=random, value=2\,4 }
+
+        {event, type=attack
+            {actionset
+                {action, type=attribute, source={enemy}:life, newvalue={random}|2\,4
+                    {messageset
+                        [message
+                            Elcaro strikes the {enemy:name} with his staff reducing their life to {enemy:life}.
+                        ]
+                    }
+                }
+            }
+        }
+
+        {event, type=miss
+            {messageset
+                [message
+                    Elcaro tried to hit the {enemy:name} but misses.
+                ]
+            }
+        }
+
+        {event, type=kill
+            {messageset
+                [message
+                    Elcaro has {enemy:kill_verb_past} the {enemy:name}.
+                ]
+            }
+        }
+
+        // COMMANDS
+        {command, syntax=attack*
+            {logicset
+                {logic
+                    [@eval
+                        armed@{elcaro}
+                    ]
+                }
+            }
+
+            {actionset
+                {action, type=object_event, source={params}, newvalue=attack }
+            }
+        }
+    }
+}

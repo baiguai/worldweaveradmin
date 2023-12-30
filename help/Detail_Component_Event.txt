@@ -1,0 +1,65 @@
+>>title=Event Component Details
+>>syntax=event component
+>>tags=events event component event element event object timed events
+>>related=output order
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{event, type=init|look
+    ...
+}
+
+{evt, type=init|look
+    ...
+}
+
+
+Description:
+    Events define something that happens in response to a fired Action or
+    Command. An Event can fire an Action or display a Message. With the
+    exceptions of Room descriptions (When entering a Room) and Game Events
+    firing an Event type cascades down to any child elements that have that
+    Event type.
+
+    NOTE:
+    To define global Events that fire no matter where the Player is, place
+    those Events in the Game object.
+
+    NOTE:
+    You can define multiple Events of the same type to utilize different
+    Logic checks in each Event.
+
+
+Syntax:
+    Events are defined as a component, using curly braces {} to denote them.
+
+
+Required Properties:
+    type (One word):
+    Specifies the type of Event to fire. There are pre-defined Events that
+    %title% fires at specific times, an Event can be of these types
+    or any custom type the game author chooses. Custom Events can be called
+    using Actions and referencing the type value. For more information on
+    calling Events use:
+
+    help calling events
+
+    For a list of pre-defined Event types use:
+
+    help event types
+
+
+
+Allowed Parent Components:
+    npc
+    object
+    player
+    room
+
+
+Allowed Child Components:
+    actionset / action
+    logicset
+    messageset
+
+--------------------------------------------------------------------------------

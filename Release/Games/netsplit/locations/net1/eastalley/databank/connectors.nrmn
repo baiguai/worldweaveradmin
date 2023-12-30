@@ -1,0 +1,49 @@
+// NORTH WEST DOOR - STORAGE
+{object, alias=db_door_nw, label=North West Door, type=connector, location=databank
+    {evt, type=enter|look
+        [msg==Set into the north west corner of the north wall you see a small door.]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the small door in the north west corner of the Databank.
+            It is narrow and made of a glossy black material.
+        ]
+    }
+
+
+    {cmd, syntax=*x* n* w* door*|*x* nw* door*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *n* w* door*|enter *nw* door*|northwest|north west|north|nw|n
+        {act, type=travel, newvalue=db_storage
+            [msg==You step through the small door.]
+        }
+    }
+}
+
+// SOUTH PORTAL - EAST ALLEY
+{object, alias=db_door_s, label=South Portal, type=connector, location=databank
+    {evt, type=enter|look
+        [msg==Along the south wall you see a glowing portal.]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the south portal.
+            It is large and glowing brilliantly.
+        ]
+    }
+
+
+    {cmd, syntax=*x* s* portal*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *s* portal*|south|s
+        {act, type=travel, newvalue=eastalley
+            [msg==You step through the portal. Everything flashes white.]
+        }
+    }
+}

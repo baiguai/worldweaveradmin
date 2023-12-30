@@ -1,0 +1,22 @@
+>>title=Credits Screen
+>>syntax=credits
+>>tags=game development launching games playing games branding games credits screen
+>>topic=Branding
+--------------------------------------------------------------------------------
+
+It is important to credit those who have helped to make a game possible.
+%title% contains a special UI for displaying credits. This is laid out
+like the splash screen. Enter the plain text in the way you would like it to
+be displayed (line breaks, spaces etc where you want them).
+When a player playing your game uses the credits command, this UI is displayed.
+
+To define a credits screen enter the text and or ASCII art into the following
+file:
+
+<Game Root Directory>
+  |__ credits.txt
+
+The contents of this file are displayed exactly as the text is entered in the
+file.
+
+--------------------------------------------------------------------------------

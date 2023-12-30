@@ -1,0 +1,48 @@
+{room, alias=kalisto_n_street_n, label=North Street
+    {evt, type=enter
+        {mset
+            [msg
+You continue, headed north.
+            ]
+        }
+
+        {act, type=event, value=navigation }
+    }
+
+    {evt, type=look
+        {mset
+            [msg
+You are in the northern-most end of the street.
+            ]
+        }
+
+        {act, type=event, value=navigation }
+    }
+
+
+    {evt, type=navigation
+        {mset
+            [msg
+\n\n
+North of where you are standing the road ends.
+\n
+In the east you see a building that appears to be a prison.
+\n
+South of where you are the road heads back to the main street.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=l|look
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=s|*south
+        {act, type=travel, newvalue=kalisto_n_street_s }
+    }
+}

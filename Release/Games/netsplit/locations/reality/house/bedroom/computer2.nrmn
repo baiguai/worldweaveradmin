@@ -1,0 +1,110 @@
+{object, alias=br_comp2, label=Computer 2, type=object, location=br_desk, parent_type=object
+    {attr, alias=locked, value=true }
+    {attr, alias=path, value=root }
+
+    {evt, type=on_desk
+        [msg
+            You see a computer sitting on the south side of the desk (south computer).
+        ]
+    }
+
+    {evt, type=on_desk
+        {lset
+            [@eval
+                attribute@{self}:locked=false
+            ]
+            [fail
+                It is locked. To unlock it enter the password.
+            ]
+        }
+
+        [msg
+            You see a black console with a blinking cursor in the top left corner of the screen.
+        ]
+    }
+
+    {evt, type=examine_comp2
+        {lset
+            [@eval
+                attribute@{self}:locked=false
+            ]
+            [fail
+                You examine the computer on the south side of the desk. It is locked.
+            ]
+        }
+
+        [msg
+            You examine the computer on the south side of the desk.
+            The screen is black except for a small cursor blinking in the top left corner, awaiting input.
+            \n
+            You can view the current path using: pwd
+            \n
+            You can list the location's contents using: ls
+            \n
+            You can change directories using: cd <new directory>
+            \n
+            You can return to the root using: cd /
+            \n
+            You can execute a file or application using: ./<app / directory name>
+        ]
+    }
+
+    {evt, type=behind_comp2
+        [msg
+            You lean over the desk and look behind the computer on the south side of the desk.
+            You don't see anything there.
+        ]
+    }
+
+    {evt, type=unlock_comp2
+        {lset
+            [@eval
+                attribute@{self}:locked=true
+            ]
+            [fail
+                The computer is already unlocked.
+            ]
+        }
+
+        {act, type=attribute, source={self}:locked, newvalue=false
+            [msg
+                You enter the computer's password and hit enter. It is now unlocked.
+            ]
+        }
+    }
+
+    {evt, type=lock_comp2
+        {lset
+            [@eval
+                attribute@{self}:locked=false
+            ]
+            [fail
+                The computer is already locked.
+            ]
+        }
+
+        {act, type=attribute, source={self}:locked, newvalue=true
+            [msg
+                You lock the computer.
+            ]
+        }
+    }
+
+
+    // General commands
+    {cmd, syntax=*x* s* comput*
+        {act, type=object_event, value=examine_comp2 }
+    }
+
+    {cmd, syntax=*behind* s* comput*|*back* s* comput*
+        {act, type=object_event, value=behind_comp2 }
+    }
+
+    {cmd, syntax=hxsmith23
+        {act, type=object_event, value=unlock_comp2 }
+    }
+
+    {cmd, syntax=lock* s* comput*
+        {act, type=object_event, value=lock_comp2 }
+    }
+}

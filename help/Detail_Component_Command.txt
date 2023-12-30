@@ -1,0 +1,46 @@
+>>title=Command Component Details
+>>syntax=command component
+>>tags=command component command element command objects input syntax player input
+>>related=output order
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{command, syntax=*x* torch*|*look at* torch*
+    ...
+}
+
+{cmd, syntax=*x* torch*|*look at* torch*
+    ...
+}
+
+
+Description:
+    Commands define possible player input. The syntax property specifies the
+    text that the player must enter to fire the Command.
+
+
+Syntax:
+    Commands are defined as a component, using curly braces {} to denote them.
+
+
+Required Properties:
+    syntax:
+    Syntax is a pattern matching expression that is compared to the text the
+    player enters. If it matches the Command is fired. Multiple expressions
+    can be defined by separating them with pipes |.
+
+
+
+Allowed Parent Components:
+    room
+    npc
+    object
+    player
+
+
+Allowed Child Components:
+    actionset
+    logicset
+    messageset
+
+--------------------------------------------------------------------------------

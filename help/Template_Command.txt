@@ -1,0 +1,13 @@
+>>title=Command Template
+>>syntax=command template
+>>tags=command template
+>>topic=Templates
+--------------------------------------------------------------------------------
+
+{cmd, syntax=
+    {aset
+        {act, type=, newvalue= }
+    }
+}
+
+--------------------------------------------------------------------------------

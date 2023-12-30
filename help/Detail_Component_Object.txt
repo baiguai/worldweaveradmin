@@ -1,0 +1,106 @@
+>>title=Object Component Details
+>>syntax=object component
+>>tags=object components object elements objects doors connectors health potions reusable inheritance
+>>related=plugins
+>>related=object types
+>>related=output order
+>>related=weapon example
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{object, type=weapon, label=sword, meta=*sword*, location=entrance, parent_type=room
+    ...
+}
+
+{obj, type=weapon, label=sword, meta=*sword*, location=entrance, parent_type=room
+    ...
+}
+
+
+Description:
+    Objects define things that the player encounters in the game. An Object can
+    be anything from a door, a weapon, part of the architecture, even a simulated
+    NPC. Some Object types are denoted by their type property, others simply
+    by their Attributes, Commands, Actions, and Events.
+
+    Note:
+    Objects can be defined at the Game level so that they fire no matter where
+    the player is. This allows for the defining of time passage, or other global
+    Events. To define an Object as global set its location and parent_type to game:
+
+    {object, alias=timepassage, type=item, location=game, parent_type=game
+        ...
+    }
+
+    Using global Objects game authors can create reusable 'plugins' that can
+    be copied into other game directories and used for those games as well.
+    For more information use:
+    help plugins
+
+
+Syntax:
+    Objects are defined as a component, using curly braces {} to denote them.
+
+
+Required Properties:
+    type (one word):
+    Specifies the Object type. This value can be a user-defined type or one
+    of the pre-defined Object types. For more information on Object types use:
+
+    help object types
+
+
+Optional Properties:
+    alias (one word):
+    An alias can be specified for any object. This makes referencing the Object
+    in Actions, Logic blocks or other components possible. The Object alias
+    must be unique within the game.
+
+    label:
+    The friendly name for the object. This value is used by lists such as
+    the player's inventory or when picking up, dropping, striking/shooting
+    the Object.
+
+    meta:
+    The meta property is a pattern matching expression that is used to allow
+    the player to identify it, such as when picking up, dropping, or
+    striking/shooting it.
+
+    location:
+    If the Object definition is written outside of its parent component - in
+    code - %title% needs to know where it is initially located. When using
+    the location property, the parent_type property must also be used.
+
+    parent_type:
+    This tells %title% what type of parent component the Object is located
+    in. Parent type is typically either room or object or npc.
+    If the parent type is not specified, room is used by default.
+
+    inherit:
+    An Object can inherit its Events, Attributes, and Commands from a common
+    Object by specifying that Object's alias in the inherit property. There
+    is currently no way to override the inherited components, so keep this
+    in mind.
+
+    sort:
+    Specifies the order in which the Object should be described in relation
+    to its sibling Objects. This can also be achieved by adding a Sort
+    element to the Object's parent.
+    See help sort component.
+
+
+Allowed Parent Components:
+    game
+    npc
+    object
+    player
+    room
+
+
+Allowed Child Components:
+    attribute
+    command
+    event
+    sort
+
+--------------------------------------------------------------------------------

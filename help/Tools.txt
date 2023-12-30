@@ -1,0 +1,40 @@
+>>title=%title% Tools
+>>syntax=tools
+>>tags=tools macros shortcuts scripts
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+There are many tools in %title% that game authors can use to aid in the
+development of games. Such tools include:
+
+Scripts:
+    %title% comes packages with shell and .bat scripts to aid developers
+    and game developers. For more information use:
+
+    help scripts
+
+
+Macros:
+    Macros make %title% Admin commands less tedious. Multiple commands or
+    lengthy commands can be entered by calling a macro. For more information
+    use:
+
+    help macros
+
+
+Admin Tools:
+    While playing a game, testing it, the game can be put into admin mode
+    by specifying an admin password. Entering that during game play toggles
+    the admin mode. When in this mode admin commands can be entered. For more
+    information use:
+
+    help debugging
+
+
+Tests:
+    Tests are essentially macros that can be run while playing a game, in admin
+    mode. For more information use:
+
+    help tests
+
+--------------------------------------------------------------------------------

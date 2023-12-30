@@ -1,0 +1,2 @@
+build DeathRooms,death_rooms
+copyfile Data/Games/DeathRooms, ../../WorldWeaverClient/Release/Data/Games/DeathRooms

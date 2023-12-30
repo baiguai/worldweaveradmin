@@ -1,0 +1,86 @@
+{help, syntax=help commands, title=Basic IF Commands
+    [@topic
+Note:
+    Many commands can be shortened, players comfortable with Interactive
+    Fiction (IF) can use these to make game play less tedious. For example, the
+    command 'enter forward door', often can be shortened to 'enter for door'.
+    As you play, experiment with this and save yourself some keystrokes.
+\n
+\n
+----
+\n
+look | l
+\n
+The look command operates on the location level. It is essentially like saying
+'look around'.
+\n
+----
+\n
+examine [object] | x [object]
+\n
+Objects or people can be examined using the examine command followed by an
+identifying name.
+\n
+----
+\n
+north | n | south | s | east | e | west | w
+forward | fore | aft | port | starboard
+\n
+Because the player may be entering locations from different directions, relative
+movement like 'left' or 'right' becomes cumbersome. To overcome this IF games
+use global directions, often giving the player hints that remind them of what
+is in each direction.
+\n
+----
+\n
+enter [door]
+\n
+Doors or other connectors with descriptive names can be entered using the enter
+command followed by an identifying name.
+\n
+----
+\n
+take [object]
+\n
+Certain objects in the game can be picked up by the player. To accomplish this
+use the take command followed by the object's identifying name.
+\n
+----
+\n
+put [object] | drop [object
+\n
+Objects that you are carrying can be dropped or put down using the put command
+or the drop command followed by the object's identifying name. In some cases
+objects can be put into other things using the put command followed by the
+object's identifying name then 'in' or 'on' followed by the identifying name
+of the object or place you wish to put the object.
+\n
+----
+\n
+unlock [object]
+\n
+To unlock a door or object use the unlock command followed by the door or
+object's identifying name. For more information on keys and unlocking use:
+\n
+----
+\n
+use [object]
+\n
+Certain objects you are carrying may be 'used' - the results vary depending on
+the object. For example if you 'use' a flashlight a dark room may become light
+enough to see. You must be carrying the object to use it. To utilize the use
+command enter use followed by the object's identifying name.
+\n
+----
+\n
+stats
+\n
+This command lists the player's stats.
+\n
+----
+\n
+inventory or inv
+\n
+This command lists the player's inventory of items they are carrying.
+    ]
+}

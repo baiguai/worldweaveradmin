@@ -1,0 +1,49 @@
+// NORTH PORTAL - Databank
+{object, alias=ea_door_n, label=North Portal, type=connector, location=eastalley
+    {evt, type=enter|look
+        [msg==In the north end of the alley you see a large glowing portal. Above it hovers the text "Databank".]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the north portal.
+            It is large and glowing brilliantly.
+        ]
+    }
+
+
+    {cmd, syntax=*x* n* portal*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *n* portal*|north|n
+        {act, type=travel, newvalue=databank
+            [msg==You step through the portal. Everything flashes white.]
+        }
+    }
+}
+
+// WEST PORTAL - NetHub
+{object, alias=ea_door_w, label=West Portal, type=connector, location=eastalley
+    {evt, type=enter|look
+        [msg==In the west end of the alley you see a large glowing portal.]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the west portal.
+            It is large and glowing brilliantly.
+        ]
+    }
+
+
+    {cmd, syntax=*x* w* portal*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *w* portal*|west|w
+        {act, type=travel, newvalue=nethub
+            [msg==You step through the portal. Everything flashes white.]
+        }
+    }
+}

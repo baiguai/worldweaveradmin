@@ -1,0 +1,47 @@
+>>title=%title% Help
+
+>>tags=help about introduction worldweaver
+--------------------------------------------------------------------------------
+Welcome to %title% a Java driven text-based game engine. With %title%
+you can define classic Interactive Fiction (IF) games, First Person Shooter (FPS)
+games, or any other text-based game you can imagine. For assistance in using this
+help system use:
+help using
+
+
+History:
+To view the command history use:
+hi
+
+To execute a historical command use:
+hi <<history index>>
+
+
+Using %title%:
+help worldweaver
+help tools
+
+Game Development:
+help game development
+help snippets
+
+Playing %title% Games:
+help playing games
+
+Upgrading:
+help upgrading
+
+%title% Links:
+help links
+
+If you are new to IF:
+help int fiction
+
+Refreshing the help system:
+help refresh help
+
+
+Suggested Help Searches:
+help example
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,71 @@
+{object, alias=nhb_screwdriver, label=Screwdriver, type=item, location=nhb_fountain, parent_type=object
+    {attr, alias=moved, value=false }
+
+    {evt, type=in
+        {lset
+            [@eval
+                attribute@{self}:moved=false
+            ]
+            [fail
+                You see nothing within the blue-colored water.
+            ]
+        }
+
+        [msg
+            You notice something sitting on the ground, within the water.
+            It appears to be a screwdriver.
+        ]
+    }
+
+    {evt, type=examine_screwdriver
+        [msg
+            You examine the screwdriver. Its head appears to be a custom shape.
+        ]
+    }
+
+    {evt, type=take
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+            [fail
+                You are already carrying the screwdriver.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:moved, newvalue=true }
+            {act, type=move, source={self}, newvalue={player}
+                [msg==You pick up the screwdriver.]
+            }
+        }
+    }
+
+    {evt, type=drop
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a screwdriver.
+            ]
+        }
+
+        {act, type=move, source={self}, newvalue={player}
+            [msg==You drop the screwdriver.]
+        }
+    }
+
+
+    {cmd, syntax=*x* screw*
+        {act, type=object_event, value=examine_screwdriver }
+    }
+
+    {cmd, syntax=take *screw*
+        {act, type=object_event, value=take }
+    }
+
+    {cmd, syntax=drop *screw*
+        {act, type=object_event, value=drop }
+    }
+}

@@ -1,0 +1,21 @@
+>>title=Events Suggested for Fighting
+>>syntax=fight events
+>>tags=game development fighting fight events for fighting
+>>topic=Fighting
+--------------------------------------------------------------------------------
+
+If your game utilizes fighting the weapons a Player can use and Npc elements can
+contain certain Events. These Events are:
+
+attack:
+    The attack message is shown when the Player attack with the armed weapon,
+    and when an Npc attacks its attack Event is fired. This Event should be
+    defined in the weapon Object the Player can use, and in the Npc element
+    itself.
+
+miss:
+    The miss message is shown when the Player's attack fails, or the Npc's
+    attack fails. This Event should be defined in the weapons a Player can use
+    or in the Npc element itself.
+
+--------------------------------------------------------------------------------

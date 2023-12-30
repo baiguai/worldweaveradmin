@@ -1,0 +1,13 @@
+>>title=Sample Logic Block
+>>syntax=logic example
+>>tags=logic example logic sample
+>>topic=Templates
+--------------------------------------------------------------------------------
+
+{logicset
+    {logic, type=, source=, sourcevalue=, operand= }
+    [fail
+    ]
+}
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,242 @@
+{object, alias=br_chip, label=Chip, type=object, location=br_bed, parent_type=object
+    {attr, alias=moved, value=false }
+    {attr, alias=discovered, value=false }
+    {attr, alias=plugged_in, value=false }
+
+    {evt, type=enter|look
+        {lset
+            [@eval
+                attribute@{self}:discovered=true
+                &&
+                attribute@{self}:moved=true
+                &&
+                location@{self}={room}
+            ]
+        }
+
+        [msg==You see a small micro chip sitting on the floor. ]
+    }
+
+    {evt, type=under_bed
+        {lset
+            [@eval
+                attribute@{self}:moved=false
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:discovered, newvalue=true
+                [msg==You see a small micro chip sitting on the floor. ]
+            }
+        }
+    }
+
+    {evt, type=examine_chip
+        {lset
+            [@eval
+                attribute@{self}:discovered=true
+            ]
+            [fail
+                I'm not sure what you are trying to examine.
+            ]
+        }
+
+        [msg==You examine the micro chip. It is unmarked. You don't recall what might be on it. ]
+    }
+
+    {evt, type=take
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+            [fail
+                You are already carrying the micro chip.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:moved, newvalue=true }
+            {act, type=move, source={self}, newvalue={player}
+                [msg==You pick up the micro chip. ]
+            }
+        }
+    }
+
+    {evt, type=drop
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You are not carrying a micro chip.
+            ]
+        }
+
+        {act, type=move, source={self}, newvalue={room}
+            [msg==You drop the micro chip. ]
+        }
+    }
+
+    {evt, type=plugin
+        {lset
+            [@eval
+                attribute@{self}:plugged_in=false
+            ]
+            [fail
+                The chip is already plugged into the computer in the south end of your desk.
+            ]
+        }
+
+        {act, type=attribute, source={self}:plugged_in, newvalue=true
+            [msg
+                It appears that only the south computer has slots for chips.
+                You plug the chip into the south computer.
+            ]
+        }
+    }
+
+    {evt, type=unplug
+        {lset
+            [@eval
+                attribute@{self}:plugged_in=true
+            ]
+            [fail
+                The chip is already unplugged.
+            ]
+        }
+
+        {act, type=attribute, source={self}:plugged_in, newvalue=false
+            [msg
+                You unplug the chip from the computer in the south end of your desk.
+            ]
+        }
+    }
+
+
+
+    {evt, type=comp_read_chip
+        {lset
+            [@eval
+                attribute@{self}:plugged_in=true
+            ]
+        }
+
+        {mset
+            {lset
+                [@eval
+                    attribute@br_comp2:path=root
+                ]
+            }
+
+            [msg
+                You see the chip listed in the root directory. It is labelled:
+                \n
+                ctx
+                \n
+            ]
+        }
+
+        {mset
+            {lset
+                [@eval
+                    attribute@br_comp2:path=ctx
+                ]
+            }
+            [msg
+                The contents of the ctx chip are:
+                \n
+                teleport
+            ]
+        }
+    }
+
+    {evt, type=cd_ctx
+        {lset
+            [@eval
+                attribute@{self}:plugged_in=true
+            ]
+        }
+
+        {act, type=attribute, source=br_comp2:path, newvalue=ctx
+            [msg
+                You change directories to the ctx chip.
+            ]
+        }
+    }
+
+    {evt, type=exe_teleport
+        {lset
+            [@eval
+                attribute@{self}:plugged_in=true
+                &&
+                location@pcomm={player}
+                &&
+                attribute@br_comp2:path=ctx
+            ]
+        }
+
+        {act, type=attribute, source=pcomm:has_teleport, newvalue=true
+            [msg
+                The teleport application has been copied to your PComm.
+            ]
+        }
+    }
+
+
+
+    {cmd, syntax=*x* chip*
+        {act, type=object_event, value=examine_chip }
+    }
+
+    {cmd, syntax=*take* chip*|*pick up* chip*
+        {lset
+            [@eval
+                attribute@{self}:discovered=true
+            ]
+            [fail
+                I'm not sure what you are trying to take.
+            ]
+        }
+
+        {act, type=object_event, value=take }
+    }
+
+    {cmd, syntax=*drop* chip*|*put down* chip*
+        {lset
+            [@eval
+                attribute@{self}:discovered=true
+            ]
+            [fail
+                I'm not sure what you are trying to drop.
+            ]
+        }
+
+        {act, type=object_event, value=drop }
+    }
+
+    {cmd, syntax=plug* chip*
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a chip.
+            ]
+        }
+
+        {act, type=object_event, value=plugin }
+    }
+
+    {cmd, syntax=unplug* chip*
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a chip.
+            ]
+        }
+
+        {act, type=object_event, value=unplug }
+    }
+}

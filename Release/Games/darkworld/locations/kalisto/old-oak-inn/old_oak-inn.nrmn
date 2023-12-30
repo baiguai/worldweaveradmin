@@ -1,0 +1,149 @@
+{room, alias=old_oak_inn, label=Old Oak Inn
+    {attr, alias=backroom_done, value=false }
+
+    {evt, type=enter
+        {mset, repeat=none
+            [msg
+You enter the Old Oak Inn.
+\n
+The tavern is full of patrons, chatting amonst themselves, laughter and merriment fills the room.
+\n
+You sit in one of the booths. A few moments later the dark elf enters the tavern and approaches you.
+\n
+He sits down at the table next to yours.
+\n
+Your mead arrives and you begin sipping on it when a woman wearing a dark red cloak approaches you and
+the dark elf.
+\n
+She whispers to both of you, "Follow me into the council chamber, in the north end of the inn."
+            ]
+        }
+    }
+
+    {evt, type=leave_backroom
+        {mset, repeat=none
+            [msg
+                ...
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset, repeat=none
+            [msg
+You look around the bar inside the Old Oak Inn. Circular tables are arrayed over the entire central room.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=*look*|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=n|*north
+        {act, type=travel, newvalue=old_oak_inn_backroom }
+    }
+}
+
+
+
+
+{room, alias=old_oak_inn_back, label=Old Oak Inn
+    {evt, type=enter
+        {mset, repeat=none
+            [msg
+You step back out into the main room of the Old Oak Inn. It seems to be louder than it was when you followed the cleric Onious into the council chamber.
+\n
+The Inn's exit door is south of you.
+\n
+\n
+In the northeast corner of the Inn, you notice a nondescript staircase leading down.
+\n
+To the south is the door that exits the Inn.
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset, repeat=none
+            [msg
+The inside of the Old Oak Inn is loud, with tables of patrons conversing loudly and seemingly enjoying one another's comapny.
+\n
+\n
+The Inn's exit door is south of you.
+\n
+In the northeast corner of the Inn, you notice a nondescript staircase leading down.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=ne|*north*east*
+        {act, type=travel, newvalue=old_oak_inn_cellar }
+    }
+
+    {cmd, syntax=s|*south
+        {act, type=travel, newvalue=kalisto_main_street_w }
+    }
+}
+
+
+
+
+{room, alias=old_oak_inn_gen, label=Old Oak Inn
+    {evt, type=enter
+        {mset, repeat=none
+            [msg
+You enter the main room of the Old Oak Inn. It seems to be louder than it was when you followed the cleric Onious into the council chamber.
+\n
+\n
+The Inn's exit door is south of you.
+\n
+In the northeast corner of the Inn, you notice a nondescript staircase leading down.
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset, repeat=none
+            [msg
+The inside of the Old Oak Inn is loud, with tables of patrons conversing loudly and seemingly enjoying one another's comapny.
+\n
+\n
+The Inn's exit door is south of you.
+\n
+In the northeast corner of the Inn, you notice a nondescript staircase leading down.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=ne|*north*east
+        {act, type=travel, newvalue=old_oak_inn_cellar }
+    }
+
+    {cmd, syntax=s|*south
+        {act, type=travel, newvalue=kalisto_main_street_w }
+    }
+}

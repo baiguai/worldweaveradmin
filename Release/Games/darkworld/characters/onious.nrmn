@@ -1,0 +1,29 @@
+{npc, alias=onious, name=Onious, meta=*onious*, location=limbo
+    {attr, alias=life, type=random, value=20\,30 }
+    {attr, alias=max_life, type=attribute, value=onious:life }
+    {attr, alias=armor, type=random, value=10\,15 }
+    {attr, alias=speed, type=random, value=9\,18 }
+    {attr, alias=dexterity, type=random, value=11\,18 }
+
+    {travelset, alias=onious_travel, mode=follow
+        {attr, alias=active, value=false }
+    }
+
+    {evt, type=enter
+        {mset
+            [@msg
+
+Onious follows you.
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset
+            [@msg
+
+Onious is with you.
+            ]
+        }
+    }
+}

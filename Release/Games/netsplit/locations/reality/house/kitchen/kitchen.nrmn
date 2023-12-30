@@ -1,0 +1,12 @@
+{room, alias=kitchen, label=Kitchen
+    {evt, type=enter|look
+        [msg
+            You are in a kitchen.
+        ]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+}

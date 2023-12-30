@@ -1,0 +1,53 @@
+>>title=Sample Discover Hidden Object Example
+>>syntax=help discover example
+>>tags=game development examples samples discover hidden object
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+%title% does not contain a built in mechanism for hidden Objects or
+discovering hidden Objects, so this must be defined by the game author.
+Attributes can be used to perform such a task:
+
+{room, alias=dungeon_entrance, label=Dungeon Entrance
+    {object, alias=hidden_key, label=Key, type=item, meta=*key*
+        {attr, alias=discovered, value=false }
+
+        {evt, type=enter|look
+            {lset
+                {lgc
+                    [@eval
+                        attribute@{self}:discovered=true
+                    ]
+                }
+            }
+
+            {mset
+                [msg
+                    You see a key.
+                ]
+            }
+        }
+    }
+
+    {cmd, syntax=*look *under *rock*
+        {lset
+            {lgc
+                [@eval
+                    attribute@hidden_key:discovered=false
+                ]
+            }
+        }
+
+        {aset
+            {act, type=attribute, source=hidden_key:discovered, newvalue=true
+                {mset
+                    [msg
+                        You look under the rock and discover a key.
+                    ]
+                }
+            }
+        }
+    }
+}
+
+--------------------------------------------------------------------------------

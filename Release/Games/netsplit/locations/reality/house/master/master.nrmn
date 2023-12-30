@@ -1,0 +1,20 @@
+{room, alias=master, label=Master Bedroom
+    {evt, type=enter|look
+        {mset, repeat=none
+            [msg
+                You are in the master bedroom. It is spacious and modern.
+                A majority of the north wall is made up of floor to ceiling
+                windows. Small pinpoint lights shine down from above painting
+                the room in a dim gallery-style ambiance.
+            ]
+            [msg
+                You are in the master bedroom. It is spacious and modern.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+}

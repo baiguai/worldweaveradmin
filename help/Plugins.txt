@@ -1,0 +1,34 @@
+>>title=Creating Reusable Plugins
+>>syntax=plugins
+>>tags=game development game authoring reuse plugins extensions
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+A 'plugin' can be any game component(s) defined within their own file that
+can be copied into another game without any adjustment to their code to make
+them work. An example might be a global Object used for time keeping within the
+game:
+
+{object, alias=game_clock, type=item, location=game, parent_type=game
+    {attr, alias=cur_time, value=0 }
+
+    {evt, type=enter
+        {aset
+            {act, type=attribute, source={self}:cur_time, newvalue={++} }
+        }
+    }
+}
+
+In this example, any time the player moves to a new location, one unit of time
+passes. Other game components can access the time by referencing it:
+
+{lgc, source=game_clock:cur_time, sourcevalue=5, operand=> }
+
+If this Object is in its own file, that file can be copied into other game
+directories (or sub directories) and used by that game. These plugins can also
+be shared with other game authors.
+
+For an example of a plug in see:
+help example plugin goal
+
+--------------------------------------------------------------------------------

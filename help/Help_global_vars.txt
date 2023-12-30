@@ -1,0 +1,24 @@
+>>title=Global Variables
+>>syntax=global variables
+>>tags=defining help systems configuration global variables global.config
+>>topic=Using Help
+--------------------------------------------------------------------------------
+
+Global variables can be defined within the following file:
+
+<%title%>
+  |__ global.config
+
+The following syntax is used to define them:
+
+somevar=test
+
+To use these variables in help articles use the following syntax:
+
+This is %somevar%.
+
+
+Note:
+Global variables can be used in special syntax rows (title, syntax, tags, etc).
+
+--------------------------------------------------------------------------------

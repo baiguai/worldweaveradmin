@@ -1,0 +1,63 @@
+>>title=LogicSet Component Details
+>>syntax=logicset component
+>>tags=logicset components logicset elements logicsets logic blocks
+>>related=fail events
+>>related=logic components
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{logicset
+    ...
+}
+
+{lset
+    ...
+}
+
+{lset
+    ...
+    [fail
+        ...
+    ]
+}
+
+
+Description:
+    LogicSets group together Logic blocks. Logic blocks must be defined within
+    a LogicSet.
+    If you need more than one LogicSet to be evaluated, define them within
+    different parents. For example in an Event called 'take', if you need
+    multiple LogicSets define one in 'take' and if that passes call another
+    Event (E.G.: take2) and in that Event do the other LogiSet check.
+    If the LogicSet fails, the element it is within is not processed.
+    In addition to stopping the processing of its parent, a LogicSet can display
+    a fail message, or call an Event within its parent Room, Object, Npc (The
+    'self' parent of the LogicSet). For more information on the power of fail
+    events, an the troubles they overcome use:
+
+    help fail event
+
+
+Syntax:
+    LogicSets are defined as a game component using curly braces {} to denote
+    them. For information on Logic blocks use:
+
+    help logic component
+
+
+Optional Properties:
+    fail_event (one word - event alias)
+
+
+Allowed Parent Components:
+    actionset
+    command
+    event
+
+
+Allowed Child Components:
+    eval (message)
+    logic
+    fail (message)
+
+--------------------------------------------------------------------------------

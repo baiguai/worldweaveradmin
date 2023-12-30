@@ -1,0 +1,48 @@
+>>title=Game Logs Details
+>>syntax=log
+>>tags=game file game definition logs logging debugging admin tools
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+{log, type=todo
+    [text
+Finish defining the entrance.
+    ]
+}
+
+
+Description:
+    Log elements are messages that are useful during the development of a
+    game. To view logs put the game in admin mode and enter:
+
+    _log <type>
+
+    For more information on admin mode use:
+
+    help debugging
+
+    The actual log text is defined within a child multi-line text element
+    using square braces [] to denote it.
+
+    NOTE:
+    One helpful use of logs is to keep track of testing results. Whenever
+    a Room is tested, notes can be added to that room using a Log element
+    in its file.
+
+
+Syntax:
+    Log entries are defined as components, using curly braces {} to denote
+    them. Logs can be defined anywhere within the game definition files.
+    It is a good idea to define them outside of other game components, just
+    to be safe.
+
+
+Required Properties:
+    type:
+    Defines the log's type. This property allows the logs to be grouped.
+
+
+Allowed Child Components:
+    text
+
+--------------------------------------------------------------------------------

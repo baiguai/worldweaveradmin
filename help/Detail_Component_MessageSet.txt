@@ -1,0 +1,57 @@
+>>title=MessageSet Component Details
+>>syntax=messageset component
+>>tags=messagesets messageset components messageset elements messages
+>>related=message templates
+>>related=output order
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{messageset, repeat=random
+    ...
+}
+
+{mset, repeat=none
+    ...
+}
+
+
+Description:
+    MessageSets are used to group Messages together. For information on
+    Messages use:
+
+    help message component
+
+
+Syntax:
+    MessageSets are defined as a component, using curly braces {} to denote them.
+
+
+Optional Properties:
+    repeat:
+    Specifies how the MessageSet chooses the Message to display when it is
+    fired. For a list of the possible repeat types use:
+
+    help messageset repeat types
+
+    message_alias:
+    Specifies a MessageSet alias to use as a template. This will copy the
+    specified MessageSet's Messages to the current MessageSet. For more
+    information on message templates use:
+
+    help message templates
+
+
+
+Allowed Parent Components:
+    action
+    event
+    command
+    messageset
+
+
+Allowed Child Components:
+    attribute
+    logicset
+    message
+
+--------------------------------------------------------------------------------

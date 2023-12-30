@@ -1,0 +1,42 @@
+>>title=Variable Component Details
+>>syntax=variable component
+>>tags=variable component variable element variable object reusable
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{variable, alias=somevar, value=Variable Value }
+
+
+Description:
+    Defines a reusable variable. Variables can be utilized using:
+    @<variable alias>@
+    The variable value will be substituted.
+
+
+Syntax:
+    Variables are defined as a component, using curly braces {} to denote them.
+
+
+Required Properties:
+    alias (One word):
+    Specifies how the variable will be specified, wrapped in at (@) symbols.
+
+    value:
+    The value to replace the reference with. Other variables can be referenced
+    within the value:
+
+    {var, alias=torch, value=You see @elf_metal@ torch. }
+    {var, alias=elf_metal, value=an elven metal }
+
+    Then to utilize it:
+
+    [msg
+        You examine the wall @torch@.
+    ]
+
+
+Allowed Parent Components:
+    variable value
+    msg
+
+--------------------------------------------------------------------------------

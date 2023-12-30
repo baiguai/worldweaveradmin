@@ -1,0 +1,15 @@
+{room, alias=nethome, label=NET Home
+    {evt, type=enter|look
+        [msg
+            You are in a cylindrical room. The ceiling, floor, and walls are
+            utterly black with a glowing green grid of lines covering their
+            surfaces. The words 'NET Home' hover in the air near the center
+            of the room.
+        ]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+}

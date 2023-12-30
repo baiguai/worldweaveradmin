@@ -1,0 +1,59 @@
+>>title=NPC Component Details
+>>syntax=npc component
+>>tags=npc components npc elements npc objects enemy enemies ally allies friends conversation fighting attacking attacker robots
+>>related=npc travel
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{npc, alias=guard_lvl1, name=guard {fired}, meta=*guard*, location=dungeon_entrance
+    ...
+}
+
+
+Description:
+    NPCs define any 'living' or animated character within the game. These are
+    typically enemies or allies or characters that the player can converse with
+    etc.
+
+    NPCs can travel according to their specified travel types. For information
+    on Npc Travel use:
+    help npc travel
+
+
+Syntax:
+    NPCs are defined as a component, using curly braces {} to denote them.
+
+
+Required Properties:
+    alias (One word):
+    The NPC's unique identifier. This value must be unique within the game.
+
+    name:
+    The display name for the NPC.
+
+    meta:
+    A matching expression used to allow the player to identify the NPC in
+    natural language.
+
+    location:
+    The Room in which the NPC is located initially.
+
+    parent_type:
+    If the NPC is defined outside of a Room element, this must be specified.
+    Since NPCs must be within Rooms, this value should be set to room.
+
+
+
+Allowed Parent Components:
+    room
+
+
+Allowed Child Components:
+    attribute
+    command
+    event
+    message
+    travelset
+    sort
+
+--------------------------------------------------------------------------------

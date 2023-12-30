@@ -1,0 +1,29 @@
+>>title=Using %title%
+>>syntax=worldweaver
+>>tags=getting started using
+>>topic=Information
+--------------------------------------------------------------------------------
+
+Since you are viewing this, it is assumed you have Java installed and know
+how to launch the %title%Admin.jar.
+
+%title% consists of two components:
+
+%title%Admin:
+    The admin tool is used to compile %title% games. For more information
+    on game development use:
+    help game development
+
+%title%Client:
+    The client tool is used to play %title% games once they are compiled
+    and installed. For information on installing compiled games use:
+    help installing games
+    help playing games
+
+
+Developers:
+The source code for both the client and the admin tools can be pulled from
+Bit Bucket. In time it may be made publicly available. If you are interested in
+contributing, contact me: baiguai.junk@gmail.com
+
+--------------------------------------------------------------------------------

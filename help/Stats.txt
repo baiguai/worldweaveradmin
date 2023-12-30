@@ -1,0 +1,14 @@
+>>title=Displaying Player Stats
+>>syntax=stats
+>>tags=player stats game stats_aliases
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+When calling an Action with a type property set to stats, the player's current
+stats are displayed. Which stats are shown are specified in the Game component's
+stats_aliases property. This property's value is a pipe | separated list of
+Player Attribute aliases to show. If you want this available to player, create
+a Command in the Player or Game component and have it call an Action with a type
+of stats.
+
+--------------------------------------------------------------------------------

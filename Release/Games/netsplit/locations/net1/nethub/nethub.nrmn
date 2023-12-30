@@ -1,0 +1,24 @@
+{room, alias=nethub, label=NET Hub
+    {evt, type=enter|look
+        [msg
+            You are in a large cube-shaped room.
+            The floor, ceiling, and walls are black. A grid of green
+            lines glow over its surface.
+            The words 'NET Hub' hover near the center of the room.
+        ]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+
+
+    {sort
+        [@obj
+            nhb_fountain
+            nhb_bench_n
+            nhb_bench_s
+        ]
+    }
+}

@@ -1,0 +1,157 @@
+{room, alias=old_oak_inn_backroom, label=Old Oak Inn - Back Room
+    {evt, type=enter
+        {mset
+            [msg
+You follow the woman into the council chamber in the back of the tavern.
+\n
+In the center of the room is a long table with chairs arranged around it.
+\n
+As you enter, a dark hooded figure stands up at the head of the table.
+\n
+\n
+---
+\n
+\n
+In a deep booming voice he speaks:
+\n
+"You have been summoned here because - in spite of The Cleansing - we have been hearing rumors of the
+\n
+undead attacking small villages in the outskirts of Aetherous.
+\n
+Due to the number of incidents we fear there is a larger plan in the works. We would like you to accompany
+\n
+Onious"
+\n
+The woman in the dark red cloak nods, "and Elcaro" He glances at the dark elf, "on a mission to discover who is behind the creation of these fell creatures."
+\n
+\n
+---
+\n
+\n
+He holds out his hand.
+\n
+\n
+"This" He continues, "is a seed of Yinthrull. It is your key to the Library of Agnoth, an ancient library
+\n
+that may house the archane information you need to get your investigation started.
+\n
+VERY few people have seen such a magical seed, they are typically reserved for only the most advanced of
+\n
+magic users. So guard this precious item with your life."
+\n
+\n
+He reaches out and hands you the small pearlescent seed.
+\n
+\n
+---
+\n
+\n
+\n
+"From Kalisto, head north, along the main road. Look for the hidden entrance to the Library of Agnoth.
+\n
+You will need to discover how to use the Seed of Yinthrull there.
+\n
+A room has been reserved for you her in the Old Oak Inn, you can rest tonight and begin your journey
+\n
+in the morning. Feel free to explore Kalisto before returning to your room."
+\n
+\n
+The hooded figure waves toward the door into the tavern's main floor.
+\n
+\n
+"Good luck. All of us are counting on you."
+\n
+\n
+The door leading back into the main room of the inn is in the south wall.
+            ]
+        }
+
+        {act, type=attribute, source=elcaro_travel:active, newvalue=true }
+        {act, type=attribute, source=old_oak_inn:backroom_done, newvalue=true }
+        {act, type=attribute, source=onious_travel:active, newvalue=true }
+        {act, type=move, source=seed_of_yinthrull, newvalue={player} }
+    }
+
+    {evt, type=look
+        {mset, repeat=random
+            [msg
+You look around the council chamber.
+\n
+There is a long table with chairs around it in the center of the room.
+\n
+A hooded figure stands at the head of the table.
+\n
+\n
+Set into the north wall you see a door.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=*look*|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=*north*|n
+        {act, type=travel, newvalue=old_oak_inn_backroom_storage }
+    }
+
+    {cmd, syntax=s|*south
+        {act, type=travel, newvalue=old_oak_inn_back }
+    }
+}
+
+
+
+{room, alias=old_oak_inn_backroom_ret, label=Old Oak Inn - Back Room
+    {evt, type=enter
+        {mset
+            [msg
+You are in the council chamber.
+\n
+There is a long table with chairs around it in the center of the room.
+\n
+\n
+Set into the north wall you see a door.
+\n
+In the south wall is the door that goes back into the main room of the Old Oak Inn.
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset
+            [msg
+You look around the council chamber.
+\n
+There is a long table with chairs around it in the center of the room.
+\n
+\n
+Set into the north wall you see a door.
+\n
+In the south wall is the door that goes back into the main room of the Old Oak Inn.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=*look*|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=*north*|n
+        {act, type=travel, newvalue=old_oak_inn_backroom_storage }
+    }
+
+    {cmd, syntax=s|*south
+        {act, type=travel, newvalue=old_oak_inn_back }
+    }
+}

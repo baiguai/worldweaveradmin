@@ -1,0 +1,287 @@
+Room Backroom - Storage:
+Alias: old_oak_inn_backroom_storage
+File: Games/darkworld/locations/kalisto/old-oak-inn/backroom_storage.nrmn
+|
+|- Events:
+|__ 35bbaec3-c32b-4a38-9feb-1714846166c2, enter,  File: Games/darkworld/locations/kalisto/old-oak-inn/backroom_storage.nrmn
+|__ 60278ba6-7bec-4bf8-83b9-d3fe4edf1842, look,  File: Games/darkworld/locations/kalisto/old-oak-inn/backroom_storage.nrmn
+|
+|
+|- Commands:
+|__ Syntax:  story (07aeb483-33ec-4e12-98ee-6216cc75eaac)
+|__ Syntax:  *look*|l (a34bc604-810a-481b-a69e-1a53399f08cd)
+|__ Syntax:  s|*south (d07f44c8-605b-4f15-ae09-d2e63683cf73)
+|
+
+Room Kalisto Houses:
+Alias: main_street_w_houses
+File: Games/darkworld/locations/kalisto/main_street/houses.nrmn
+|
+|- Events:
+|__ 1f2c61d3-0156-4d62-bf20-b17618523605, enter,  File: Games/darkworld/locations/kalisto/main_street/houses.nrmn
+|__ d975449a-1faf-490c-a6bb-11a47ff78201, look,  File: Games/darkworld/locations/kalisto/main_street/houses.nrmn
+|
+|
+|- Commands:
+|__ Syntax:  story (744726c8-75b2-4d84-9bdd-595acf4fcd4c)
+|__ Syntax:  look|l (6b706921-7fa1-4060-a24b-f227aa39de94)
+|__ Syntax:  n|*north (44e7096b-d8fc-4e1b-b538-3e0df420ac55)
+|
+
+Room Kalisto Main Street East:
+Alias: kalisto_main_street_e
+File: Games/darkworld/locations/kalisto/main_street/main_street_e.nrmn
+|
+|- Events:
+|__ 3f43d12a-7ae9-4afb-ad5c-0e126accefd5, enter,  File: Games/darkworld/locations/kalisto/main_street/main_street_e.nrmn
+|  |__ ActionSet: 06309827-2d85-4341-a6e0-d67df6456eb2
+|  |  |__ Action: ede73fd7-c8e7-4543-8594-f8e1d601dcfb, Type=event
+|__ fa90d920-943f-433e-8e46-6f23cac0bd7e, look,  File: Games/darkworld/locations/kalisto/main_street/main_street_e.nrmn
+|  |__ ActionSet: cc6be453-55b4-4129-b068-830c01adb174
+|  |  |__ Action: a957eca5-382d-4211-af0c-15b1a576d07e, Type=event
+|__ fa5608f5-b245-4ec4-b10f-8f61cbb0b8f3, navigation,  File: Games/darkworld/locations/kalisto/main_street/main_street_e.nrmn
+|
+|
+|
+|
+|
+|
+|- NPCs:
+|__ Elcaro (elcaro),  File:
+|- Attributes:
+|__ life, 11
+|__ max_life, 11
+|__ armor, 5
+|__ speed, 14
+|__ dexterity, 6
+|__ Onious (onious),  File:
+|- Attributes:
+|__ life, 27
+|__ max_life, 27
+|__ armor, 14
+|__ speed, 11
+|__ dexterity, 12
+|
+|
+|- Commands:
+|__ Syntax:  n|*north (63d166eb-15a6-40d1-86d9-53990543924d)
+|__ Syntax:  w|*west (fb3197eb-b49c-4260-88f7-428f9e4c7689)
+|__ Syntax:  e|*east (2e6a0c56-956c-414b-bbdb-f24cc6998505)
+|__ Syntax:  l|look (4cfe0e44-e98c-4f9f-9113-6c5ab7800f2d)
+|__ Syntax:  story (93d7a15b-b0d2-448e-bf76-1d13b1b41938)
+|
+
+Room Kalisto Main Street West:
+Alias: kalisto_main_street_w
+File: Games/darkworld/locations/kalisto/main_street/main_street.nrmn
+|
+|- Events:
+|__ b14e601d-69b2-46c4-b9b5-e38352e09577, enter,  File: Games/darkworld/locations/kalisto/main_street/main_street.nrmn
+|  |__ ActionSet: 3bab1a48-8d4f-48a7-bf4c-5f0375958807
+|  |  |__ Action: 1bff741b-559c-4b4d-b2cc-0a495941a291, Type=event
+|__ 75aa951e-79ae-4960-9cd5-d20d6e2fddac, look,  File: Games/darkworld/locations/kalisto/main_street/main_street.nrmn
+|  |__ ActionSet: ec04b9f9-c4a7-47b4-be3a-4ffe25ae59c1
+|  |  |__ Action: de373ec1-7fd7-42cd-ade0-7d14438c53d6, Type=event
+|__ dc5188b4-6b74-4e93-ab98-07d92845497d, navigation,  File: Games/darkworld/locations/kalisto/main_street/main_street.nrmn
+|
+|
+|- Commands:
+|__ Syntax:  story (747a23ec-241a-40f3-abfb-56ad594eddc9)
+|__ Syntax:  look|l (58c41ee5-3a34-4c3f-b38a-cdf1798676c6)
+|__ Syntax:  n|*north (417aa0da-8434-4bf2-954f-a6adb4cbf5e2)
+|__ Syntax:  s|*south (59dd04c1-a21f-46a2-bc85-bfa3411bad48)
+|__ Syntax:  e|*east (1329ccd4-634c-406f-ad63-e2da257a8b50)
+|
+
+Room Local Tavern:
+Alias: local_tavern
+File: Games/darkworld/locations/home/home.nrmn
+|
+|- Events:
+|__ fe826f49-039b-41c2-9fbc-2f37575c6290, enter,  File: Games/darkworld/locations/home/home.nrmn
+|__ cf037c12-47e5-4ac8-af34-4300c02bbf81, look,  File: Games/darkworld/locations/home/home.nrmn
+|__ 95ee1ba6-3f3a-4fa6-a7cd-989a17553c91, x_letter,  File: Games/darkworld/locations/home/home.nrmn
+|__ 4104e804-a1d8-4c41-b51f-6b1b9b3339e6, respond,  File: Games/darkworld/locations/home/home.nrmn
+|__ 60bc7089-1e65-4ce5-8cb0-a7c4f94ecc56, letter,  File: Games/darkworld/locations/home/home.nrmn
+|__ 471ce891-5dc8-4496-9ab7-bca989235ef0, refuse,  File: Games/darkworld/locations/home/home.nrmn
+|
+|
+|- Commands:
+|__ Syntax:  story (0f310bc1-e0d2-4fed-aa7c-051a1b47e92c)
+|__ Syntax:  *look*|l (568276e5-a65a-441b-8437-222e81c42fd6)
+|__ Syntax:  respond (54d27295-2340-49d3-a452-f0afa30c53b7)
+|__ Syntax:  refuse (a0173943-49e3-40b3-9d0a-efc825e44e3b)
+|__ Syntax:  *me too*|*also*|*weird*|*i also* (c6583613-c6ae-4be6-be33-135775ca9c9d)
+|__ Syntax:  n|*north (c45cc34c-100e-4730-b99b-f2c8eed58810)
+|__ Syntax:  *x*letter* (dddb7255-7ee5-4fbf-b108-d88cdefc212f)
+|
+
+Room Old Oak Inn:
+Alias: old_oak_inn
+File: Games/darkworld/locations/kalisto/old-oak-inn/old_oak-inn.nrmn
+|- Attributes:
+|__ backroom_done, true
+|
+|- Events:
+|__ 23d89aaa-d869-4645-bb83-1b4fbb681027, enter,  File: Games/darkworld/locations/kalisto/old-oak-inn/old_oak-inn.nrmn
+|__ fc39a4d2-e09e-46c8-8147-1d03c71cc7e9, leave_backroom,  File: Games/darkworld/locations/kalisto/old-oak-inn/old_oak-inn.nrmn
+|__ ab985f01-e3bc-4d7e-8aa9-8f9d33684ea5, look,  File: Games/darkworld/locations/kalisto/old-oak-inn/old_oak-inn.nrmn
+|
+|
+|- Commands:
+|__ Syntax:  story (c7f22ddf-3ef2-4227-8281-529f686bc9e9)
+|__ Syntax:  *look*|l (6259f66f-abcb-4165-9123-317dde5056b4)
+|__ Syntax:  n|*north (ac26bbf5-748e-4c54-91be-8290afe300fa)
+|
+
+Room Old Oak Inn:
+Alias: old_oak_inn_back
+File: Games/darkworld/locations/kalisto/old-oak-inn/old_oak-inn.nrmn
+|
+|- Events:
+|__ a7f00dff-7b37-4a18-bcac-19de5ea6001a, enter,  File: Games/darkworld/locations/kalisto/old-oak-inn/old_oak-inn.nrmn
+|__ 8f48da20-6c64-4189-b7e4-b509d7b021a3, look,  File: Games/darkworld/locations/kalisto/old-oak-inn/old_oak-inn.nrmn
+|
+|
+|- Commands:
+|__ Syntax:  story (1023f7be-c601-49de-9be8-f20c157b1da5)
+|__ Syntax:  look|l (4b0fa7d5-6cc3-4c97-bb1f-501abb4b2071)
+|__ Syntax:  ne|*north*east* (750f2977-f759-4b82-afcc-371aa823618a)
+|__ Syntax:  s|*south (754387ca-a05f-4f04-8770-9d74e9cdfdae)
+|
+
+Room Old Oak Inn:
+Alias: old_oak_inn_cellar
+File: Games/darkworld/locations/kalisto/old-oak-inn/cellar.nrmn
+|
+|- Events:
+|__ 4de80fd8-3ffa-41fe-88ba-a2d8883f41b2, enter,  File: Games/darkworld/locations/kalisto/old-oak-inn/cellar.nrmn
+|__ 09ad39fa-c83e-42e3-8981-be835caaa28d, look,  File: Games/darkworld/locations/kalisto/old-oak-inn/cellar.nrmn
+|__ c0792563-6bef-4ab3-a43e-3f72d5d846cd, ex_shelves,  File: Games/darkworld/locations/kalisto/old-oak-inn/cellar.nrmn
+|
+|
+|- Commands:
+|__ Syntax:  story (4634f3a4-f976-4919-800a-ab1453c09f6f)
+|__ Syntax:  l|look (2dc68c4b-c1a4-40fc-8b66-c93498c14d38)
+|__ Syntax:  e|*east (c6077e98-ae3f-4eeb-acb6-b1b5761f4295)
+|__ Syntax:  *x*shel* (73318bb2-9244-46e3-b8d3-4547b2f21238)
+|
+
+Room Old Oak Inn:
+Alias: old_oak_inn_gen
+File: Games/darkworld/locations/kalisto/old-oak-inn/old_oak-inn.nrmn
+|
+|- Events:
+|__ 5e75e016-8461-4d93-8a91-6d1ace9e76e4, enter,  File: Games/darkworld/locations/kalisto/old-oak-inn/old_oak-inn.nrmn
+|__ 5ad36307-d755-4454-96d5-1911e6d513a9, look,  File: Games/darkworld/locations/kalisto/old-oak-inn/old_oak-inn.nrmn
+|
+|
+|- Commands:
+|__ Syntax:  story (312b38bc-0d09-48c4-b2f8-1077ae58efc1)
+|__ Syntax:  look|l (cfbd2ef2-d501-4dd1-8b55-1476f3bd942f)
+|__ Syntax:  ne|*north*east (837dbaf3-d8ef-4565-bbe3-a8866093bea8)
+|__ Syntax:  s|*south (05ed6bef-deef-43ff-940c-56643bf05180)
+|
+
+Room Old Oak Inn - Back Room:
+Alias: old_oak_inn_backroom
+File: Games/darkworld/locations/kalisto/old-oak-inn/backroom.nrmn
+|
+|- Events:
+|__ e579ebbd-68e7-40ed-8237-dc0615a75f90, enter,  File: Games/darkworld/locations/kalisto/old-oak-inn/backroom.nrmn
+|  |__ ActionSet: f85e8cf7-e555-4ee9-94d7-d520e57181da
+|  |  |__ Action: d46f8b90-47ad-4adc-841d-f2f0adf7927f, Type=attribute
+|  |__ ActionSet: 119aedb4-2fd9-427e-8a31-317a237c1538
+|  |  |__ Action: d2795066-a519-42ec-be77-59353ede4304, Type=attribute
+|  |__ ActionSet: 850fd21f-6f50-433d-b343-2ba52a9f250e
+|  |  |__ Action: dbff019a-46d3-4631-8815-03a4df4fccd3, Type=attribute
+|  |__ ActionSet: 4b14e93a-0846-4511-84da-f2f0e485e0ad
+|  |  |__ Action: 3d19d22e-c07d-4f1b-a7ce-f44dfbddea2c, Type=move
+|__ 2738d23a-3526-4d5b-b937-a8e33fd93a69, look,  File: Games/darkworld/locations/kalisto/old-oak-inn/backroom.nrmn
+|
+|
+|
+|
+|- NPCs:
+|__ Hooded Figure (hooded_figure),  File:
+|- Attributes:
+|__ life, 50
+|__ max_life, 50
+|__ armor, 14
+|__ speed, 14
+|__ dexterity, 13
+|
+|
+|- Commands:
+|__ Syntax:  story (432191c0-4139-4c76-8897-22ee17e756dd)
+|__ Syntax:  *look*|l (9ebc561b-e23b-4635-98bf-a5a8993dc613)
+|__ Syntax:  *north*|n (6b314be3-c6ac-4672-9a57-478dda4f651d)
+|__ Syntax:  s|*south (26e0f370-cc2c-41f9-8099-33fc62ee6b93)
+|
+
+Room Old Oak Inn - Back Room:
+Alias: old_oak_inn_backroom_ret
+File: Games/darkworld/locations/kalisto/old-oak-inn/backroom.nrmn
+|
+|- Events:
+|__ 2252cfa8-74f9-44c4-a520-d8f80547ca86, enter,  File: Games/darkworld/locations/kalisto/old-oak-inn/backroom.nrmn
+|__ 5232918d-1db1-45e4-975d-98493ae070f4, look,  File: Games/darkworld/locations/kalisto/old-oak-inn/backroom.nrmn
+|
+|
+|- Commands:
+|__ Syntax:  story (a3199d2a-2ccf-4dbe-b511-08d73c788d78)
+|__ Syntax:  *look*|l (3cd6b99f-8c00-459d-8185-747cef1d8e75)
+|__ Syntax:  *north*|n (414b4c74-962d-4893-919a-76f667a3a85c)
+|__ Syntax:  s|*south (aa631050-c20c-47d4-b711-3caca4cc43c1)
+|
+
+Room Prison:
+Alias: kalisto_prison
+File: Games/darkworld/locations/kalisto/main_street/prison.nrmn
+|
+|- Events:
+|__ 672ad66b-0478-499f-b370-ffe63c0feb38, enter,  File: Games/darkworld/locations/kalisto/main_street/prison.nrmn
+|  |__ ActionSet: 717ea18e-7396-4d32-b194-b6f3d25ded5d
+|  |  |__ Action: 2c404884-9394-41cb-abeb-d86f8b08b923, Type=event
+|__ 89edb961-4324-4207-943c-3dbf376b31ee, look,  File: Games/darkworld/locations/kalisto/main_street/prison.nrmn
+|  |__ ActionSet: 2ce383e7-e5ea-44fc-b7c8-4433d4c4f779
+|  |  |__ Action: 6535d85e-58f2-404f-a056-7688d6a5f4df, Type=event
+|__ b270d226-f6fc-4f7f-8cd1-3587da038e5e, navigation,  File: Games/darkworld/locations/kalisto/main_street/prison.nrmn
+|
+|
+|- Commands:
+|__ Syntax:  story (6aff235e-c2ab-4477-a269-f1d4e418567a)
+|__ Syntax:  l|look (acb8ba2c-abf3-4c36-ba55-1fcd7aa2de7a)
+|__ Syntax:  e|*east (b307a673-6d63-4c35-8560-9ae92162c196)
+|__ Syntax:  s|*south (9be99d29-3b18-470b-a182-6c9d6903dca4)
+|
+
+Room Prison:
+Alias: kalisto_prison_outside
+File: Games/darkworld/locations/kalisto/main_street/prison_outside.nrmn
+|
+|- Events:
+|__ c27d73e3-080a-4e03-aebf-efdacdc40b2d, enter,  File: Games/darkworld/locations/kalisto/main_street/prison_outside.nrmn
+|  |__ ActionSet: 704f4c96-3688-4bf3-a85f-efb6dae77fc6
+|  |  |__ Action: d339cb09-bf55-48f3-884a-59298cdbebfa, Type=event
+|__ 572a2e6e-b8c8-4bd9-8f34-02b3e33782d8, navigation,  File: Games/darkworld/locations/kalisto/main_street/prison_outside.nrmn
+|__ 9ca236b7-8cf6-406e-9f63-67d9aa87a7db, look,  File: Games/darkworld/locations/kalisto/main_street/prison_outside.nrmn
+|  |__ ActionSet: d22dd241-8dfc-4bb2-b312-56fb66713d5f
+|  |  |__ Action: e0773b86-ed99-4a12-bd15-4d4f6e0499ed, Type=event
+|
+|
+|- Commands:
+|__ Syntax:  story (843f7840-fd9c-4621-9333-ab897a05321d)
+|__ Syntax:  l|look (91dc55df-3f3f-4ce0-a110-61e0d315964e)
+|__ Syntax:  e|*east (dfe559ab-a043-49c0-b97f-a9224a4ec0c0)
+|__ Syntax:  s|*south (a7df2e72-f0df-4196-bbf0-f375b31d0473)
+|
+
+Room park:
+Alias: kalisto_park
+File: Games/darkworld/locations/kalisto/main_street/kalisto_park.nrmn
+|
+|- Events:
+|__ 1097c017-f151-430c-98a8-d4f876069bc3, enter,  File: Games/darkworld/locations/kalisto/main_street/kalisto_park.nrmn
+|
+

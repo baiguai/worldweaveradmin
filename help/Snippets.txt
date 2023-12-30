@@ -1,0 +1,66 @@
+>>title=Generating Code Snippets
+>>syntax=snippets
+>>tags=game development game authoring creating snippets code create path tools
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+Code snippets can be created to help speed up game development. Most of the
+snippet commands begin with 'create', and all except the create room command
+generate code that can be copied and pasted into existing source files.
+Each create call will give you instructions on the parameters to enter.
+
+
+
+create room
+This command will create a new Room code file. It uses the active path value
+to determine which folder the file is created in. You can use the following
+commands to set the active path:
+
+pwd
+Displays the current active path.
+
+ls
+Lists the files and directories in the active path (If the path is valid).
+
+cd /<path>
+Replaces the active path with the path you specify:
+cd /Games/SomeGame
+Will set the active path to: Games/SomeGame/
+
+cd <path>
+Changes to the specified path, appending it to the current path. If the current
+path is: /Games/SomeGame/ and you call:
+cd Locations
+The active path becomes: /Games/SomeGame/Locations/
+
+cd ..
+Moves up a folder. If the current active path is /Games/SomeGame/Locations and
+you call cd .. the active path becomes:
+/Games/SomeGame/
+
+
+
+create object
+Creates an Object snippet with the specified parameters.
+
+
+
+create event
+Creates an Event snippet with the specified parameters.
+
+
+
+create command
+Creates a Command snippet with the specified parameters.
+
+
+
+create message
+Creates a Message snippet with the specified parameters.
+
+
+
+create logic
+Creates a Logicset and Eval snippet with the specified parameters.
+
+--------------------------------------------------------------------------------

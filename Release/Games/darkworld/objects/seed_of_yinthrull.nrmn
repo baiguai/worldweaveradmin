@@ -1,0 +1,16 @@
+{object, alias=seed_of_yinthrull, type=item, label=Seed of Yinthrull, meta=*yinthrull*, location=void
+    {evt, type=inspect_seed
+        {mset, repeat=none
+            [msg
+You inspect the seed of Yinthrull. It is a small pearlescent sphere.
+\n
+It doesn't appear to glow or do anything unexpected.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=*inspect*yinthrull*
+        {act, type=event, value=inspect_seed }
+    }
+}

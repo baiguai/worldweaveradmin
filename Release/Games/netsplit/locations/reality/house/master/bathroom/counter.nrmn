@@ -1,0 +1,150 @@
+{object, alias=mstbath_counter, label=Counter, type=platform, meta=*counter*, location=mst_bathroom
+    {attr, alias=sink1_on, value=false }
+    {attr, alias=sink2_on, value=false }
+
+    {evt, type=enter|look
+        [msg==Along the north wall you see a wide marble counter. ]
+    }
+
+    {evt, type=enter|look
+        {lset
+            [@eval
+                attribute@{self}:sink1_on=true
+                ||
+                attribute@{self}:sink2_on=true
+            ]
+        }
+
+        [msg==The sound of running water fills the room. ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the counter along the north wall. It is made of dark gray marble.
+            Two sinks (sink1 and sink2) are built into it. Square-shaped chrome faucets
+            are fixed into the counter at each sink.
+        ]
+    }
+    {evt, type=examine
+        {lset
+            [@eval
+                attribute@{self}:sink1_on=true
+                &&
+                attribute@{self}:sink2_on=true
+            ]
+        }
+
+        [msg==Both sinks are running. The sound of rushing water fills the room. ]
+    }
+    {evt, type=examine
+        {lset
+            [@eval
+                attribute@{self}:sink1_on=true
+                &&
+                attribute@{self}:sink2_on=false
+            ]
+        }
+
+        [msg==One of the sinks is running. The sound of rushing water fills the room. ]
+    }
+    {evt, type=examine
+        {lset
+            [@eval
+                attribute@{self}:sink1_on=false
+                &&
+                attribute@{self}:sink2_on=true
+            ]
+        }
+
+        [msg==One of the sinks is running. The sound of rushing water fills the room. ]
+    }
+
+    {evt, type=under
+        [msg==You look under the counter. There is nothing there. ]
+    }
+
+    {evt, type=sink1_on
+        {lset
+            [@eval
+                attribute@{self}:sink1_on=false
+            ]
+            [fail
+                The first sink is already on.
+            ]
+        }
+
+        {act, type=attribute, source={self}:sink1_on, newvalue=true
+            [msg==You turn the first sink on. Water rushes loudly from it. ]
+        }
+    }
+
+    {evt, type=sink2_on
+        {lset
+            [@eval
+                attribute@{self}:sink2_on=false
+            ]
+            [fail
+                The second sink is already on.
+            ]
+        }
+
+        {act, type=attribute, source={self}:sink2_on, newvalue=true
+            [msg==You turn the second sink on. Water rushes loudly from it. ]
+        }
+    }
+
+    {evt, type=sink1_off
+        {lset
+            [@eval
+                attribute@{self}:sink1_on=true
+            ]
+            [fail
+                The first sink is already off.
+            ]
+        }
+
+        {act, type=attribute, source={self}:sink1_on, newvalue=false
+            [msg==You turn the first sink off. The water stops and it is silent. ]
+        }
+    }
+
+    {evt, type=sink2_off
+        {lset
+            [@eval
+                attribute@{self}:sink2_on=true
+            ]
+            [fail
+                The second sink is already off.
+            ]
+        }
+
+        {act, type=attribute, source={self}:sink2_on, newvalue=false
+            [msg==You turn the second sink off. The water stops and it is silent. ]
+        }
+    }
+
+
+    {cmd, syntax=*x* counter*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*under* counter*|*beneath* counter*
+        {act, type=object_event, value=under }
+    }
+
+    {cmd, syntax=*sink1 on*|*sink 1 on*|*on sink1*|*on sink 1*
+        {act, type=object_event, value=sink1_on }
+    }
+
+    {cmd, syntax=*sink2 on*|*sink 2 on*|*on sink2*|*on sink 2*
+        {act, type=object_event, value=sink2_on }
+    }
+
+    {cmd, syntax=*sink1 off*|*sink 1 off*|*off sink1*|*off sink 1*
+        {act, type=object_event, value=sink1_off }
+    }
+
+    {cmd, syntax=*sink2 off*|*sink 2 off*|*off sink2*|*off sink 2*
+        {act, type=object_event, value=sink2_off }
+    }
+}

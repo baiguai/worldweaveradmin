@@ -1,0 +1,44 @@
+{object, alias=kt_fridge, label=Refridgerator, type=item, location=kitchen
+    {evt, type=enter|look
+        [msg==In the west end of the kitchen you see a refridgerator.]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the refridgerator.
+            It is made completely of brushed metal.
+        ]
+    }
+
+    {evt, type=under
+        [msg==You look under the refridgerator. There is nothing there.]
+    }
+
+    {evt, type=behind
+        [msg==You look behind the refridgerator. You don't see anything there.]
+    }
+
+    {evt, type=in
+        [msg
+            You open the regridgerator doors and look inside.
+            It is completely empty. Strange.
+        ]
+    }
+
+
+    {cmd, syntax=*x* fridge*|*x* refridg*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*under *fridge*|*beneath* *fridge*
+        {act, type=object_event, value=under }
+    }
+
+    {cmd, syntax=*behind *fridge*|*back *fridg*
+        {act, type=object_event, value=behind }
+    }
+
+    {cmd, syntax=*in* fridge*
+        {act, type=object_event, value=in }
+    }
+}

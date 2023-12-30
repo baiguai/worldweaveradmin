@@ -1,0 +1,150 @@
+{object, alias=br_sunglasses, label=Sunglasses, type=object, location=br_wardrobe, parent_type=object
+    {attr, alias=moved, value=false }
+    {attr, alias=wearing, value=false }
+
+    {evt, type=enter|look
+        {lset
+            [@eval
+                attribute@{self}:moved=true
+                &&
+                location@{self}={room}
+            ]
+        }
+
+        [msg==You see a pair of sunglasses on the ground. ]
+    }
+
+    {evt, type=in_wardrobe
+        {lset
+            [@eval
+                attribute@br_wardrobe:open=true
+                &&
+                attribute@{self}:moved=false
+            ]
+        }
+
+        [msg==Sitting on the ground inside the wardrobe you see a pair of sunglasses. ]
+    }
+
+    {evt, type=examine_sg
+        [msg
+            You exmine the sunglasses. They appear to be high tech and
+            cutting edge. There is a heads up display built into them.
+            They are designed to interact with a Personal Communicator (PComm).
+        ]
+    }
+
+    {evt, type=take_sg
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+            [fail
+                You are already carrying the sunglasses.
+            ]
+        }
+
+        {act, type=attribute, source={self}:moved, newvalue=true }
+        {act, type=move, source={self}, newvalue={player}
+            [msg==You pick up the sunglasses. (You can wear them using: put on sunglasses) ]
+        }
+    }
+
+    {evt, type=drop_sg
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying any sunglasses.
+            ]
+        }
+
+        {act, type=move, source={self}, newvalue={room}
+            [msg==You drop the sunglasses. ]
+        }
+    }
+
+    {evt, type=put_on
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying any sunglasses.
+            ]
+        }
+
+        {aset
+            {act, type=object_event, value=put_on2 }
+        }
+    }
+    {evt, type=put_on2
+        {lset
+            [@eval
+                attribute@{self}:wearing=false
+            ]
+            [fail
+                You are already wearing the sunglasses.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:wearing, newvalue=true
+                [msg==You put on the sunglasses. (You can take off the sunglasses using: take off sunglasses) ]
+            }
+        }
+    }
+
+    {evt, type=take_off
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying any sunglasses.
+            ]
+        }
+
+        {aset
+            {act, type=object_event, value=take_off2 }
+        }
+    }
+    {evt, type=take_off2
+        {lset
+            [@eval
+                attribute@{self}:wearing=true
+            ]
+            [fail
+                You aren't wearing any sunglasses.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:wearing, newvalue=false
+                [msg==You take off the sunglasses. ]
+            }
+        }
+    }
+
+
+    {cmd, syntax=*x* sunglass*
+        {act, type=object_event, value=examine_sg }
+    }
+
+    {cmd, syntax=take off sunglasses
+        {act, type=object_event, value=take_off }
+    }
+
+    {cmd, syntax=take *sunglass*
+        {act, type=object_event, value=take_sg }
+    }
+
+    {cmd, syntax=drop *sunglass*
+        {act, type=object_event, value=drop_sg }
+    }
+
+    {cmd, syntax=put on sunglasses
+        {act, type=object_event, value=put_on }
+    }
+}

@@ -1,0 +1,24 @@
+// SOUTH DOOR - DATABANK
+{object, alias=dbs_door_s, label=South Door, type=connector, location=db_storage
+    {evt, type=enter|look
+        [msg==Set into the south west corner of the south wall you see a small door.]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the small door in the south west corner of the storage room.
+            It is narrow and made of a glossy black material.
+        ]
+    }
+
+
+    {cmd, syntax=*x* s* w* door*|*x* sw* door*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *s* w* door*|enter *sw* door*|southwest|south west|south|sw|s
+        {act, type=travel, newvalue=databank
+            [msg==You step through the small door.]
+        }
+    }
+}

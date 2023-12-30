@@ -1,0 +1,35 @@
+>>title=Help Component Details
+>>syntax=help component
+>>tags=help components help elements help objects in-game help system in game help system help files support hints
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{help, syntax=help commands, title=Basic IF Commands
+    [topic
+        ...
+    ]
+}
+
+
+Description:
+    Help elements define in-game help topics.
+
+
+Syntax:
+    Help topics are defined as a component, using curly braces {} to denote them.
+    The Help topic text is a multi-line text component, using square braces [] to
+    define it. Inside these braces is the text to be displayed.
+
+
+Required Properties:
+    syntax:
+    A pattern matching expression used to display the Help topic.
+
+    title:
+    The title of the Help topic to be displayed above the Help topic.
+
+
+Allowed Child Components:
+    topic
+
+--------------------------------------------------------------------------------

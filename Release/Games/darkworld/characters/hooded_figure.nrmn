@@ -1,0 +1,7 @@
+{npc, alias=hooded_figure, name=Hooded Figure, meta=*hooded*, location=old_oak_inn_backroom
+    {attr, alias=life, type=random, value=30\,70 }
+    {attr, alias=max_life, type=attribute, value=hooded_figure:life }
+    {attr, alias=armor, type=random, value=10\,30 }
+    {attr, alias=speed, type=random, value=10\,14 }
+    {attr, alias=dexterity, type=random, value=13\,20 }
+}

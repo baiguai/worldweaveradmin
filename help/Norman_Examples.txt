@@ -1,0 +1,46 @@
+>>title=Norman Notation Examples
+>>syntax=norman examples
+>>tags=norman notation game definitions game authoring game coding norman examples norman samples norman notation examples norman notation samples
+>>topic=Norman
+--------------------------------------------------------------------------------
+
+CONTACT BOOK EXAMPLE
+    {contacts
+        {contact, firstname=Bobby, lastname=Peru, type=friend
+            {device, type=phone, name=mobile, value=253-555-1212 }
+            {device, type=email, name=primary, value=bperu@test.com }
+
+            [notes
+                Bobby Peru is a weird guy.
+                Fun to hang out with though.
+            ]
+        }
+    }
+
+
+WORLDWEAVER GAME DEFINITION EXAMPLE
+    {room, alias=brig_guard_post, label=Guard Post
+        {event, type=init|look
+            {messageset
+                [message
+                    The guard post is a cramped room with thick windowed walls.
+                ]
+            }
+        }
+
+        {event, type=enter
+            {messageset
+                [message
+                    You step into the guard post.
+                ]
+            }
+        }
+
+        {command, syntax=look|l
+            {actionset
+                {action, type=event, newvalue=look }
+            }
+        }
+    }
+
+--------------------------------------------------------------------------------

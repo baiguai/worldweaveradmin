@@ -1,0 +1,42 @@
+{object, alias=mst_bed, label=Bed, type=platform, meta=*bed*, location=master
+    {evt, type=enter|look
+        [msg==Set in the north east corner of the room is a large bed. ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the bed. It is enormous, not a standard size.
+            It is made with slate gray blankets and long black pillows
+            are neatly arranged at its head.
+        ]
+    }
+
+    {evt, type=under
+        [msg==You look under the bed. There is nothing there. ]
+    }
+
+    {evt, type=behind
+        [msg==You look behind the bed. You don't see anything there. ]
+    }
+
+    {evt, type=on
+        [msg==You look on the bed. There is nothing on it except for the pillows. ]
+    }
+
+
+    {cmd, syntax=*x* bed*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*on* bed*|*top* bed*
+        {act, type=object_event, value=on }
+    }
+
+    {cmd, syntax=*beneath* bed*|*under* bed*
+        {act, type=object_event, value=under }
+    }
+
+    {cmd, syntax=*behind* bed*|*back* bed*
+        {act, type=object_event, value=behind }
+    }
+}

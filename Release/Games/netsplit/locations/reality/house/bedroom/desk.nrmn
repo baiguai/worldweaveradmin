@@ -1,0 +1,27 @@
+{object, alias=br_desk, label=Desk, type=platform, meta=*desk*, location=bedroom
+    {evt, type=enter|look
+        [msg==Set against the east wall you see your desk. ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine your desk. It is made of dark reddish wood.
+            It is an L shape, standing on brushed metal legs.
+        ]
+    }
+
+    {evt, type=on_desk
+        [msg
+            You look on your desk.
+        ]
+    }
+
+
+    {cmd, syntax=*x* desk*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*on *desk*
+        {act, type=object_event, value=on_desk }
+    }
+}

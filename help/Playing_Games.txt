@@ -1,0 +1,33 @@
+>>title=Playing %title% Games
+>>syntax=playing games
+>>tags=worldweaver client playing games how to play games installing games running games
+>>related=branding
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+After a game has been compiled and copied into the Games directory, it can then
+be played in the %title% Client. For information on compiling and installing
+games use:
+
+help compiling games
+help installing games
+
+To play a game, launch the %title% Client. It will display the %title%
+title followed by the available games. These are listed in two categories:
+
+New Games
+Resume Games
+
+Each game has a number next to it. To play a game, type its number and hit
+enter. To view this list again (while not playing a game) type games and hit
+enter. If you are playing a game, you will need to quit the game first, then
+use the games command. (Quitting a game must be a Command - most likely in the
+Game or Player component, that calls a quit Action see: help action types)
+
+
+Branding
+For information on branding your game or using the WorlWeaver client to launch
+a specific game by default use:
+help branding
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,19 @@
+>>title=Upgrading %title%
+>>syntax=upgrading
+>>tags=about upgrade worldweaver upgrading worldweaver updating worldweaver
+>>topic=Information
+--------------------------------------------------------------------------------
+
+When upgrading %title%, some games may become unplayable. It is a good idea
+to keep older versions available for those games.
+
+In some cases, it may be necessary to refresh this help system. For more
+information use:
+
+help refresh help
+
+
+In the future versioning tools will be available in %title%, to check
+compatability etc.
+
+--------------------------------------------------------------------------------

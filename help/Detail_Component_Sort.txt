@@ -1,0 +1,58 @@
+>>title=Sort Component Details
+>>syntax=sort component
+>>tags=sort components sorting objects sorting npcs description order
+>>related=rooms
+>>related=objects
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{sort
+    [@object
+        <object alias>
+        <npc alias>
+        <object alias>
+    ]
+}
+
+{sort
+    [@obj
+        <npc alias>
+        <object alias>
+        <object alias>
+    ]
+}
+
+
+Description:
+    Sort Elements can be added to a parent Element (Any Element that has one or
+    more Elements within it - Rooms, Objects with other Objects in them, etc).
+    They allow the game author to define the description order in one place.
+    Sorting can be changed without opening multiple definition files and tweaking
+    sort properties.
+
+    Note:
+    Sort Elements override any sort properties set in the aliases listed in the
+    Sort Element.
+
+
+Syntax:
+    Sort blocks are defined as a component, using curly braces {} to denote them.
+
+
+Required Children:
+    object or obj:
+    Defines the Objects or NPCs to be sorted and the order in which they should
+    be sorted.
+
+
+Allowed Parent Components:
+    npc
+    object
+    room
+
+
+Allowed Child Components:
+    object (message)
+    npc (message)
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,21 @@
+>>title=Object Template
+>>syntax=object template
+>>tags=object template
+>>topic=Templates
+--------------------------------------------------------------------------------
+
+{object, alias=, label=, type=, meta=**, location=, parent_type=
+    // EVENTS
+    {evt, type=
+        {mset
+            [msg
+            ]
+        }
+    }
+
+    // COMMANDS
+    {cmd, syntax=
+    }
+}
+
+--------------------------------------------------------------------------------

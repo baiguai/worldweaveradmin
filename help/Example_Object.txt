@@ -1,0 +1,52 @@
+>>title=Sample Object
+>>syntax=object example
+>>tags=object example object sample
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+{obj, alias=missile_stacks, label=missiles, type=item, meta=*missile*, location=arsenal, parent_type=room
+    // EVENTS
+    {evt, type=init|look
+        {mset
+            [msg
+                Stacked throughout the room are massive energy missiles. They are piled nearly
+                to the ceiling. It is an ominous sight.
+            ]
+        }
+    }
+
+    {evt, type=examine
+        {mset
+            [msg
+                You examine the stacks of missiles. Each weapon is enormous, a silent object of
+                death and destruction.
+            ]
+        }
+    }
+
+    {evt, type=shoot
+        {aset
+            {act, type=die
+                {mset
+                    [msg
+                        You shoot one of the missiles. It immediately bursts into a blinding flash of
+                        destruction, kicking off chain reaction explosions as its neighboring missiles
+                        blow up. Within a fraction of a second the entire forward section of the middle
+                        of the Epsis is torn apart in an engulfing blast.
+                        \n
+                        You are dead.
+                    ]
+                }
+            }
+        }
+    }
+
+    // COMMANDS
+    {cmd, syntax=*x* missile*
+        {aset
+            {act, type=object_event, newvalue=examine }
+        }
+    }
+}
+
+--------------------------------------------------------------------------------

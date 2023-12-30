@@ -1,0 +1,67 @@
+>>title=Possible Logic Block Types
+>>syntax=logic types
+>>tags=lookup logic block types logic types logicset random armed attribute location
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+Every Logic block must have a type specified. This tells the game engine what
+kind of logic check it is performing. Possible Logic types are:
+
+NOTE:
+    To specify multiple values to check, divide the values with a pipe (|).
+    Like:
+
+    [@eval
+        attribute@torch:type=magical|charmed|cursed
+    ]
+
+    or
+
+    {lgc, type=attribute, source=torch:type, sourcevalue=magical|charmed|cursed }
+
+
+POSSIBLE LOGIC TYPES:
+
+armed:
+    Checks the player's armed weapon's alias against the specified value.
+
+    Required Properties:
+    source
+        This is the property that houses the alias to check against. Multiple
+        aliases can be specified, using pipes (|).
+
+
+attribute:
+    Compares the specified Attribute's value with the value specified in the
+    sourcevalue property, according to the specified operand.
+
+    Required Properties:
+    source
+        Specifies the Attribute to check in the form:
+        <parent alias>:<attribute alias>
+
+    sourcevalue
+        Specifies the value to check the Attribute's value against. Multiple
+        values can be specified using pipes (|).
+
+
+location:
+    Compares the location of the specified game component with the location
+    specified in the sourcevalue property, according to the specified operand.
+
+    Required Properties:
+    source
+        Specifies the game component.
+
+    sourcevalue
+        Specifies the location the game component can be in. Multiple values
+        can be specified using pipes (|).
+
+
+random:
+    Compares a randomly generated value. The probability of a match can be
+    adjusted by giving a numeric value in the source property. This value
+    can be between 0 and 100. The higher the number the greater the probability
+    of success.
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,85 @@
+{object, alias=dead_pendant, type=item, label=Pendant, meta=*pendant*, location=old_oak_inn_cellar
+    {attr, alias=find_pendant, type=random, value=1\,6 }
+    {attr, alias=moved, value=false }
+
+    {evt, type=enter
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+        }
+
+        {mset
+            [msg
+[att?{self}:moved=false](You find a pendant!)[/att]
+[att?{self}:moved=true]You see a pendant.[/att]
+            ]
+        }
+    }
+
+    {evt, type=look
+        {lset
+            [@eval
+                location@{self}={room}
+            ]
+        }
+
+        {mset
+            [msg
+You see a pendant.
+            ]
+        }
+    }
+
+    {evt, type=inspect_pendant
+        {mset, repeat=none
+            [msg
+You inspect the pendant.
+There is a dark gray transparent stone set into a round silver disk.
+Around the stone are ancient letters, but you are unable to read them.
+            ]
+        }
+    }
+
+
+
+
+    {cmd, syntax=*inspect*pendant*|*x*pendant*
+        {act, type=event, value=inspect_pendant }
+    }
+
+    {cmd, syntax=*take*pendant*
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+            [fail
+                You are already carrying the pendant.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:moved, newvalue=true }
+            {act, type=move, source={self}, newvalue={player}
+                [msg==You pick up the pendant.]
+            }
+        }
+    }
+
+    {cmd, syntax=*drop*pendant*
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a pendant.
+            ]
+        }
+
+        {aset
+            {act, type=move, source={self}, newvalue={room}
+                [msg==You drop the pendant.]
+            }
+        }
+    }
+}

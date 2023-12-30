@@ -1,0 +1,16 @@
+>>title=NPC Travel Details
+>>syntax=npc travel
+>>tags=npc component npc elements npc objects npc travelsets travel movement
+>>topic=Components
+--------------------------------------------------------------------------------
+
+Travelsets define how Npcs move within the game. They group together Travel
+elements to accomplish this. There are some built-in travel types that can
+be used. Travelsets can only be used with Npc elements.
+
+For more information on Travelsets and Travel elements use:
+help travelset component
+help travel component
+help travel mode types
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,27 @@
+>>title=Norman Comments
+>>syntax=norman comments
+>>tags=comments norman notation game definitions game authoring game coding
+>>related=norman notation
+>>topic=Norman
+--------------------------------------------------------------------------------
+
+The safest way to add comments to a norman file is by beginning the line of
+text with two forward slashes //
+
+However if your comments are outside of any norman code blocks - AND you aren't
+using any braces ({[ ]}) you should be able to add whatever text you like
+without it causing any issues.
+
+Example:
+
+
+********************
+THIS IS A NOTE
+And this is some more comment text....
+********************
+
+{element, id=something
+    ...
+}
+
+--------------------------------------------------------------------------------

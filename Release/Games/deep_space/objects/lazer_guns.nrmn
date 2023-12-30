@@ -1,0 +1,208 @@
+// LAZER GUN LVL 1
+{object, alias=lazer_gun_1, label=lazer gun, type=weapon, meta=lazer *gun*|*the lazer *gun*, location=void
+    {attr, alias=damage, type=random, value=2\,4 }
+
+    // EVENTS
+    {event, type=init|look
+        {logicset
+            {logic, type=location, source={self}, sourcevalue=post_dead_guard, operand=!= }
+            {logic, type=location, source={self}, sourcevalue={player}, operand=!= }
+        }
+
+        {messageset
+            [message
+                You see a lazer gun.
+            ]
+        }
+    }
+
+    {event, type=examine_gun
+        {messageset
+            [message
+                You examine the lazer gun. It is a large pistol. Its power level indicator glows
+                green.
+            ]
+        }
+    }
+
+    {event, type=attack
+        {actionset
+            {action, type=attribute, source={enemy}:life, newvalue={random}|2\,4
+                {messageset
+                    [message
+                        You have shot the {enemy:name} reducing their life to {enemy:life}.
+                    ]
+                }
+            }
+        }
+    }
+
+    {event, type=miss
+        {messageset
+            [message
+                You shoot at the {enemy:name} but miss.
+            ]
+        }
+    }
+
+    {event, type=kill
+        {messageset
+            [message
+                You have {enemy:kill_verb} the {enemy:name}.
+            ]
+        }
+    }
+
+    // COMMANDS
+    {command, syntax=*x* *gun*
+        {actionset
+            {action, type=object_event, newvalue=examine_gun }
+        }
+    }
+
+    {command, syntax=*take *gun*
+        {actionset
+            {action, type=move, newvalue={player}
+                {messageset
+                    [message
+                        You pick up the lazer gun.
+                        \n
+                        (You can arm yourself with a specific weapon you are carrying using: arm <weapon>)
+                        \n
+                        (To see which weapon is armed, view your inventory using: inventory, or inv)
+                        \n
+                        (Some objects can be shot using: shoot <object>)
+                    ]
+                }
+            }
+        }
+    }
+
+    {command, syntax=shoot *
+        {logicset
+            {logic
+                [@eval
+                    armed@{self}
+                ]
+            }
+        }
+
+        {actionset
+            {action, type=object_event, source={params}, newvalue=shoot }
+        }
+    }
+}
+
+// LAZER GUN LVL 2
+{object, alias=lazer_gun_2, label=high powered lazer gun, type=weapon, meta=*high power* lazer *gun*, location=messmenbath_stall_far, parent_type=object
+    {attribute, alias=can_shoot, value=true }
+    {attr, alias=damage, type=random, value=4\,8 }
+
+    // EVENTS
+    {event, type=init|look|examine_far
+        {logicset
+            {logic, type=location, source={self}, sourcevalue=messmenbath_stall_far, operand== }
+        }
+
+        {messageset
+            [message
+                Sitting on the floor in front of the toilet you see a high powered lazer gun.
+            ]
+        }
+    }
+
+    {event, type=init|look
+        {logicset
+            {logic, type=location, source={self}, sourcevalue=messmenbath_stall_far, operand=!= }
+            {logic, type=location, source={self}, sourcevalue={player}, operand=!= }
+        }
+
+        {messageset
+            [message
+                You see a high powered lazer gun.
+            ]
+        }
+    }
+
+    {event, type=examine_gun2
+        {messageset
+            [message
+                You examine the high powered lazer gun. It is larger than a standard energy
+                pistol. Its energy level display displays full.
+            ]
+        }
+    }
+
+    {event, type=attack
+        {actionset
+            {action, type=attribute, source={enemy}:life, newvalue={random}|4\,8
+                {messageset
+                    [message
+                        You have shot the {enemy:name} reducing their life to {enemy:life}.
+                    ]
+                }
+            }
+        }
+    }
+
+    {event, type=miss
+        {messageset
+            [message
+                You shoot at the {enemy:name} but miss.
+            ]
+        }
+    }
+
+    {event, type=kill
+        {messageset
+            [message
+                You have {enemy:kill_verb} the {enemy:name}.
+            ]
+        }
+    }
+
+    // COMMANDS
+    {command, syntax=*x* *high* *gun*
+        {actionset
+            {action, type=object_event, newvalue=examine_gun2 }
+        }
+    }
+
+    {command, syntax=*take *high* *gun*
+        {actionset
+            {action, type=move, newvalue={player}
+                {messageset
+                    [message
+                        You pick up the high powered lazer gun.
+                    ]
+                }
+            }
+        }
+    }
+
+    {cmd, syntax=*drop* *high* *gun*
+        {aset
+            {act, type=move, newvalue={room}
+                {mset
+                    [msg
+                        You drop the high powered lazer gun.
+                    ]
+                }
+            }
+        }
+    }
+
+    {command, syntax=shoot *
+        {logicset
+            {logic
+                [@eval
+                    armed@{self}
+                ]
+            }
+        }
+
+        {actionset
+            {action, type=object_event, source={params}, newvalue=shoot }
+        }
+    }
+}

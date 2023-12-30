@@ -1,0 +1,21 @@
+// EAST DOOR
+{object, alias=kt_door_e, label=East Door, type=connector, location=kitchen
+    {evt, type=enter|look
+        [msg==Set in the east wall you see a door. ]
+    }
+
+    {evt, type=examine
+        [msg==You examine the east door. It is narrow and made of wood. ]
+    }
+
+
+    {cmd, syntax=*x* e* door*|*x* e*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *e *door*|east|e
+        {act, type=travel, newvalue=livingroom
+            [msg==You step through the east door. ]
+        }
+    }
+}

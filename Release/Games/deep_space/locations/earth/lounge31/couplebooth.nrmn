@@ -1,0 +1,94 @@
+{room, alias=31couplebooth, label=Lounge 31
+    {evt, type=enter
+        [@msg
+You slide into the booth and introduce yourself. You mention that you overheard them discussing their wayward daughter. For the right price you can bring her home.
+They listen intently to your proposal.
+When you are finished, they say, "Whatever you normally charge we'll pay, anything to get our daughter back."
+You ask them where she was last seen.
+They tell you her boyfriend took her to a large festival that was being held on one of the orbiting cities off Saturn.
+\n
+They look at you with hope in their eyes.
+\n
+"Will you help us?"
+\n
+(If you would like to note the information they've given you, you can use:\naddnote <note text>\nto take a note. See --help getting started for all the notes commands)
+        ]
+    }
+
+    {evt, type=look
+        {mset, repeat=random
+            [@msg
+You are sitting in the booth with the couple who are looking to bring their daughter home. They anxiously await your decision whether to help them or not.
+            ]
+            [@msg
+The traumatized couple looks at you anxiously, awaiting your decision to help or not.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=yes|y
+        {aset
+            {act, type=travel, newvalue=31coupleagree
+                {mset
+                    [msg
+                        You agree to help them.
+                        \n
+                    ]
+                }
+            }
+        }
+    }
+}
+
+
+{room, alias=31coupleagree, label=Lounge 31
+    {evt, type=enter
+        [@msg
+The couple is over joyed. The wife nearly leaps to her feet to give you a hug.
+They tell you their daughter's name: Alexandrah.
+Her boyfriend's name is Speccar.
+\n
+The festival they are going to is The Ring Penumbra Festival.
+\n
+That is the only information they have.
+\n
+They offer to pay you half of your requested fee now, and the other half when their daughter is safe at home.
+Do you agree to this offer?
+        ]
+    }
+
+    {cmd, syntax=yes|y
+        {aset
+            {act, type=travel, newvalue=dau_to_sat
+                {mset
+                    [msg
+                        You tell the lovely couple that you would love to help them out.
+                        They make the credits transfer and give you a transaction ID.
+                        Once you have confirmed the transfer of funds you reasure them that you will bring their daughter home safely and excuse yourself.
+                        \n
+                        You make your way back to the spaceport and step inside your near-lightspeed cruiser and fire it up.
+                        \n
+                    ]
+                }
+            }
+        }
+    }
+
+    {cmd, syntax=no|n
+        {aset
+            {act, type=travel, newvalue=lounge31
+                {mset
+                    [msg
+                        You apologize profusely that you cannot help them, and return to your own booth.
+                        \n
+                    ]
+                }
+            }
+        }
+    }
+}

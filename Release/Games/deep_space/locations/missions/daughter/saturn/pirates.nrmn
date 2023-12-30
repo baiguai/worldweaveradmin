@@ -1,0 +1,51 @@
+{room, alias=pirates, label=Pirate Ship
+    {evt, type=enter
+        [@msg
+Despite your efforts to escape the pull of the pirate's ship you are drawn into the hangar.
+\n
+They override your ship's basic defense systems and the primary hatch opens.
+A rough-looking woman whose face is half comprised of a chrome plate aims a gun at your head.
+"{player:name} I presume. Welcome to the Dark Death."
+You explain to her that you don't have any money, or items of value to them.
+She laughs maniacally.
+"We aren't after your money. We're after your client's money. Who do you think Speccar is?
+Alexandrah is a government beaurocrate's daughter. We can't sully our hands extorting the government.
+But allowing a bounty hunter / private eye / mercenary to bring her home, for a percentage of the payment puts distance between us.
+Give us 3/4 of your fee and we'll let you live AND carry out your mission."
+You laugh in her face.
+She leans in close enough for you to smell her foul breath.
+"You have no choice {player:name}, will you give us what we want?"
+        ]
+    }
+
+
+    {cmd, syntax=no|n
+        [@msg
+She licks the side of your face and smiles.
+"Very well."
+She pulls the trigger and you see a flash. Then nothing.
+        ]
+
+        {aset
+            {act, type=die
+            }
+        }
+    }
+
+    {cmd, syntax=yes|y
+        [@msg
+You agree to their terms. When you receive your full payment you will give them 3/4 of the amount.
+\n
+The pirate woman laughs, shaking her head at your weakness.
+They allow you to return to your ship, and you continue on to the closest Saturn city Sabring 01.
+\n\n
+Sabring 01 is a cube-shaped city, orbiting just at the outer edge of Saturn's gravitational pull.
+You drop down into the super clustered urban landscape of the floating artificial moon.
+        ]
+
+        {aset
+            {act, type=attribute, source={player}:piratecut, newvalue=1 }
+            {act, type=travel, newvalue=sabring01 }
+        }
+    }
+}

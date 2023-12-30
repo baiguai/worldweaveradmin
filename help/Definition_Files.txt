@@ -1,0 +1,42 @@
+>>title=Game Definition Files
+>>syntax=definition files
+>>tags=game development game structure game file structure game files organizing game definition files organizing game files
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+%title% games are defined in human readable plain text files. The
+organization and division of these files is entirely up to the game author.
+Entire game levels could be defined in single files, or each Object could have
+its own file. Directory structure is also entirely up to the game author - with
+a couple of caveats:
+
+- Each game must be defined within a single root directory.
+
+- A game.nrmn file must exist in the root directory, and define the game itself.
+
+
+For example, a game could be stored in files organized like below:
+
+<%title%>
+  |__ Games
+      |__ DungeonExplorer
+          |__ game.nrmn
+          |__ Level01
+              |__ Entrance
+                  |__ Entrance.nrmn
+                  |__ Messages.nrmn
+                  |__ Objects.nrmn
+                  |__ Doors.nrmn
+
+Or the same game could be structured:
+
+<%title%>
+  |__ Games
+      |__ DungeonExplorer
+          |__ game.nrmn
+          |__ Entrance.nrmn (The entire Room defined in a single file)
+
+Because of this flexibility, %title% is capable of handling very large
+games.
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+{help, syntax=help, title=Apsis Help
+    [@topic
+Escape from Apsis
+-----------------
+Welcome to the Escape Apsis help system. To view an overview of how to play
+Interactive Fiction (IF) games use: help overview.
+\n
+For World Weaver system wide help use: --help
+\n
+For a list of common commands use: help commands
+\n
+For fight-related help use: --help fighting.
+    ]
+}

@@ -1,0 +1,33 @@
+>>title=Pre-Defined Event Types
+>>syntax=event types
+>>tags=pre-defined event types events types game init enter exit look
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+For the most part Event types are user defined. Events are called according
+to their types, and game authors can define as many types as they wish. However
+there are some pre-defined Event types that are fired by the game engine at
+certain times throughout game play.
+
+game_init:
+    The game_init Event is only fired when the game first begins.
+
+enter/init:
+    This Event type is called whenever a Room is entered.
+
+tick:
+    Events with a type of tick are fired every time the Player enters a
+    valid Command. They allow the Game to change state or display messages
+    regardless of the Actions fired etc. It gives the Game a timer of sorts.
+    These Events can be at any level, either Game-wide or per room, or even
+    at the Object level etc. However they cascade down from the Game level,
+    looking for tick Events.
+
+exit:
+    This Event type is called whenever the current Room is exited.
+
+look:
+    Although it is up to the author to define look Commands, this type of Event
+    is called on a Room's Objects when the room is entered.
+
+--------------------------------------------------------------------------------

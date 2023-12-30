@@ -1,0 +1,45 @@
+>>title=Room Component Details
+>>syntax=room component
+>>tags=room components room elements room objects containers locations travelling
+>>related=action types
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{room, alias=entrance, label=Dungeon Entrance
+    ...
+}
+
+
+Description:
+    Room components define anything that the player can travel into. They are
+    typically actual rooms, or areas within rooms, or even an object that is
+    large enough for the player to enter. Rooms can also be locations on top
+    of objects or under them. It is entirely up to the game author. For
+    information on travelling use:
+
+    help action types
+
+
+Syntax:
+    Rooms are defined as a component, using curly braces {} to denote them.
+
+
+Required Properties:
+    alias (one word):
+    The alias property is a unique identifier for the Room. This allows other
+    components such as Actions or Logic blocks to reference it. The alias must
+    be unique within the game.
+
+    label:
+    The label is a friendly name for the Room. It is used as the title when
+    the Room is being described to the player.
+
+
+Allowed Child Components:
+    attribute
+    command
+    event
+    object
+    sort
+
+--------------------------------------------------------------------------------

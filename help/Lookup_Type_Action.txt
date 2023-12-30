@@ -1,0 +1,147 @@
+>>title=Possible Action Types
+>>syntax=action types
+>>tags=lookup action types actions types types of actions object event fight inventory message npc move spawn stats travel armed end game game ending
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+Actions are designed to make changes to the game, or to perform a number of
+actions such as displaying information. The type of change or output an Action
+performs is specified by its type. The possible Action types in %title%
+are:
+
+armed:
+    Displays the weapon that the player is currently armed with. If the game
+    doesn't utilize fighting or weapons, this Action type will not be defined
+    anywhere in the game.
+
+arm:
+    If weapons are used in the game, the arm Action arms the player with the
+    specified weapon. Specifying the weapon to arm utilizes its meta matching
+    expression.
+
+attribute:
+    Updates the specified Attribute with the specified value. The following
+    properties are used to update Attributes:
+    source:
+        The Attribute, using the following syntax:
+        <parent component alias>:<attribute alias>
+    newvalue:
+        The new value to set the Attribute to.
+
+    There are special values that can be used as the newvalue. For
+    information on special update values use:
+
+    help update attribute values
+
+die:
+    Causes the player to die.
+    When defining these actions, be sure to define the message text outside
+    the action itself.
+
+event:
+    Fires the specified Event. This Action begins at the Game level and fires
+    Events of the specified type, then cascades into the Room and all of its
+    components, firing Events of the specified type in those components.
+    Events are specified using the following
+    property:
+    value:
+        The Event type to fire.
+
+fight:
+    If the game uses fighting, the fight Action type sets the game in fighting
+    mode. When using this Action type, be sure an enemy NPC is present in the
+    Room, and Attributes such as life, max_life are used for the Player and
+    NPC. Weapons must also be defined. To see fighting in action refer to the
+    Escape Apsis game definition files.
+
+inventory:
+    Lists the objects that are located at the Action parent. This is typically
+    the Player or an NPC.
+
+message:
+    Is a wrapper for a MessageSet, allowing the author to have multiple LogicSets
+    driving Messages within the same parent.
+    No other parameters are needed. Allowed children are LogicSets and MessageSets.
+
+move:
+    Moves the specified Object to the specified location. The following
+    properties are used to move Objects:
+    source:
+        The alias of the Object to move.
+    newvalue:
+        The alias of the location to move the Object to.
+
+npc_move:
+    Moves the specified NPC to the specified location. The following properties
+    are used to move NPCs:
+    source:
+        The alias of the NPC to move.
+    newvalue:
+        The Room alias of the location to move the NPC to.
+
+object_event:
+    Fires Events of the type specified. This Action begins at the specified
+    Object, firing its Events of the specified type, then it cascades through
+    its Objects, firing Events that match the specified type.
+
+    NOTE: The Game Element will also listen for object_event calls - but only
+    at the Game level, it doesn't cascade down.
+
+    Object Events are specified using the following properties:
+    source:
+        The alias of the Object to begin Event firing at.
+        NOTE: You can use the current room as the source using {room} for this
+        value.
+    value:
+        The Event type to fire.
+
+spawn:
+    Creates a copy of the specified NPC and moves the copy into the specified
+    location in the newvalue property. If newvalue is not specified it will
+    spawn into the current Room.
+    NOTE:
+    The spawned NPC no longer has a predictable alias. It must be specified
+    using {self} in its components and its meta property to allow the player to
+    reference it. NPCs are spawned using the following properties:
+    source:
+        The alias of the NPC to make a copy of.
+    newvalue:
+        Specifies the alias of the new location. This can be a Room, Object,
+        Player, or Npc. If it is not specified the object will be spawned into
+        the current Room.
+
+stats:
+    Lists the player's stats. Use the Game component's stats_aliases property
+    to specify the Attributes' values to list when this Action is called.
+
+travel:
+    Causes the player to travel to the specified location. Using this Action,
+    an Object can be made into a connector. It is good to use the connector
+    type for the Action's parent, so that it is listed with the other connectors
+    in Room descriptions and by the _map admin tool. Travelling is specified
+    using the following property:
+    newvalue:
+        The alias of the location to travel to.
+        NOTE:
+        You can use the current room's alias as part of the value using {room}
+        like:
+        \n
+        {act, type=travel, newvalue=alt_{room} }
+
+travel_silent:
+    Causes the player to travel to the specified location 'silently'.
+    This type is useful when the Action is placed within an Event as opposed
+    to within a Command, to avoid duplicate Room descriptions from being output.
+    Using this Action,  an Object can be made into a connector. It is good to use
+    the connector type for the Action's parent, so that it is listed with the
+    other connectors in Room descriptions and by the _map admin tool.
+    Travelling is specified using the following property:
+    newvalue:
+        The alias of the location to travel to.
+        NOTE:
+        You can use the current room's alias as part of the value using {room}
+        like:
+        \n
+        {act, type=travel_silent, newvalue=alt_{room} }
+
+--------------------------------------------------------------------------------

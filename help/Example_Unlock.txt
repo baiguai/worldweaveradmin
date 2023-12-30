@@ -1,0 +1,68 @@
+>>title=Sample Unlock a Door 
+>>syntax=help unlock door example
+>>tags=game development examples samples unlock door
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+%title% does not contain a built in mechanism for unlocking doors or
+Objects, so this must be defined by the game author.
+Attributes can be used to perform such a task:
+
+{room, alias=dungeon_entrance, label=Dungeon Entrance
+    {object, alias=chest, label=Chest, type=container, meta=*chest*
+        {attr, alias=locked, value=true }
+
+        {evt, type=enter|look
+            {mset
+                [msg
+                    You see a chest.
+                    [att?{self}:locked=true]It is locked.[/att][att?{self}:locked=false]It is unlocked.[/att]
+                ]
+            }
+        }
+
+        {cmd, syntax=*unlock *chest*
+            {lset
+                {lgc
+                    [@eval
+                        location@chest_key={player}
+                    ]
+                }
+                [fail
+                    You aren't carrying anything that can unlock the chest.
+                ]
+            }
+
+            {aset
+                {act, type=attribute, source={self}:locked, newvalue=false
+                    {mset
+                        [msg
+                            You use the key to unlock the chest.
+                        ]
+                    }
+                }
+            }
+        }
+
+        {cmd, syntax=*open *chest*
+            {lset
+                {lgc
+                    [@eval
+                        attribute@{self}:locked=false
+                    ]
+                }
+                [fail
+                    The chest is locked.
+                ]
+            }
+
+            {mset
+                [msg
+                    You open the chest.
+                ]
+            }
+        }
+    }
+}
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,43 @@
+// NORTH WEST DOOR
+{object, alias=lr_door_nw, label=North West Door, type=connector, location=livingroom
+    {evt, type=enter|look
+        [msg==Set in the north section of the west wall you see a door (north west door). ]
+    }
+
+    {evt, type=examine
+        [msg==You examine the north west door. It is narrow and made of wood. ]
+    }
+
+
+    {cmd, syntax=*x* n*w* door*|*x* n*w*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *n*w *door*|northwest|nw
+        {act, type=travel, newvalue=kitchen
+            [msg==You step through the north west door. ]
+        }
+    }
+}
+
+// WEST DOOR
+{object, alias=lr_door_w, label=West Door, type=connector, location=livingroom
+    {evt, type=enter|look
+        [msg==Set in the west wall you see a door. ]
+    }
+
+    {evt, type=examine
+        [msg==You examine the west door. It is narrow and made of wood. ]
+    }
+
+
+    {cmd, syntax=*x* w* door*|*x* w*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *w *door*|west|w
+        {act, type=travel, newvalue=hall
+            [msg==You step through the west door. ]
+        }
+    }
+}

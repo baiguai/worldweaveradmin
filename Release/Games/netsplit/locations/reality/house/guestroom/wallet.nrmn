@@ -1,0 +1,97 @@
+{object, alias=gst_wallet, label=Wallet, type=item, location=gst_table, parent_type=object
+    {attr, alias=moved, value=false }
+    {attr, alias=inspected, value=false }
+
+    {evt, type=enter|look
+        {lset
+            [@eval
+                attribute@{self}:moved=true
+                &&
+                location@{self}={room}
+            ]
+        }
+
+        [msg==Sitting on the ground is a dark gray wallet.]
+    }
+
+    {evt, type=on
+        {lset
+            [@eval
+                attribute@{self}:moved=false
+            ]
+        }
+
+        {mset, repeat=none
+            [msg
+                It takes you a moment to notice it, but there
+                is a dark gray wallet sitting on the table.
+            ]
+            [msg
+                You see a dark gray wallet sitting on it.
+            ]
+        }
+    }
+
+    {evt, type=examine
+        {act, type=attribute, source={self}:inspected, newvalue=true
+            [msg
+                You examine the wallet. It is thin and dark gray in color.
+                \n
+                You open the wallet. It is nearly empty. As you go through its
+                various pockets you find a photo-plate. It is a picture of a
+                lovely young woman. Her skin seems to have a silver sheen to
+                it and her long spiralling hair is faintly blue in hue.
+                \n
+                You do not recognize her.
+            ]
+        }
+    }
+
+    {evt, type=take
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+            [fail
+                You are already carrying the wallet.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:moved, newvalue=true }
+            {act, type=move, source={self}, newvalue={player}
+                [msg==You pick up the wallet. ]
+            }
+        }
+    }
+
+    {evt, type=drop
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a wallet.
+            ]
+        }
+
+        {aset
+            {act, type=move, source={self}, newvalue={room}
+                [msg==You drop the wallet. ]
+            }
+        }
+    }
+
+
+    {cmd, syntax=*x* wallet*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=take *wallet*
+        {act, type=object_event, value=take }
+    }
+
+    {cmd, syntax=drop *wallet*|put *wallet*
+        {act, type=object_event, value=drop }
+    }
+}

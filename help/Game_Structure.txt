@@ -1,0 +1,31 @@
+>>title=The Structure of a %title% Game
+>>syntax=game structure
+>>tags=game development files structure directory structure
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+For the most part a game's structure is up to you. Each game must have its own
+directory within <%title%Admin>/Games/
+
+Required Files:
+There is one file that must be defined in a specific place and given a specific
+file name. This is the game file:
+
+<%title%Admin>
+  |__ Games
+      |__ <Your Game>
+          |__ game.nrmn
+
+
+This file houses the definition of the game itself. It lets %title% know
+what location new players start in, as well as properties of the game. For more
+information use:
+help game component
+
+
+All other game files can be defined anywhere within the game's directory, or
+subdirectories within the game's directory. For information on game definition
+files use:
+help definition files
+
+--------------------------------------------------------------------------------

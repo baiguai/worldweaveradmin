@@ -1,0 +1,2 @@
+build ALICE,Al|ce
+copyfile Data/Games/ALICE, ../../Client/release/Data/Games/ALICE

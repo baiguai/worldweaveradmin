@@ -1,0 +1,49 @@
+{object, alias=mstbath_toilet, label=Toilet, type=platform, meta=*toilet*, location=mst_bathroom
+    {evt, type=enter|look
+        [msg==In the south west corner of the bathroom you see a glossy black toilet. ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the toilet. It is glossy black with brushed metal components.
+            it looks as though it has been recently cleaned.
+        ]
+    }
+
+    {evt, type=behind
+        [msg==You look behind the toilet and do not see anything there. ]
+    }
+
+    {evt, type=under
+        [msg==You look under the toilet. You don't see anything. ]
+    }
+
+    {evt, type=in
+        [msg==You look inside the toilet, hoping to not find anything. It is full of water, nothing else. ]
+    }
+
+    {evt, type=flush
+        [msg==You flush the toilet. The bowl swirls empty then refills with fresh water. ]
+    }
+
+
+    {cmd, syntax=*x* toilet*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*under* toilet*|*beneath* toilet*
+        {act, type=object_event, value=under }
+    }
+
+    {cmd, syntax=*behind* toilet*|*back* toilet*
+        {act, type=object_event, value=behind }
+    }
+
+    {cmd, syntax=*in* toilet*
+        {act, type=object_event, value=in }
+    }
+
+    {cmd, syntax=*flush *toilet*
+        {act, type=object_event, value=flush }
+    }
+}

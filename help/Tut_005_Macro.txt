@@ -1,0 +1,38 @@
+>>title=Building Your First %title% Game 05 : Macro
+>>syntax=tutorial macro
+>>tags=macro tutorials building your first game build your first game development game authoring game building
+>>related=creating a game
+>>topic=tutorials
+--------------------------------------------------------------------------------
+
+01) Create a macro for building and deploying the game. (You may have to modify
+    the paths specified here if your WorldWeaver client is in a different
+    location). Navigate to:
+
+<WorldWeaverAdmin>
+|__ Data
+    |__ Macros
+
+
+
+03) Create a file called maz within the Macros directory.
+
+
+03) Within the maz file add the following:
+
+build Maze_Master,MazeMaster
+copyfile Data/Games/Maze_Master, ../../WorldWeaverClient/Release/Data/Games/Maze_Master
+
+    This macro will build the game, then copy the output file to a
+    WorldWeaver Client Games directory, so that it is ready to play.
+    The build command syntax is: 
+        build <output file>,<game directory>
+    The copyfile command syntax is:
+        copyfile <source - relative>,<target - relative>
+
+--------------------------------------------------------------------------------
+
+Next step:
+help tutorial branding
+
+--------------------------------------------------------------------------------

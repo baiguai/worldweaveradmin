@@ -1,0 +1,47 @@
+>>title=ActionSet Component Details
+>>syntax=actionset component
+>>tags=actionset components actionset elements actionset objects
+>>related=action types
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{actionset
+    {action, type=attribute, source=torch_lit, newvalue=true
+        ...
+    }
+}
+
+{aset
+    {act, type=attribute, source=torch_lit, newvalue=true
+        ...
+    }
+}
+
+
+Description:
+    ActionSets are used to group Actions together.
+    They can be called by Events or Commands. For more information use:
+
+    help event component
+    help command component
+
+
+Syntax:
+    ActionSets are defined as a component, using curly braces {} to denote them.
+
+
+Optional Properties:
+    repeat:
+    Specifies the number of times the ActionSet can be fired.
+
+
+
+Allowed Parent Components:
+    event
+    command
+
+
+Allowed Child Components:
+    action
+
+--------------------------------------------------------------------------------

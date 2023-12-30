@@ -1,0 +1,60 @@
+>>title=Norman Notation
+>>syntax=norman notation
+>>tags=norman notation game definitions game authoring game coding
+>>related=norman examples
+>>topic=Norman
+--------------------------------------------------------------------------------
+
+FILES
+    Norman Notation files are standard text files that use the extension .nrmn
+    For example: game.nrmn
+
+
+ELEMENTS
+    Norman Notation is very simple. There are only two types of elements that
+    can be defined. Standard Elements and Text Elements.
+
+    Standard elements can contain any number of properties and other elements.
+
+    Text elements only contain text, this can be multiple lines of text.
+
+    For more information on Elements use:
+    help norman elements
+
+
+PROPERTIES
+    Standard elements can contain any number of properties, these can be defined
+    in the first line of the element code, or on their own lines throughout
+    the element.
+
+    For more information on Properties use:
+    help norman properties
+
+
+COMMENTS
+    Comments are notes that authors can leave for themselves or others who
+    might work on the code in the future. They have no effect on the defined
+    elements or properties.
+
+    For more information on Comments use:
+    help norman comments
+
+
+ESCAPING
+    Sometimes text within properties or text elements run the risk of being
+    interpreted as the beginning or end of elements or properties. To avoid this
+    the characters can be 'escaped'.
+    
+    For more information on this use:
+    help norman escape
+
+
+EXAMPLES
+    To really see Norman Notation in action, look at the example game defined
+    in Norman Notaion:
+
+    <%title%Admin>
+    |_ Games
+       |_ ApsisN
+
+--------------------------------------------------------------------------------

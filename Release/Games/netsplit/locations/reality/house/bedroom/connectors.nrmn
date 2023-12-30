@@ -1,0 +1,27 @@
+// NORTH DOOR
+{object, alias=br_door_n, label=North Door, type=connector, location=bedroom
+    {evt, type=enter|look
+        [msg
+            Set into the north wall you see a narrow wood door.
+        ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the north door. It is narrow and made of wood.
+        ]
+    }
+
+
+    {cmd, syntax=*x* n* door*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *n *door*|north|n
+        {act, type=travel, newvalue=hall
+            [msg
+                You step through the door in the north wall.
+            ]
+        }
+    }
+}

@@ -1,0 +1,13 @@
+>>title=Using the %title% Help System
+>>syntax=help
+>>tags=using
+>>topic=Information
+--------------------------------------------------------------------------------
+
+Throughout the help system, hints about related topics are given using the
+format: help <topic>
+To view these enter them just as they appear. For example, entering:
+help help
+brings up this topic.
+
+--------------------------------------------------------------------------------

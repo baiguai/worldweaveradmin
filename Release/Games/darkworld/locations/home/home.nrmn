@@ -1,0 +1,173 @@
+{room, alias=local_tavern, label=Local Tavern
+    {evt, type=enter
+        {mset
+            [msg
+After reading the mysterious note, from a dubious stranger you decide - why not. What else is happening in your life?
+You spend every day chopping wood and checking traps for miserably small prey.
+You need some excitement in your life.
+\n
+So you pack the rusty short sword you had sitting in a chest and don a cracked old leather tunic your brother gave you,
+as well as some camping supplies you happen to have, and head northwest to Kalisto, a village you've never been to before.
+\n
+\n
+Soon your home village has disappeared into the distance and you are on a long winding trail. You figure Kalisto is about
+three day's journey away at the pace you are currently keeping. After a while you find yourself singing old drinking songs
+to yourself to keep your mind occupied.
+\n
+\n
+You are lost in your singing and fail to notice that there is a fellow traveller ahead of you on the trail.
+Shortly after you notice him he stops and turns around.
+\n
+\n
+This isn't a sight you've seen very often.
+\n
+\n
+He is a dark elf. He's wearing ornate armor and is using a long bladed staff as a walking stick.
+\n
+"Well hello friend." He calls out, "I am Elcaro. Tis a lonely road, would you suffer a bit of company?
+\n
+I'm on my way to Kalisto. What, pray tell, are you called?"
+\n
+[att?{player}:hints=true](To tell him your name use: respond  --  Otherwise you can use: refuse)[/att]
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset, repeat=none
+            [msg
+You are on a desolate road heading north toward Kalisto.
+\n
+[att?{player}:hints=true](To continue towards Kalisto use: north)[/att]
+            ]
+        }
+    }
+
+    {evt, type=x_letter
+        {mset
+            [msg
+You examine the letter that you were given. It reads:
+\n
+"Kalisto. Old Oak Inn. Four nights from now."
+            ]
+        }
+    }
+
+
+
+
+    // --------------------------------------------------------------------------------
+    // Conversation
+    // --------------------------------------------------------------------------------
+    {evt, type=respond
+        {mset, repeat=none
+            [msg
+You pause a moment, leary of this stranger. However the company would be nice.
+\n
+"My name is {player:name}."
+\n
+He smiles. "Nice to meet you. I was given a strange letter, requesting my presence in Kalisto four
+nights from now. Very strange."
+\n
+[att?{player}:hints=true](You can let him know that you also received a strange letter by saying: I also received a strange letter, or you can simply continue travelling toward Kalisto using the command: north)[/att]
+            ]
+        }
+    }
+
+    {evt, type=letter
+        {mset, repeat=none
+            [msg
+"That is very strange, I also received a similar letter. Do you know who sent it? This is troubling. I hope you are good with that spear of yours,
+you may need to use it."
+\n
+He glances up at the shimmering blade atop the intricately carved staff.
+\n
+"I do not know who sent it and yes, I do know how to use this, else I would carry it not."
+\n
+[att?{player}:hints=true](To continue north to Kalisto use: north)[/att]
+            ]
+        }
+    }
+
+    {evt, type=refuse
+        {mset, repeat=none
+            [msg
+You refuse to offer up your name. The stranger seems a bit crestfallen.
+\n
+[att?{player}:hints=true](To continue north to Kalisto use: north)[/att]
+            ]
+            [msg
+You are standing in the middle of the trail, surrounded by sparse forest.
+\n
+[att?{player}:hints=true](To continue north to Kalisto use: north)[/att]
+            ]
+        }
+    }
+
+
+
+    // --------------------------------------------------------------------------------
+    // Commands
+    // --------------------------------------------------------------------------------
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=*look*|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=respond
+        {act, type=attribute, source={player}:trusting, newvalue={++} }
+        {act, type=event, value=respond }
+    }
+
+    {cmd, syntax=refuse
+        {act, type=attribute, source={player}:trusting, newvalue={--} }
+        {act, type=event, value=refuse }
+    }
+
+    {cmd, syntax=*me too*|*also*|*weird*|*i also*
+        {act, type=event, value=letter }
+    }
+
+    {cmd, syntax=n|*north
+        {act, type=travel, newvalue=old_oak_inn }
+
+        {mset, repeat=none
+            [msg
+You continue north to Kalisto.
+            ]
+        }
+    }
+
+    {cmd, syntax=*x*letter*
+        {act, type=event, value=x_letter }
+    }
+
+
+
+
+// --------------------------------------------------------------------------------
+// Admin Notes, Etc
+// --------------------------------------------------------------------------------
+{log, type=characters
+    [text
+Elcaro
+\n
+Dark elf thief. He is highly skilled and well-versed in ancient lore.
+\n\n
+Onious
+\n
+Human cleric woman. She can help the player out when needed.
+    ]
+}
+
+{log, type=todo
+    [text
+elcaro:with_player
+\n
+If the player didn't tell Elcaro his/her name, this will harm the player in Kalisto.
+    ]
+}
+}

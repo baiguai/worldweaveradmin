@@ -1,0 +1,14 @@
+{room, alias=eastalley, label=East Alley
+    {evt, type=enter|look
+        [msg
+            You are in the East Alley.
+            It is narrow, running from east to west.
+            Glowing circuits run along the ground beneath you, high overhead, and along the north and south sides.
+        ]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+}

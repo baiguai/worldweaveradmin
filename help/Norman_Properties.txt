@@ -1,0 +1,37 @@
+>>title=About Element Properties in Norman Notation
+>>syntax=norman properties
+>>tags=norman notation game definitions game authoring game coding properties inline properties
+>>topic=Norman
+--------------------------------------------------------------------------------
+
+Standard elements can contain properties that define the elements. These
+properties are key, pairs.
+
+
+INLINE PROPERTIES
+    Properties can be defined on the same line, as long as they appear in the first
+    line of the element:
+
+    {room, name=dungeon_entrance, label=Dungeon Entrance
+        ...
+    }
+
+    They must be separated by commas (Including a comma after the element's name.
+
+
+OTHER PROPERTIES
+    Properties can also be defined on their own lines in the document:
+
+    {room
+        name=dungeon_entrance
+        label=Dungeon Entrance
+
+        ...
+    }
+
+    There are less considerations when not defining properties inline,
+    however inline properties keeps the code lines down and makes the files
+    more readable. For more on inline property considerations use:
+    help norman escape
+
+--------------------------------------------------------------------------------

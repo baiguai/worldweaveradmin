@@ -1,0 +1,25 @@
+>>title=Creating a New %title% Game
+>>syntax=creating a game
+>>tags=game development new game file structure game structure game files
+>>related=components
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+When you begin developing a new game the first thing you will want to do is
+create a folder for it in the Games directory:
+
+<%title%Admin>
+  |__ Games
+      |__ Your Game Directory
+
+
+For information game structure use:
+help game structure
+
+For information on game components use:
+help components
+
+For a step-by-step tutorial on creating your first game use:
+help tutorial start
+
+--------------------------------------------------------------------------------

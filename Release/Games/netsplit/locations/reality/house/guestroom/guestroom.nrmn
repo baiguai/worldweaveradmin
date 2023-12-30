@@ -1,0 +1,14 @@
+{room, alias=guestroom, label=Guest Room
+    {evt, type=enter|look
+        [msg
+            You are in the guest room. It is larger than most guest rooms.
+            Artsy looking point lights shine down from above.
+            A large window is set in the north wall.
+        ]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+}

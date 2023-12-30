@@ -1,0 +1,27 @@
+>>title=%title% Game Component Groups
+>>syntax=component groups
+>>tags=game elements game components game component groups game objects
+>>topic=Component Groups
+--------------------------------------------------------------------------------
+
+Various game components are defined within groups that help to accomplish their
+specific functions. For example Logic blocks are grouped into LogicSets so that
+more than one condition can be checked - and the failure actions for that
+LogicSet can be associated with it. This groupig is always required.
+
+There are other components that have optional grouping. A single component does
+not need to be defined within a group. For example Messages or Actions can
+be defined on their own. If there is only one Message or only one Action there
+is no need to do the extra typing of adding them to a group - although this
+can be done if you like for consistency.
+
+Grouped components that can be defined as stand-alone are:
+
+
+- Messages (message or msg)
+- Actions (action or act)
+
+
+All the other grouped components must always be within a parent grouping.
+
+--------------------------------------------------------------------------------

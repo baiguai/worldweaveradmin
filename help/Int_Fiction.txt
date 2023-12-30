@@ -1,0 +1,50 @@
+>>title=Getting Started with Interactive Fiction
+>>syntax=int fiction
+>>tags=interactive fiction text games text-based games intfiction if
+>>topic=Information
+--------------------------------------------------------------------------------
+
+Interactive Fiction (IntFiction, IF) is a type of game that is text-based.
+They are read like books, but commands can be entered to move through the game
+or interact with it. There are numerous IF engines that have been created
+to allow games to be developed and played using either an authoring graphical
+tool, or by writing game definition files (code files), then compiling the games
+for use in a client tool. This is how %title% works. Other engines may work
+slightly different. Some are more code-like than others - which strive to make
+game building more like authoring books.
+
+For information on IF in general, refer to:
+
+https://en.wikipedia.org/wiki/Interactive_fiction
+
+
+It may also be helpful to read through some of the topic in:
+
+https://intfiction.org/forum/
+
+That forum is dedicated primarily to TADS or Inform (two such IF engines)
+development.
+
+
+%title% differs primarily in two ways.
+
+Portability:
+    Other IF engines can be difficult or impossible to play on various systems.
+    TADS games, for example, can be played via a web browser, but the web parser
+    is more limited than the desktop OS version. Because %title% is Java
+    based, it can be played on any platform that is Java-capable.
+
+Flexibility:
+    %title% requires more work on the game author's end, but because of this
+    it is more flexible. Game authors aren't stuck using set commands such as
+    compass directions to define travelling, or specific commands for actions
+    such as eating, drinking etc. Such commands can be extended but this
+    requires some complex code to define custom commands etc. In %title%
+    the author can define whatever commands they want, for whatever action
+    they need. It is easy to define any syntax the author defines. Also it is
+    easier to define games using any file structure the author desires without
+    the need to tell the engine which files to include. With %title%, any
+    file within the game directory is parsed. Files can be moved or renamed,
+    combined, or split up without any refactoring.
+
+--------------------------------------------------------------------------------

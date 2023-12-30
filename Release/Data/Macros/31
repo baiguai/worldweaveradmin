@@ -1,0 +1,2 @@
+build 31,31
+copyfile Data/Games/31, ../../WorldWeaverClientGUI/release/Data/Games/31

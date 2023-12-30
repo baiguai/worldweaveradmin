@@ -1,0 +1,47 @@
+{object, alias=nhb_robot, label=Robot, type=item, location=nhb_bench_n, parent_type=object
+    {evt, type=examine_nbench
+        [msg
+            You see a robot sitting on the bench.
+        ]
+    }
+
+    {evt, type=on
+        [msg
+            You see a robot sitting on the bench.
+            It is reading a newspaper.
+        ]
+
+        {act, type=object_event, value=talk }
+    }
+
+    {evt, type=examine_robot
+        [msg
+            You examine the robot sitting on the north bench.
+            It appears to be an old model. Its chassis is beat up and rusted.
+            It is reading a newspaper.
+        ]
+
+        {act, type=object_event, value=talk }
+    }
+
+    {evt, type=talk
+        {mset, repeat=none
+            [msg
+                It looks up at you.
+                \n
+                "You have a problem, my friend. Someone has hacked your home."
+                \n
+                It stares at you a moment.
+                \n
+                "So, who do you think it was who hacked you?"
+            ]
+            [msg
+            ]
+        }
+    }
+
+
+    {cmd, syntax=*x* robot*
+        {act, type=object_event, value=examine_robot }
+    }
+}

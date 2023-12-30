@@ -1,0 +1,53 @@
+{object, alias=gst_table, label=Table, type=platform, meta=*table*, location=guestroom
+    {evt, type=enter|look
+        [msg
+            Sitting near the bed, in the south east corner of the room is
+            a small table.
+        ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the table. It is small and abstract in shape.
+            The top is a glossy dark charcoal and the legs are brushed metal.
+        ]
+    }
+
+    {evt, type=on
+        [msg==You look on the table. ]
+    }
+    {evt, type=on
+        {lset
+            [@eval
+                attribute@gst_wallet:moved=true
+            ]
+        }
+
+        [msg==You don't see anything on the table. ]
+    }
+
+    {evt, type=under
+        [msg==You look under the table. There is nothing there. ]
+    }
+
+    {evt, type=behind
+        [msg==You look behind the table and don't see anything there. ]
+    }
+
+
+    {cmd, syntax=*x* table*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*on* table*|*top* table*
+        {act, type=object_event, value=on }
+    }
+
+    {cmd, syntax=*under* table*|*beneath* table*
+        {act, type=object_event, value=under }
+    }
+
+    {cmd, syntax=*behind* table*|*back* table*
+        {act, type=object_event, value=behind }
+    }
+}

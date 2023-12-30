@@ -1,0 +1,47 @@
+{object, alias=nh_box, label=Box, type=item, location=nethome
+    {attr, alias=used, value=false }
+
+    {evt, type=enter|look
+        [msg==In the south section of the room you see a glowing green cube.]
+    }
+
+    {evt, type=examine
+        {lset
+            [@eval
+                attribute@{self}:used=false
+            ]
+            [fail
+                You examine the cube. It is empty.
+            ]
+        }
+
+        [msg==You examine the cube. The text '150 credits' hovers inside it.]
+    }
+
+    {evt, type=use
+        {lset
+            [@eval
+                attribute@{self}:used=false
+            ]
+            [fail
+                Nothing happens.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:used, newvalue=true }
+            {act, type=attribute, source={player}:credits, newvalue={+=150}
+                [msg==Your credit store increases by 150.]
+            }
+        }
+    }
+
+
+    {cmd, syntax=*x* cube*|*x* box*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=take *cube*|take *box*|use *cube*|use *box*
+        {act, type=object_event, value=use }
+    }
+}

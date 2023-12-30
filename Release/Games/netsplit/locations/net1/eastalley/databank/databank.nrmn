@@ -1,0 +1,20 @@
+{room, alias=databank, label=Databank
+    {evt, type=enter|look
+        [msg
+            You are in the Databank.
+            It is a vast dim room.
+        ]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+
+    {sort
+        [@obj
+            db_shelves
+            db_tables
+        ]
+    }
+}

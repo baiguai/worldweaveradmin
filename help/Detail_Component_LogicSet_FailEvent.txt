@@ -1,0 +1,98 @@
+>>title=LogicSet Fail Events
+>>syntax=fail event
+>>tags=logicset components logicset elements logicsets logic blocks fail events
+>>topic=Components
+--------------------------------------------------------------------------------
+
+LogicSet fail events are useful for performing complex responses to failed
+Logic checks. However they also avoid inadvertently firing events after an
+ActionSet has made changes to the game state. Consider the following:
+
+
+{evt, type=look
+    {lset
+        {lgc
+            [@eval
+                attribute@corpse:identified=false
+            ]
+        }
+    }
+
+    {mset
+        [msg
+            You see a dark form lying on the ground. Upon closer inspection
+            you realize it is a corpse!
+        ]
+    }
+
+    {aset
+        {act, type=attribute, source=corpse:identified, newvalue=true }
+    }
+}
+
+{evt, type=look
+    {lset
+        {lgc
+            [@eval
+                attribute@corpse:identified=true
+            ]
+        }
+    }
+
+    {mset
+        [msg
+            You see a corpse on the floor!
+        ]
+    }
+}
+
+
+When the player first looks, they see a form lying on the floor. But this
+Event changes the identified Attribute. Since the game client will fire all
+of the look Events, it moves on to the next one, and now that one passes, so
+its message is also displayed. So the output would be:
+
+You see a dark form lying on the ground. Upon closer inspection
+you realize it is a corpse!
+You see a corpse on the floor!
+
+You can use the fail_event property of the LogicSet to handle this situation:
+
+
+{evt, type=look
+    {lset, fail_event=look_ident
+        {lgc
+            [@eval
+                attribute@corpse:identified=false
+            ]
+        }
+    }
+
+    {mset
+        [msg
+            You see a dark form lying on the ground. Upon closer inspection
+            you realize it is a corpse!
+        ]
+    }
+
+    {aset
+        {act, type=attribute, source=corpse:identified, newvalue=true }
+    }
+}
+
+{evt, type=look_ident
+    {mset
+        [msg
+            You see a corpse on the floor!
+        ]
+    }
+}
+
+
+In this case if the LogicSet in the first Event passes, it displays its Message
+and changes the Attribute, but it doesn't hit the second Event. Next time
+the look Event fires, the LogicSet fails, so it calls the second Event. Both
+of these Events must be within the same 'self' Object, Room, etc. In other words
+the fail_event can't point to another Object's Events.
+
+--------------------------------------------------------------------------------

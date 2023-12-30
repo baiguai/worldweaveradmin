@@ -1,0 +1,2 @@
+build AutomicAge,AutomicAgeSrc
+copyfile Data/Games/AutomicAge, ../../WorldWeaverClient/Release/Data/Games/AutomicAge

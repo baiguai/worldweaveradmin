@@ -1,0 +1,43 @@
+>>title=Defining Macros
+>>syntax=macros
+>>tags=developing games authoring games game development game authoring macros admin tools copyfile copy file install
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+Macros are game developer tools designed to make repetative tasks easier. One
+example is compiling a game that is currently being developed. If the game in
+question is called Dungeon Explorer, a macro could be defined by creating the
+file:
+
+<%title%Admin>
+  |__ Data
+      |__ Macros
+          |__ de (Short names are good, they are used to call the macro)
+
+
+In this file, the following can be added:
+
+nbuild DungeonExplorer,Dungeon_Explorer
+
+
+Then to build this game:
+
+macro de
+
+
+Macro files can contain any %title%Admin commands, exactly as they would
+be entered manually, and in the order they should be entered.
+
+NOTE:
+As part of a macro, you can copy compiled game files to other locations using
+the copyfile command:
+
+copyfile Data/Games/NetSplit, ../../%title%Client/Release/Data/Games/NetSplit
+
+
+NOTE:
+To list the available macros use:
+
+macros
+
+--------------------------------------------------------------------------------

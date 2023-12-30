@@ -1,0 +1,17 @@
+>>title=Game Development Tips and Tricks
+>>syntax=tips and tricks
+>>tags=pointers tips and tricks hints ideas
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+Command Syntax:
+    The first Command to match the user input is the only Command fired. Be sure
+    to place the most explicit Command after the less explicit Commands.
+
+Reuse
+    It is a good idea to keep reuse in mind. For example, a Command can use an
+    Action to call an Event, instead of defining the same Message within the
+    Command and within an Event. Simply have the Action call the Event that
+    contains the Event. Inheritance can be used to reuse Objects where possible.
+
+--------------------------------------------------------------------------------

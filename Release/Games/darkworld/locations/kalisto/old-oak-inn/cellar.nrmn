@@ -1,0 +1,79 @@
+{room, alias=old_oak_inn_cellar, label=Old Oak Inn
+    {evt, type=enter
+        {mset, repeat=none
+            [msg
+You walk past the loud patrons of the Old Oak Inn, towards the small staircase.
+\n
+You descend into a dim cellar.
+\n
+The cramped space is lined with shelves of small old casks of alcohol and rnadom supplies.
+\n
+The stairs, leading back up into the inn are in the east end of the cellar.
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset, repeat=none
+            [msg
+The cellar is lined with shelves of small old casks of alcohol and rnadom supplies.
+\n
+The stairs, leading back up into the inn are in the east end of the cellar.
+            ]
+        }
+    }
+
+    {evt, type=ex_shelves
+        {mset
+            [msg
+You examine the shelves. They are filled with supplies that the inn might need to utilize.
+\n
+You don't see anything interesting.
+            ]
+        }
+    }
+
+
+
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=l|look
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=e|*east
+        {act, type=travel, newvalue=old_oak_inn_gen }
+
+        {mset
+            [msg
+You ascend the cellar stairs.
+            ]
+        }
+    }
+
+    {cmd, syntax=*x*shel*
+        {act, type=event, value=ex_shelves }
+    }
+}
+
+
+
+
+    // --------------------------------------------------------------------------------
+    // Admin Notes, Etc
+    // --------------------------------------------------------------------------------
+    {log, type=items
+        [text
+A pendant, found in the cellar of the Old Oak Inn.
+        ]
+    }
+
+    {log, type=future
+        [text
+What is the Old Oak Inn pendant?
+        ]
+    }
+}

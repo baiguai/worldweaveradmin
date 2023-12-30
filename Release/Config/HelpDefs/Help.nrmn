@@ -1,0 +1,18 @@
+{help, syntax=--help, title=WorldWeaver Help
+    [@topic
+WorldWeaver is a text based game engine. If you are new to Interactive Fiction
+(IF) you can get started by using --help getting started.
+\n
+Basic WorldWeaver Commands:
+\n
+credits
+ - When playing a game, this will display the game's credits.
+\n
+quit
+ - When playing a game, this will quit the current game and display the
+   WorldWeaver home screen.
+\n
+exit
+ - Exits WorldWeaver
+    ]
+}

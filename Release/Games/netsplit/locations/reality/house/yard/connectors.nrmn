@@ -1,0 +1,24 @@
+// NORTH DOORS
+{object, alias=yrd_door_n, label=Double Doors, type=connector, location=yard
+    {evt, type=enter|look
+        [msg==North of the yard you see the double doors that lead into the house.]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the double doors north of the yard.
+            They are bright orange. Door knobs are set into the center of each door.
+        ]
+    }
+
+
+    {cmd, syntax=*x* n* door*|*x* double*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *n* door*|enter* double*|north|n
+        {act, type=travel, newvalue=hall
+            [msg==You step through the double doors into the house.]
+        }
+    }
+}

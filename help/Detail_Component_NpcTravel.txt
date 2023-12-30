@@ -1,0 +1,39 @@
+>>title=NPC Travel Component Details
+>>syntax=npc travel component
+>>tags=npc components npc elements npc objects enemy enemies ally allies friends conversation travel sets travelsets travelling
+>>related=travelset component
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{travelset, alias=black_cat_trv, mode=repeat
+    {travel, location=dungeon_entrance }
+    {travel, location=dungeon_hall }
+    {travel, location=dungeon_cell }
+    {travel, location=dungeon_hall }
+}
+
+
+Description:
+    Travel components define a step in an NPCs travel course. They contain
+    a location property that describes where the NPC should go in that
+    particular travel step. How the travel steps are chosen is determined by
+    the parent TravelSet's mode property. For more information on TravelSets
+    use:
+    help npc travelset component
+
+
+Syntax:
+    NPC travel components are defined as a component, using curly braces {} to
+    denote them.
+
+
+Required Properties:
+    location (one word):
+    The location property is the alias of the Room component the NPC should
+    travel to.
+
+
+Allowed Parent Components:
+    travelset
+
+--------------------------------------------------------------------------------

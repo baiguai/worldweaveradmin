@@ -1,0 +1,18 @@
+>>title=Room Template
+>>syntax=room template
+>>tags=templates room
+>>topic=Templates
+--------------------------------------------------------------------------------
+
+
+{room, alias=, label=
+    // EVENTS
+    {evt, type=enter
+    }
+
+    // COMMANDS
+    {cmd, syntax=
+    }
+}
+
+--------------------------------------------------------------------------------

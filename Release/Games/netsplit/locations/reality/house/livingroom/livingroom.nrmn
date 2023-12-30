@@ -1,0 +1,24 @@
+{room, alias=livingroom, label=Livingroom
+    {evt, type=enter|look
+        [msg
+            You are in a spacious livingroom.
+            Point lights shine down from the ceiling high over head.
+        ]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+
+
+    {sort
+        [@obj
+            lr_couch
+            lr_table
+            lr_chair1
+            lr_windows_n
+            lr_windows_e
+        ]
+    }
+}

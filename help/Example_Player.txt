@@ -1,0 +1,74 @@
+>>title=Sample Player
+>>syntax=player example
+>>tags=players player example player sample
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+The following is an example from Escape Apsis. It defines a Player to be used
+in a SciFi First Person Shooter (FPS) game. Some of the Attributes, Commands,
+and Objects would not be needed by other types of games.
+
+{player
+    {attribute, alias=life, type=random, value=10\,30 }
+    {attribute, alias=max_life, type=attribute, value=life }
+    {attribute, alias=points, value=0 }
+    {attribute, alias=level, value=1 }
+    {attribute, alias=goal, value=none }
+    {attribute, alias=wearing_uniform, value=false }
+    {attribute, alias=fixed_shield, value=false }
+
+    // COMMANDS
+    {cmd, syntax=inv*
+        {aset
+            {act, type=inventory }
+        }
+    }
+
+    {cmd, syntax=*armed*
+        {aset
+            {act, type=armed }
+        }
+    }
+
+    {cmd, syntax=*arm*
+        {aset
+            {act, type=arm }
+        }
+    }
+
+    // WEAPON
+    {object, type=weapon, label=fist
+        {attr, alias=damage, type=random, value=1\,3 }
+
+        // EVENTS
+        {event, type=attack
+            {actionset
+                {action, type=attribute, source={enemy}:life, newvalue={random}|1\,3
+                    {messageset
+                        [message
+                            You have punched the {enemy:name} reducing their life to {enemy:life}.
+                        ]
+                    }
+                }
+            }
+        }
+
+        {event, type=miss
+            {messageset
+                [message
+                    You punch the {enemy:name} but miss.
+                ]
+            }
+        }
+
+        {event, type=kill
+            {messageset
+                [message
+                    You have {enemy:kill_verb} the {enemy:name}.
+                ]
+            }
+        }
+    }
+}
+
+--------------------------------------------------------------------------------

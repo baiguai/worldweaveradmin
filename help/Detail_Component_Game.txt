@@ -1,0 +1,77 @@
+>>title=The Game Component
+>>syntax=game component
+>>tags=game file game definition game settings game element
+>>related=special attribute values
+>>related=stats
+>>related=debugging
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{game, name=Dungeon Explorer, initial_location=dungeon_entrance, stats_aliases=life|points|level
+    ...
+}
+
+
+Description:
+    Game elements define the game itself, setting some of the properties of the
+    game.
+
+    NOTE:
+    There are special Attributes that can be defined within the Game component.
+    For information on these, refer to the Special Attribute Values topic:
+
+    help special attribute values
+
+
+    NOTE:
+    You will need to define a Player element within the Game element. This lets
+    you configure players when they first begin playing the game.
+
+    NOTE:
+    If you would like to begin your game with an initial message, put an event
+    of type game_init in your Game element.
+
+
+Syntax:
+    The game is defined as a component, using curly braces {} to denote it.
+    It must be defined in the game.nrmn file in the game's root directory.
+
+
+Required Properties:
+    name:
+    The friendly name for the game. This is used when listing the installed
+    games that can be played.
+
+    initial_location:
+    When players begin the game for the first time, this is the alias of the
+    Room they will begin in.
+
+    stats_aliases:
+    A pipe | delimited list of the Player attribute aliases to be used when the
+    player calls the stats Command. For more information use:
+
+    help stats
+
+
+Optional Properties:
+    admin_password:
+    If this is set, the game can be put into admin mode by entering the admin
+    password. When the game is in admin mode, the administrative tools can be
+    accessed. Be sure to use a password that will not interfere with other
+    Command syntaxes. It is a good idea to remove this property before publishing
+    a game. For more information use:
+
+    help debugging
+
+
+Required Child Components:
+    player
+
+
+Allowed Child Components:
+    command
+    event
+    messageset
+    object
+
+--------------------------------------------------------------------------------

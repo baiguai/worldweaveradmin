@@ -1,0 +1,24 @@
+>>title=Using %title%
+>>syntax=using jman
+>>topic=Beginner
+>>tags=how to use jman commands syntax jman commands
+>>topic=Using Help
+--------------------------------------------------------------------------------
+
+%title%'s help system is built using the JMan Java-based help system.
+
+To view help articles, the user must enter a specific help syntax -
+or search string.
+Or use the:
+
+help topics
+
+command to view a list of the help system's topics. These topics can be run
+using the syntax listed in that command's output. Be sure that your article
+syntax values do not exactly match any help topics or that specific topic
+can never be called.
+
+Note:
+Topic syntax is case sensitive.
+
+--------------------------------------------------------------------------------

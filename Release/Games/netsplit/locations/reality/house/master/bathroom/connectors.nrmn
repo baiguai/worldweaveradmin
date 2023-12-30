@@ -1,0 +1,21 @@
+// EAST DOOR
+{object, alias=mstbath_door_e, label=East Door, type=connector, location=mst_bathroom
+    {evt, type=enter|look
+        [msg==You see a door set into the east wall. ]
+    }
+
+    {evt, type=examine
+        [msg==You examine the east door. It is narrow and made of wood. ]
+    }
+
+
+    {cmd, syntax=*x* e* door*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter e* door*|east|e
+        {act, type=travel, newvalue=master
+            [msg==You step through the door in the east wall. ]
+        }
+    }
+}

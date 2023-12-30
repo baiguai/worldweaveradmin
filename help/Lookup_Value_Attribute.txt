@@ -1,0 +1,51 @@
+>>title=Secial Attribute Values
+>>syntax=special attribute values
+>>tags=special attribute values display mode wrap width random attributes
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+Attribute values can be more than simply a specified value. This allows
+Attributes to inherit their values from other Attributes etc. Possible special
+Attribute values are:
+
+display_mode:
+    Display mode is a special Attribute that must be defined within the Game
+    component. This tells the game engine to either clear the console before
+    displaying its output, or to simply add the output below the existing
+    console contents. The alias must be set to display_mode and the value can
+    be:
+    - clear
+        Clears the console before the game's output is displayed.
+
+    - normal
+        Appends the game's output to whatever is currently displayed.
+
+wrap_width:
+    Another special Attribute of the Game component is wrap_width. It tells the
+    game engine how wide (in characters) the output can be. The alias must be
+    set to wrap_width and the value can be any positive numeric value. (80 or
+    120 is typical)
+
+random:
+    Attributes with a type property of random must have a value that defines
+    the range of the random number to choose, in the form of:
+
+    <min>\,<max>
+
+    Once this value is randomly chosen, that is the value returned every time
+    the Attribute's value is read.
+
+attribute:
+    Attributes with a type property of attribute derive their value from another
+    Attribute's value. The value property must specify this Attribute in the
+    form:
+
+    <parent alias>:<attribute alias>
+
+random (each read):
+    An Attribute can have a value that is randomly generated every time its
+    value is read. To do this, its value must be set using the following syntax:
+
+    {random}|<min>\,<max>
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,33 @@
+>>title=Example Game Definitions
+>>syntax=examples
+>>tags=samples examples game source snippets
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+Event:
+    help event example
+
+Goals Plugin:
+    example plugin goal
+
+Logic:
+    help logic example
+
+Object:
+    help object example
+
+Player:
+    help player example
+
+Room:
+    help room example
+
+
+
+Discover Hidden Object:
+    help discover example
+
+Unlock a Door:
+    help unlock door example
+
+--------------------------------------------------------------------------------

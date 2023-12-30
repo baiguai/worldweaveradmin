@@ -1,0 +1,27 @@
+{game, name=Logic Test, initial_location=stage, admin_password=admd
+
+    // PLAYER
+    {player
+        // COMMANDS
+        {cmd, syntax=inv|inventory
+            {aset
+                {act, type=inventory }
+            }
+        }
+
+        {cmd, syntax=quit
+            {aset
+                {act, type=quit }
+            }
+        }
+    }
+
+    // EVENTS
+    {evt, type=game_init
+        {mset
+            [msg
+                You are an elite hacker.
+            ]
+        }
+    }
+}

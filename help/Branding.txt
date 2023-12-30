@@ -1,0 +1,61 @@
+>>title=Branding Games
+>>syntax=branding
+>>tags=game development launching games playing games branding games splash screen init_game init game
+>>related=credits
+>>topic=Branding
+--------------------------------------------------------------------------------
+
+Games can also be played by launching the %title% client tool using the
+game's database file name as a parameter. This method allows the game's author
+to brand the game as desired. When the client is launched this way, the game's
+splash screen is displayed instead of the default %title% splash screen.
+If no splash is defined, the game's name and initial commands are displayed.
+
+To define a splash screen enter the text and or ASCII art into the following
+file:
+
+<Game Root Directory>
+  |__ splash.txt
+
+The contents of this file are displayed exactly as the text is entered in the
+file.
+
+
+When building the splash screen, the possible commands the player can enter
+on that screen are:
+play
+resume
+
+It is good to build a splash screen that lets the player know these are the
+commands available to them.
+
+
+
+To cause the %title% client to automatically launch a game, displaying its
+branding, add an init_game setting to the:
+
+<Client Root Directory>
+  |__ Config
+        |__ Global.config
+
+For example, if your compiled game file (See: help compiling games) is
+TheDungeon you would add:
+
+init_game=TheDungeon
+
+to the Global.config file.
+
+Note:
+Any game specified in the init_game setting MUST have a splash file:
+
+<Game Root Directory>
+  |__ splash.txt
+
+
+
+
+
+To create an ASCII art spash screen you can use tools such as:
+http://www.patorjk.com/software/taag/#p=display&f=Slant&t=Game%20Name
+
+--------------------------------------------------------------------------------

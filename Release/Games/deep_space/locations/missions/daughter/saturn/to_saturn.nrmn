@@ -1,0 +1,30 @@
+{room, alias=dau_to_sat, label=Enroute to Saturn
+    {evt, type=enter
+        [@msg
+Your ship lets out its usual calming hum as its curvature drive fires up. When the spaceport's green lights flash you execute the launch sequence.
+The ship dutifully lifts from the launchpad. In moments you are entering orbit, awaiting sling position.
+When the ship's AI gives the go-ahead you punch the accelerator and shoot through space like a bullet. Once you're a safe distance from Earth you engage
+the curvature drive.
+\n
+The stars that surround you stretch out into short line segments of light and the solar system's planet elongate similarly.
+Within minutes you near Saturn space and decelerate.
+\n\n
+Something's wrong. Your ship pulls to starboard. You set the cockpit's display to immersive. Immediately it appears as though you are floating in space.
+Only bare bones console interfaces hover near you, breaking the illusion.
+Off the starboard bow you see a dark spiny ship.
+\n
+\n
+Pirates.
+\n
+\n
+more...
+        ]
+    }
+
+
+    {cmd, syntax=more
+        {aset
+            {act, type=travel, newvalue=pirates }
+        }
+    }
+}

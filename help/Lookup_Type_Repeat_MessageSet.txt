@@ -1,0 +1,24 @@
+>>title=MessageSet Repeat Types
+>>syntax=messageset repeat types
+>>tags=lookup message set repeat types none random repeat
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+MessageSets can contain any number of Message components. Which Message the
+MessageSet chooses to display is governed by the repeat property. Possible
+repeat types are:
+
+none:
+    The MessageSet begins with the first Message and moves down the list each
+    time it is fired. Once it reaches the bottom, that one is chosen from then
+    on. This is the default repeat mode.
+
+random:
+    The MessageSet chooses a Message randomly.
+
+repeat:
+    The MessageSet begins with the first Message and moves down the list each
+    time it is fired. Once it reaches the bottom, the next time it is fired it
+    starts at the first one again.
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,26 @@
+>>title=Installing %title% Games
+>>syntax=installing games
+>>tags=game development game authoring installation importing
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+Compiled %title% games can be installed into the %title% Client tool
+by copying the game database to the following directory:
+
+<%title% Client>
+  |__ Data
+      |__ Games
+
+Once a game is installed it will show up in the available games list. To play
+it, launch the client tool and enter the number corresponding with the desired
+game.
+
+For information on compiling games use:
+
+help compiling games
+
+For information on playing games use:
+
+help playing games
+
+--------------------------------------------------------------------------------

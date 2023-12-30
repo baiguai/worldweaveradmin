@@ -1,0 +1,48 @@
+>>title=Building Your First %title% Game 06 : Branding
+>>syntax=tutorial branding
+>>tags=branding splash screen tutorials building your first game build your first game development game authoring game building
+>>related=creating a game
+>>topic=tutorials
+--------------------------------------------------------------------------------
+
+01) Create the splash screen for your game. Navigate to the following directory:
+
+<WorldWeaverAdmin>
+|__ Games
+    |__ MazeMaster
+
+
+03) Create a file called splash.txt within the MazeMaster directory.
+    You can use an ASCII text generator like the following to generate an ASCII
+    title image (Or similar tools to convert an image to ASCII). This title
+    image is denoted by <TITLE>.
+    http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+    Add the following to the splash.txt file:
+
+   <TITLE>
+
+   play
+   resume
+
+   Once playing:
+   help
+
+   exit
+
+
+    This text gives the player some helpful notes on game play commands they can
+    enter. The file is read exactly as entered (Be sure to use an editor that
+    uses a mono-spaced font). So to move items down, put line breaks before them.
+    To move items right, put spaces before them.
+
+    The splash.txt file is required for any game we tell the Client to play by
+    default - so when it is launched the splash is shown intead of an
+    available games menu.
+
+
+--------------------------------------------------------------------------------
+
+Next step:
+help tutorial client setup
+
+--------------------------------------------------------------------------------

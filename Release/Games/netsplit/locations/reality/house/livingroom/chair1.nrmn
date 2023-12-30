@@ -1,0 +1,36 @@
+{object, alias=lr_chair1, label=Chair, type=platform, location=livingroom
+    {evt, type=enter|look
+        [msg
+            In the south west corner of the living room you see a chair (south chair).
+        ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the chair in the south west corner of the living room.
+            It is modern in style, apholstered in smooth black leather. The arms
+            and legs are made of solid brushed metal.
+        ]
+    }
+
+    {evt, type=on
+        [msg==You look on the chair in the south west corner. There is nothing on it.]
+    }
+
+    {evt, type=under
+        [msg==You look under the chair in the south west corner. You don't see anything there.]
+    }
+
+
+    {cmd, syntax=*x* s* chair*|*x* chair* s*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*on* s* chair*|*on* chair* s*|*top* s* chair*|*top* chair* s*
+        {act, type=object_event, value=on }
+    }
+
+    {cmd, syntax=*under* s* chair*|*under* chair* s*|*beneath* s* chair*|*beneath* chair* s*
+        {act, type=object_event, value=under }
+    }
+}

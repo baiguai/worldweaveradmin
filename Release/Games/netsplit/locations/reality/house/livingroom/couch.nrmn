@@ -1,0 +1,47 @@
+{object, alias=lr_couch, label=Couch, type=platform, meta=*couch*, location=livingroom
+    {evt, type=enter|look
+        [msg
+            In the center of the floor is a massive circular couch.
+        ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the couch in the center of the room.
+            It is enormous and circular in shape.
+            It is made of smooth, dark charcoal leather.
+            It stands on short brushed metal legs.
+            There is a narrow opening in the north end of the couch.
+        ]
+    }
+
+    {evt, type=on
+        [msg==You look on the couch. There is nothing sitting on it.]
+    }
+
+    {evt, type=under
+        [msg==You look under the couch.]
+    }
+    {evt, type=under
+        {lset
+            [@eval
+                attribute@lr_notepad:moved=true
+            ]
+        }
+
+        [msg==You don't see anything.]
+    }
+
+
+    {cmd, syntax=*x* couch*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*on* couch*|*top* couch*
+        {act, type=object_event, value=on }
+    }
+
+    {cmd, syntax=*under* couch*|*beneath* couch*
+        {act, type=object_event, value=under }
+    }
+}

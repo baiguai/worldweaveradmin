@@ -1,0 +1,46 @@
+>>title=Possible Logic Block Operands
+>>syntax=operands
+>>tags=game development logicsets logic block operands modulo greater than less than not equals less than or equal to greater than or equal to
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+Operands tell the Logic Block how to compare the specified source against the
+specified sourcevalue. When comparing strings (text), the only operands available
+are = and !=. All other operands pertain to numeric comparisons.
+Below are the possible operands:
+
+% (modulo - the remainder after division)
+    For information on this operation, see:
+    https://en.wikipedia.org/wiki/Modulo_operation
+    Example:
+    [@eval
+        attribute@{self}:level%5=0
+    ]
+    In this example if the division of the level Attribute value has no remainder
+    the Logic Block evaluates to true.
+
+> (greater than)
+    If the source value is greater than the specified value the Logic Block
+    evaluates to true.
+
+< (less than)
+    If the source value is less than the specified value the Logic Block
+    evaluates to true.
+
+>= (greater than or equal to)
+    If the source value is greater than or equal to the specified value the
+    Logic Block evaluates to true.
+
+<= (less than or equal to)
+    If the source value is less than or equal to the specified value the
+    Logic Block evaluates to true.
+
+= (equals)
+    If the source value equals the specified value the Logic Block evaluates to
+    true.
+
+!= (not equal to)
+    If the source value does not equal the specified value the Logic Block
+    evaluates to true.
+
+--------------------------------------------------------------------------------

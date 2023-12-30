@@ -1,0 +1,85 @@
+{help, syntax=--help getting started, title=Getting Started
+    [@topic
+Interactive Fiction (IF) allows players to move and interact with objects and
+even fight enemies by issuing text commands to the game. If you are new to
+IF it may be a bit intimidating or frustrating at first. This guide should get
+you started with WorldWeaver's flavor of IF.
+\n
+Basic Commands
+Listed below is a set of basic commands that you will use often while playing
+IF games. Be aware that each game may use its own syntax to perform the same
+actions below. Be sure to consult the game-level help for details on what these
+differences might be.
+\n
+\n
+Players can take notes of information they have gathered during a game using
+the folloring commands:
+addnote [note text]
+deletenote [note number]
+To list the notes that have been taken use:
+notes
+\n
+\n
+look
+Using the look command causes your player to look around. The location you are
+in will be described for you. This is typically at the location level, and not
+specific to any particular object.
+\n
+examine
+If at any time you would like to examine a specific object or character, use
+the examine command. This is usually followed by text that will help the game
+identify what you are trying to look at. Sometimes determining this identifying
+text can be difficult, a well defined game will make it easy on the player.
+\n
+take
+Certain objects in the game can be picked up by the player using the take
+command. This command is typically followed by text that will allow the game
+to identify the object you wish to pick up.
+\n
+drop
+Items you are carrying can be dropped using this command. Typically it will
+result in the object being placed in the location you are in. It is usually
+followed by text that will identify the object you wish to drop.
+\n
+put
+Certain objects can be put on or in or under other objects. This command is
+typically followed by the identifying text for the object you wish to put down
+then a key word like on, in, under then the identifying text for the object
+you are putting it in, on, under.
+\n
+navigation
+Because the player can often enter locations from multiple directions, IF
+games often use global directions to define movement as well as object
+positions within locations. These are typically compass directions such as:
+north, south, east, west
+or vessel directions such as:
+forward (fore), aft, port, starboard
+Some games try to make it more intuitive by using relative directions such as
+forward, left, right, backward
+Consult the game level help to see if this is the case.
+\n
+enter
+Doors or other connectors can be travelled through using the enter command.
+This is typically followed by text that will allow the game to identify the
+connector you wish to enter.
+\n
+unlock
+In WorldWeaver keys do not need to be specified. If you are carrying a key
+that will unlock the specified door or container that key will be chosen
+automatically. Connectors or containers must be unlocked before entering or
+looking inside them.
+\n
+attack
+In WorldWeaver when an enemy is encountered it goes into fight mode. While in
+this mode the player is limited to fight related commands such as attack and
+flee as well as status checks like inventory or stats.
+\n
+inventory (inv)
+The inventory command will list the items that the player is currently
+carrying.
+\n
+stats
+The stats command will list the player's current stats such as remaining life
+and other player attributes.
+    ]
+}

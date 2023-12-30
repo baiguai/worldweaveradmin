@@ -1,0 +1,105 @@
+>>title=Goals Plugin Example
+>>syntax=example plugin goal
+>>tags=game development examples samples goals
+>>topic=Examples
+--------------------------------------------------------------------------------
+Defining goals for players is a common means of making games interesting and fun.
+Goals can be achieved using global Objects with their own events that can be
+called when goals are activated as well as when they are achieved.
+Currently %title% only handles one goal at a time.
+
+Setup:
+To set a game up to use this example, define the player element with the
+following Attributes:
+
+
+{player
+    {attr, alias=goal, value=None }
+    {attr, alias=goalid, value=init }
+    ...
+}
+
+With these Attributes created you can then define the global Goal Objects:
+
+{object, alias=gl_light_torch, label=Light the torch, type=goal, location=game, parent_type=game
+    {attr, alias=active, value=false }
+    {attr, alias=award, value=false }
+
+    {evt, type=activate
+        {lset
+            {lgc
+                [@eval
+                    attribute@{self}:active=false
+                ]
+            }
+        }
+
+        {aset
+            {act, type=attribute, source={self}:announced, newvalue=true }
+            {act, type=attribute, source={player}:goal, newvalue=Light the torch
+            {act, type=attribute, source={player}:goalid, newvalue=lighttorch
+                {mset
+                    [msg
+                        \n
+                        Goal: Light the torch
+                        \n
+                    ]
+                }
+            }
+        }
+    }
+
+    {evt, type=award
+        {lset
+            {lgc
+                [@eval
+                    attribute@{player}:goalid=lighttorch
+                    &&
+                    attribute@{self}:award=false
+                ]
+            }
+        }
+
+        {aset
+            {act, type=attribute, source={self}:award, newvalue=true }
+            {act, type=attribute, source={player}:points, newvalue={+=5} }
+            {act, type=attribute, source={player}:goal, newvalue=none }
+            {act, type=attribute, source={player}:goalid, newvalue=none
+                {mset
+                    [msg
+                        \n
+                        Goal Achieved!
+                        \n
+                        You have successfully lit the torch. Your points have increased by 5.
+                        \n
+                    ]
+                }
+            }
+        }
+    }
+}
+
+Then to use the plugin:
+Activate a defined goal. This can be done in an Event or within a Command:
+
+{evt, type=enter_dungeon
+    {aset
+        {act, type=object_event, source=gl_light_torch, newvalue=activate }
+    }
+}
+
+Once the goal has been achieved you can award it using the following in an
+Event or Command:
+
+{evt, type=light_torch
+    {aset
+        {act, type=object_event, source=gl_light_torch, newvalue=award }
+    }
+}
+
+
+This plugin allows you to define all of your game's goals within a single
+file so that they are easy to review and aren't scattered throughout various
+locations etc.
+
+--------------------------------------------------------------------------------

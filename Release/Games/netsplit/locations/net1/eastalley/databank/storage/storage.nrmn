@@ -1,0 +1,10 @@
+{room, alias=db_storage, label=Storage
+    {evt, type=enter|look
+        [msg==You are in a dark narrow storage room.]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+}

@@ -1,0 +1,53 @@
+>>title=Player Component Details
+>>syntax=player component
+>>tags=player components player elements player objects
+>>related=player example
+>>related=templates
+>>related=action types
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{player
+    ...
+}
+
+
+Description:
+    The Player component specifies how new players are defined when they
+    play the game for the first time. Player components are typically
+    defined as template components so that the player is different every
+    time. For more information on templates use:
+
+    help player example
+    help templates
+
+    Note:
+    You will want to utilize some of the built-in Action types when defining
+    the Player component - such as inventory, stats, etc.
+    For information on Action types use:
+    help action types
+
+    Note:
+    If the Player is defined with an Attribute with an alias of:
+    name
+    That value will be used in every new game. Otherwise the player will be
+    prompted to provide a name when a new game is begun.
+
+
+Syntax:
+    The Player element is defined as a component, using curly braces {} to
+    denote it.
+
+
+Allowed Parent Components:
+    game
+
+
+Allowed Child Components:
+    attribute
+    command
+    event
+    object
+    sort
+
+--------------------------------------------------------------------------------

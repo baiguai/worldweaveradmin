@@ -1,0 +1,37 @@
+{help, syntax=--help fighting, title=Fighting Help
+    [@topic
+Throughout the game various weapons may be found and used by the player.
+Use the take command to pick up weapons (See: help overview).
+\n
+Typically an initial weapon (Something like 'fist') is available to you
+at the start of the game. This default weapon will be automatically armed
+for you.
+\n
+Before fighting an enemy you can arm any of the weapons you are carrying:
+\n
+weapons
+    Lists the weapons you are carrying.
+\n
+armed
+    Displays the weapon you currently have armed.
+\n
+arm [weapon identifying text]
+    Arms the specified weapon.
+\n
+\n
+When an enemy is encountered the game goes into Fight mode. While in this mode
+you can attack the enemy using: attack. This command requires no additional
+text. The only commands available to you in Fight mode are:
+\n
+arm [weapon identifier text]
+    Arms the specified weapon.
+\n
+attack or 1
+    Causes you to attack the enemy with your currently armed weapon.
+\n
+flee or 2
+    Causes you to flee the enemy, but fleeing gives the enemy one free attack
+    on you. Be aware that as long as the enemy is in the same room as you, they
+    will attempt to attack you, until you kill them.
+    ]
+}

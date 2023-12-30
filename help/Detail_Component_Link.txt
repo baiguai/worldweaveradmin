@@ -1,0 +1,47 @@
+>>title=Link Component Details
+>>syntax=link component
+>>tags=link components link elements link objects containers locations
+>>related=components
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{link, parent=entrance, parent_type=room
+    ...
+}
+
+
+Description:
+    Link components are a means of splitting complex Elements into multiple
+    files / groups. They reference another complete Element and can contain
+    the same Element types.
+    The Link itself is not stored in the database, its child Elements are
+    stored within the specified parent Element.
+
+
+Syntax:
+    Links are defined as a standard component, using curly braces {} to
+    denote them.
+
+
+Required Properties:
+    parent (one word):
+    The parent property specifies the component the Link points to. This
+    must be a valid existing component alias.
+
+    parent_type:
+    The parent_type must match the component type of the linked component.
+    Possible values are:
+    room
+    object
+    npc
+
+
+Allowed Child Components:
+    attribute
+    command
+    event
+    logicset (If parent_type is object)
+    messageset (If parent_type is object)
+    object
+
+--------------------------------------------------------------------------------

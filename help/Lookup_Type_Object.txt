@@ -1,0 +1,20 @@
+>>title=Pre-Defined Object Types
+>>syntax=object types
+>>tags=objects types object type lookup pre-defined types connector
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+Currently Object types play very little role in %title%'s processing, with
+the exception of connectors. In time this will likely change. Still it is a
+good idea to categorize Objects using their type property.
+
+Types can be used by the admin features, while playing a game in admin mode,
+to search for Objects by type.
+
+connector:
+    Objects that are specified as connectors are described last in Room
+    descriptions so that doors/passages are easily seen within the output.
+    They are also used by admin tools to show what other locations a Room
+    connects to.
+
+--------------------------------------------------------------------------------

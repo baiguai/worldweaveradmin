@@ -1,0 +1,26 @@
+>>title=Fighting
+>>syntax=fighting
+>>tags=game development weapons fighting fights weapon attributes defining weapons
+>>topic=Fighting
+--------------------------------------------------------------------------------
+
+If you are building a game, such as a first person shooter, that will utilize
+fighting you will want to define weapons that the Player can use during fights.
+
+For information on designing weapons use:
+help weapons
+
+There are also requirements for the Player and Npc game elements. For
+information on this use:
+help fight elements
+
+To help flesh out fights, fight specific Events should be defined within the
+weapons a Player can use as well as in the Npc's the Player can fight. For
+information on this use:
+help fight events
+
+For help regarding initiating fights use:
+help initiate fight
+help action types
+
+--------------------------------------------------------------------------------

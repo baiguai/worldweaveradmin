@@ -1,0 +1,99 @@
+>>title=Logic Component Details
+>>syntax=logic component
+>>tags=logic components logic elements logic objects
+>>related=special values
+>>related=logic types
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{logicset
+    {logic, type=location, source=torch, sourcevalue={player}, operand=!= }
+    [fail
+        You are already carrying the torch.
+    ]
+}
+
+{lset
+    {lgc, type=location, source=torch, sourcevalue={player}, operand=!= }
+    [fail
+        You are already carrying the torch.
+    ]
+}
+
+{lset
+    {lgc
+        [@eval
+            location@torch!={player}
+            and
+            attribute@torch:is_lit=true
+        ]
+        [fail
+            You are already carrying the torch. And it is lit.
+        ]
+    }
+}
+
+
+Description:
+    Logic blocks perform logical checks according to the specified type
+    property. For a list of available Logic types use:
+    help logic types
+
+    Logic blocks must be defined within a LogicSet. LogicSets group Logic
+    blocks. For more information on LogicSets use:
+    help logicset component
+
+    There are two ways to define the logical evaluation:
+
+    - inline:
+        This method is useful for single line Logic blocks. It uses the Logic
+        element's properties to specify what to check.
+
+    - eval:
+        An eval multi-line object can be used to define logical evaluations.
+        This is the preferred method. It allows multiple checks to be defined
+        within a single Logic Block.
+        NOTE: Be sure to use the @ symbol so that the eval will be processed
+        line by line.
+
+    The comparison operand is specified either inline in an eval component or using
+    the operand property. For information on operands use:
+    help operands
+
+    NOTE:
+    Special values can be used in the source or sourcevalue. For more information
+    use:
+    help special values
+
+
+Syntax:
+    Logic blocks are defined as a component, using curly braces {} to denote them.
+
+
+Required Properties:
+    type:
+    Specifies the type of logical evaluation to perform. Other properties are
+    needed according to the specified type. For more information on Logic types
+    use:
+    help logic types
+
+
+Optional Properties:
+    source
+    sourcevalue
+    operand
+
+    These properties are required, or not needed at all, according to the Logic
+    type. Use:
+    help logic types
+
+
+Allowed Parent Components:
+    logicset
+
+
+Allowed Child Components:
+    eval (message)
+    messageset
+
+--------------------------------------------------------------------------------

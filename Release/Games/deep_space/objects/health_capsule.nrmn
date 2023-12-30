@@ -1,0 +1,75 @@
+// HEALTH CAPSULE +5
+{object, alias=healthcap_5, type=item, label=health capsule, location=void, parent_type=room
+    // EVENTS
+    {evt, type=init|look
+        {mset
+            [msg
+                You see a small health capsule lying on the floor.
+            ]
+        }
+    }
+
+    {evt, type=examinecapsule
+        {mset
+            [msg
+                You examine the health capsule. It does not appear to be tampered with.
+            ]
+        }
+    }
+
+    // COMMANDS
+    {cmd, syntax=*x* *health capsule
+        {aset
+            {act, type=object_event, newvalue=examinecapsule }
+        }
+    }
+
+    {cmd, syntax=take *health capsule
+        {lset
+            {lgc
+                [@eval
+                    location@{self}!={player}
+                ]
+            }
+            [fail
+                You are already carrying the health capsule.
+            ]
+        }
+
+        {aset
+            {act, type=move, newvalue={player}
+                {mset
+                    [msg
+                        \n
+                        You pick up the health capsule.
+                        \n
+                    ]
+                }
+            }
+        }
+    }
+
+    {cmd, syntax=use *health capsule
+        {lset
+            {lgc
+                [@eval
+                    location@{self}={player}
+                ]
+            }
+            [fail
+                You are not carrying a health capsule.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={player}:life, newvalue={+=5}
+                {mset
+                    [msg
+                        Your life has been restored by 5.
+                    ]
+                }
+            }
+            {act, type=move, newvalue=void }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+{object, alias=db_tables, label=Tables, type=platform, meta=*table*, location=databank
+    {evt, type=enter|look
+        [msg
+            Arranged throughout the large room are round glass tables.
+        ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the tables.
+            \n
+            Arranged throughout the large room are round glass tables.
+            Chairs have been pushed up to each of them.
+            Terminals sit on the tables in front of each chair.
+        ]
+    }
+
+    {evt, type=on
+        {lset
+            [@eval
+                attribute@db_plate:moved=false
+            ]
+            [fail
+                You don't see anything on the tables but terminals that correspond to the chairs.
+            ]
+        }
+
+        [msg
+            You look on the tables.
+            Terminals have been arranged in front of each chair.
+        ]
+    }
+
+    {evt, type=under
+        [msg
+            You look under the tables. You don't see anything under any of them.
+        ]
+    }
+
+
+    {cmd, syntax=*x* table*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*on* table*|*top* table*
+        {act, type=object_event, value=on }
+    }
+
+    {cmd, syntax=*under* table*|*beneath* table*|*below* table*
+        {act, type=object_event, value=under }
+    }
+}

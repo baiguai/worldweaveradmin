@@ -1,0 +1,14 @@
+>>title=Defining In-Game Help Topics
+>>syntax=help topics
+>>tags=game development in game help system help topics
+--------------------------------------------------------------------------------
+
+{help, syntax=--help playing, title=Playing the Game
+    [@topic
+        Playing the game help...
+    ]
+}
+
+When authoring games there are two sources for in-game help topics.
+
+--------------------------------------------------------------------------------

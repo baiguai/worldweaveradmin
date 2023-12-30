@@ -1,0 +1,39 @@
+>>title=Special Update Attribute Values
+>>syntax=update attribute values
+>>tags=special values update attribute
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+When updating Attribute values using Actions there are special values that can
+be used instead of set specified values. Possible special values are:
+
+{++}
+    If the current Attribute value is a number, this will increase it by 1.
+
+{--}
+    If the current Attribute value is a number, this will decrease it by 1.
+
+{+=<number>}
+    If the current Attribute value is a number, this will increase it by the
+    specified numeric value.
+
+{-=<number>}
+    If the current Attribute value is a number, this will decrease it by the
+    specified numeric value.
+
+{!}
+    This will set the Attribute's value to the opposite of its current value,
+    using the logic:
+    true = false
+    on = off
+    yes = no
+
+{attribute|<source>:<attribute>}
+    Sets the Attribute's value to the value of the specified Attribute's
+    value.
+
+{random}|<min>\,<max>
+    Sets the Attribute's value to a randomly chosen numeric value. Within the
+    specified range.
+
+--------------------------------------------------------------------------------

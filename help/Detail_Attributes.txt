@@ -1,0 +1,51 @@
+>>title=Attributes Details
+>>syntax=attributes
+>>tags=attributes properties details
+>>related=attribute values
+>>related=attribute types
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{attribute, alias=life, type=random, value=3\,9 }
+{attr, alias=life, type=random, value=3\,9 }
+
+About:
+    Attributes are used to extend game components. They can be used in
+    conjunction with logic checks or messages. They allow  the game developer
+    to define the functionality they need for their games.
+
+Syntax:
+    Attributes are defined like a component, using curly braces {} to denote
+    them. They are usually defined on one line, but can be written with each
+    property on its own line, beginning with {attribute on its own line and
+    ending with the closing brace on its own line.
+
+Required Properties:
+    alias (one word):
+    Aliases must be unique within the Attribute's parent. They are the
+    Attribute's unique identifier.
+
+    value:
+    Defines the Attribute's default value. This value can be changed by Action
+    components. Values can be numbers or text or special codes. For information
+    on these codes use:
+    help special attribute values
+
+Optional Properties:
+    type (one word):
+    Defines Attributes as special types of Attributes. For a list of possible
+    types use:
+    help attribute types
+
+
+Allowed Parent Components:
+    game
+    player
+    npc
+    object
+    room
+
+Allowed Child Components:
+    messageset
+
+--------------------------------------------------------------------------------

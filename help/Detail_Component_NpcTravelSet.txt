@@ -1,0 +1,51 @@
+>>title=NPC Travelset Component Details
+>>syntax=npc travelset component
+>>tags=npc components npc elements npc objects enemy enemies ally allies friends conversation travel sets travelsets travelling
+>>related=travel mode types
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{travelset, alias=black_cat_trv, mode=repeat
+    {attr, alias=active, value=true }
+
+    {travel, location=dungeon_entrance }
+    {travel, location=dungeon_hall }
+    {travel, location=dungeon_cell }
+    {travel, location=dungeon_hall }
+}
+
+
+Description:
+    TravelSets define an NPC's travel. If the mode property is not set to
+    follow the TravelSet must contain one or more Travel components that
+    tell the NPC where to travel during a given step in its travel.
+
+    A special Attribute can be used with the TravelSet. This Attribute must
+    have an alias of active and can have a true or false value. If this is
+    present and set to false, the TravelSet is ignored. This Attribute can
+    be changed using an Action.
+
+
+Syntax:
+    NPC travelset  components are defined as a component, using curly braces {}
+    to denote them.
+
+
+Required Properties:
+    mode:
+    The mode property tells the TravelSet how to choose the next Travel
+    component when it is called. TravelSets are called whenever the player
+    travels to a new location. For information on the possible travel modes
+    use:
+    help travel mode types
+
+
+Allowed Parent Components:
+    npc
+
+
+Allowed Child Components:
+    attribute
+    travel
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,113 @@
+{object, alias=lr_notepad, label=Notepad, type=item, location=lr_couch, parent_type=object
+    {attr, alias=moved, value=false }
+    {attr, alias=found, value=false }
+
+    {evt, type=enter|look
+        {lset
+            [@eval
+                attribute@{self}:moved=true
+                &&
+                location@{self}={room}
+            ]
+        }
+
+        [msg==You see a notepad sitting on the ground.]
+    }
+
+    {evt, type=under
+        {lset
+            [@eval
+                attribute@{self}:moved=false
+            ]
+        }
+
+        {act, type=attribute, source={self}:found, newvalue=true
+            [msg==You see a notepad sitting on the ground, under the couch.]
+        }
+    }
+
+    {evt, type=examine_notepad
+        {lset
+            [@eval
+                attribute@{self}:found=true
+            ]
+            [fail
+                I'm not sure what you are trying to examine.
+            ]
+        }
+
+        [msg
+            You examine the notepad.
+            There is handwriting throughout.
+            \n
+            As you are thumbing through it you notice a page with 'passwords' written in the top of the page.
+            \n
+            computer - hxsmith23
+            \n
+            pcomm - nxciz5
+        ]
+    }
+
+    {evt, type=take
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+            [fail
+                You are already carrying the notepad.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:moved, newvalue=true }
+            {act, type=move, source={self}, newvalue={player}
+                [msg==You pick up the notepad.]
+            }
+        }
+    }
+
+    {evt, type=drop
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a notepad.
+            ]
+        }
+
+        {act, type=move, source={self}, newvalue={room}
+            [msg==You drop the notepad.]
+        }
+    }
+
+
+    {cmd, syntax=*x* notepad*
+        {act, type=object_event, value=examine_notepad }
+    }
+
+    {cmd, syntax=take *notepad*
+        {lset
+            [@eval
+                attribute@{self}:found=true
+            ]
+            [fail
+                I don't know what you are attempting to take.
+            ]
+        }
+
+        {act, type=object_event, value=take }
+    }
+
+    {cmd, syntax=drop *notepad*
+        {act, type=object_event, value=drop }
+    }
+}
+
+
+{log, type=global
+    [@text
+        computer: hxsmith23
+        pcomm: nxciz5
+    ]
+}

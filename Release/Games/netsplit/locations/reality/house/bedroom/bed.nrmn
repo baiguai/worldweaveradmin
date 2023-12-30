@@ -1,0 +1,32 @@
+{object, alias=br_bed, label=Bed, type=object, meta=*bed*, location=bedroom
+    {evt, type=enter|look
+        [msg==You see your bed set against the west wall. It is neatly made. ]
+    }
+
+    {evt, type=examine
+        [msg==You examine your bed. It is neatly made. ]
+    }
+
+    {evt, type=under_bed
+        {lset
+            [@eval
+                attribute@br_chip:moved=false
+            ]
+            [fail
+                You look under the bed.
+                You don't see anything.
+            ]
+        }
+
+        [msg==You look under your bed. ]
+    }
+
+
+    {cmd, syntax=*x* bed*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*under* bed*|*beneath* bed*
+        {act, type=object_event, value=under_bed }
+    }
+}

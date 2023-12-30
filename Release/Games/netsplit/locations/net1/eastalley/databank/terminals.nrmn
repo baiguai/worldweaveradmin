@@ -1,0 +1,39 @@
+{object, alias=terminal, label=Terminal, type=item, meta=*terminal*, location=db_tables, parent_type=object
+    {evt, type=ex_terminal
+        {lset
+            [@eval
+                attribute@db_plate:inserted=false
+            ]
+        }
+
+        [msg
+            You examine the terminals.
+            \n
+            The are small dedicated computers, designed to read the data encoded on the various data plates.
+        ]
+    }
+
+    {evt, type=ex_terminal
+        {lset
+            [@eval
+                attribute@db_plate:inserted=true
+            ]
+        }
+
+        [msg
+            You examine the terminals.
+            \n
+            A large excerpt fills the screen. Most of it is gibberish,
+            however in the midst of the characters you see a quote:
+            \n
+            "The architect is a tyrant and must be stopped, even
+            if the laws of the NET must be broken."
+            \n
+        ]
+    }
+
+
+    {cmd, syntax=*x* terminal*
+        {act, type=object_event, value=ex_terminal }
+    }
+}

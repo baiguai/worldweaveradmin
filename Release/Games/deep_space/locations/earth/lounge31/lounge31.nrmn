@@ -1,0 +1,80 @@
+{room, alias=lounge31, label=Lounge 31
+    {evt, type=enter
+        {mset, repeat=none
+            [@msg
+You find yourself leaning back in your favorite booth at your favorite cocktail bar.
+
+Lounge 31.
+
+Situated at the base of an elevated space station Lounge 31 is a hub of aspiring businessmen, Earthbound mobsters, and all manner of space-faring wheelers and dealers.
+It is the perfect place to 'overhear' plots and schemes and rumors that could lead to potential jobs.
+\n
+You down your faintly glowing Scotch and flag down the waitress for another.
+\n\n
+more...
+            ]
+        }
+    }
+
+    {evt, type=more
+        {mset, repeat=none
+            [@msg
+She is dressed in a mirrored chrome dress. Saturn-like rings hover about her neck and wrists. Her hair is silver and gently spirals about her neck. Her face and form are unnaturally perfect and attractive.
+Definitely a mod - likely her bosses have funded the many procedures that produced such stunning beauty.
+She gently sets another tumbler of Scotch on the table before you. You are a regular, and she knows your preferences, Mars barreled, aged nearly two decades - Earth time.
+\n\n
+more...
+            ]
+            [@msg
+In the booth next to you an elegantly dressed couple discusses a wayward daughter they wish to 'reign in'.
+Given their apparent wealth, this could be an opportunity. You can pursue this lead by greeting the couple, joining them in their booth, by typing - greet.
+\n
+Or you can listen in on other conversations, by typing - listen.
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset, repeat=random
+            [@msg
+You take in the sights of Lounge 31. It is dimly lit and the air is filled with the haze of cigarette smoke punctuated by the focused spotlights that shine down from small pinpoints in the popcorn ceiling above.
+The walls are accented by wide vertical columns of large rough-cut stones and between these columns are horizontal slats of natural wood. Lounge jazz music eminates from the dimly lit stage across the open, circular floor.
+\n
+In the booth next to you an elegantly dressed couple discusses a wayward daughter they wish to 'reign in'.
+Given their apparent wealth, this could be an opportunity. You can pursue this lead by greeting the couple, joining them in their booth, by typing - greet.
+\n
+Or you can listen in on other conversations, by typing - listen.
+            ]
+            [@msg
+Lounge 31 was modelled in the ancient 'mid century' style. It is dimly lit with a slight a-frame style to its interior. Large windows look out over space. Stars beyond number are visible outside.
+\n
+In the booth next to you an elegantly dressed couple discusses a wayward daughter they wish to 'reign in'.
+Given their apparent wealth, this could be an opportunity. You can pursue this lead by greeting the couple, joining them in their booth, by typing - greet.
+\n
+Or you can listen in on other conversations, by typing - listen.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=more
+        {act, type=event, value=more }
+    }
+
+    {cmd, syntax=greet
+        {aset
+            {act, type=travel, newvalue=31couplebooth
+                {mset
+                    [msg
+                        You greet the couple.
+                        \n
+                    ]
+                }
+            }
+        }
+    }
+}

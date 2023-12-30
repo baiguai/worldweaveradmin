@@ -1,0 +1,28 @@
+>>title=Using Message Templates
+>>syntax=message templates
+>>tags=messagesets messages templates reuse inherit
+>>topic=Components
+--------------------------------------------------------------------------------
+
+Message Templates allow the game author to reuse Messages, replacing pieces of
+the Message text to apply to the current MessageSet. To replace text within
+the Message, add Attributes to the MessageSet (Not the template MessageSet).
+The alias of the Attributes should be the text to replace and the value of the
+Attributes should be the text to replace it with. This should be used to replace
+short strings within the Message. Consider the example below:
+
+{mset, message_alias=door_msg
+    {attr, alias=$loc$, value=north }
+}
+
+{mset, alias=door_alias
+    [msg
+        You see a door in the $loc$ wall.
+    ]
+}
+
+The resulting output would be:
+
+You see a door in the north wall.
+
+--------------------------------------------------------------------------------

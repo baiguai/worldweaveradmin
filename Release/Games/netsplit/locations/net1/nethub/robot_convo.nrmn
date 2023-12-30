@@ -1,0 +1,53 @@
+{link, parent=nhb_robot, parent_type=object
+    {attr, alias=topic, value=hack }
+
+    {evt, type=dontknow
+        {lset
+            [@eval
+                attribute@{self}:topic=hack
+            ]
+        }
+
+        {act, type=attribute, source={self}:topic, newvalue=told
+            [msg
+                You tell the robot you don't know.
+                \n
+                It contemplates a moment.
+                \n
+                "There is an augmented man, in an orange spire, where the data lake ends.
+                I've seen him at the bar."
+                \n
+                It looks off into the horizon.
+                \n
+                "That is all I have."
+                \n
+                The robot continues to read the newspaper.
+            ]
+        }
+    }
+
+    {evt, type=where
+        {lset
+            [@eval
+                attribute@{self}:topic=told
+            ]
+        }
+
+        {act, type=attribute, source={self}:topic, newvalue=toldwhere
+            [msg
+                The robot speaks without looking up from the newspaper.
+                \n
+                "Go due east until you hit the lake."
+            ]
+        }
+    }
+
+
+    {cmd, syntax=*know*|*not *sure*|*no idea*
+        {act, type=object_event, value=dontknow }
+    }
+
+    {cmd, syntax=*where*|*find*|*spire*
+        {act, type=object_event, value=where }
+    }
+}

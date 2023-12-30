@@ -1,0 +1,27 @@
+{test, name=pcomm
+    [@commands
+        l under bed
+        take chip
+        hxsmith23
+        plug in chip
+        take pcomm
+        pc:nxciz5
+        systemctl netjack enable
+    ]
+}
+
+{test, name=nh
+    [@commands
+        _test pcomm
+        jack in
+        e
+    ]
+}
+
+{test, name=db
+    [@commands
+        _test nh
+        e
+        n
+    ]
+}

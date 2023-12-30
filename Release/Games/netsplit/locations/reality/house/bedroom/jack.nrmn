@@ -1,0 +1,56 @@
+{object, alias=br_jack, label=Net Jack, type=object, location=br_desk, parent_type=object
+    {attr, alias=activated, value=false }
+
+    {evt, type=on_desk
+        [msg
+            You see a Net Jack.
+        ]
+    }
+
+    {evt, type=examine_jack
+        [msg
+            You examine the Net Jack. It is a small box with a long cord protruding from
+            it. On the end of the cord is a small bio-plug, designed to plug into the
+            side of the user's neck.
+        ]
+
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:activated=true
+                ]
+                [fail
+                    It appears to be inactive. All of its indicator lights are dark.
+                ]
+            }
+
+            [msg
+                It is active and the indicator lights along its side are glowing green.
+            ]
+        }
+    }
+
+    {evt, type=plugin
+        {lset
+            [@eval
+                attribute@{self}:activated=true
+            ]
+            [fail
+                You plug the Net Jack into the right side of your neck. Nothing happens.
+            ]
+        }
+
+        {act, type=travel, newvalue=nethome
+            [msg==You plug the Net Jack into your neck. The world flashes blindingly white. ]
+        }
+    }
+
+
+    {cmd, syntax=*x* jack*
+        {act, type=object_event, value=examine_jack }
+    }
+
+    {cmd, syntax=jack in|*plug* jack*
+        {act, type=object_event, value=plugin }
+    }
+}

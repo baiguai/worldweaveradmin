@@ -1,0 +1,22 @@
+{room, alias=bedroom, label=Bedroom
+    {evt, type=enter|look
+        [msg==You are in your own bedroom. ]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+
+
+    {sort
+        [@obj
+            br_comp1
+            br_keyboard1
+            br_comp2
+            br_keyboard2
+            pcomm
+            br_jack
+        ]
+    }
+}

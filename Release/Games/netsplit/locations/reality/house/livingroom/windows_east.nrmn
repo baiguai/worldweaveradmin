@@ -1,0 +1,33 @@
+{object, alias=lr_windows_e, label=East Windows, type=item, meta=*window* e*, location=livingroom
+    {attr, alias=shadseen, value=false }
+
+    {evt, type=enter|look
+        [msg
+            Along the full width of the east wall you see windows. They run ceiling to floow, north to south.
+        ]
+    }
+
+    {evt, type=enter|look
+        {lset
+            [@eval
+                random@60
+                &&
+                attribute@{self}:shadseen=false
+            ]
+        }
+
+        {act, type=attribute, source={self}:shadseen, value=true
+            [msg
+                You see a large dark shadow streak by, just outside the window. Before you can tell what it is
+                it is gone.
+            ]
+        }
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the windows in the east end of the livingroom. They fill the entire east wall,
+            from ceiling to floor, and north to south.
+        ]
+    }
+}

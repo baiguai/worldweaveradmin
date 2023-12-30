@@ -1,0 +1,13 @@
+>>title=Sample Command
+>>syntax=command example
+>>tags=command example command sample
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+{cmd, syntax=*x* generator*
+    {aset
+        {act, type=object_event, newvalue=examine }
+    }
+}
+
+--------------------------------------------------------------------------------

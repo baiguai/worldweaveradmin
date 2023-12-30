@@ -1,0 +1,68 @@
+>>title=Action Component Details
+>>syntax=action component
+>>tags=action components action elements action objects die ending a game game end lose game
+>>related=event components
+>>related=command commponents
+>>related=action types
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{actionset, repeat=1
+    {action, type=attribute, source=torch_lit, newvalue=true
+        ...
+    }
+}
+
+{aset
+    {act, type=attribute, source=torch_lit, newvalue=true
+        ...
+    }
+}
+
+
+Description:
+    Actions define changes that are made to the game, or they can fire
+    Events or display Messages.
+
+
+Syntax:
+    Actions are housed within ActionSets or stand alone.
+    ActionSets group Actions together.
+    See:
+    help actionset component
+    They are defined as a component, using curly braces {} to denote them.
+
+
+Required Properties:
+    type:
+    Defines the Action's type. For a list of possible Action types use:
+    help action types
+
+    newvalue:
+    The new value attribute defines a change that the Action will make to the
+    game's state.
+
+    value:
+    A value references another component in the game. This can be an Event or
+    an Object's Event or similar.
+
+
+
+Optional Properties:
+    source:
+    Specifies the Action's target. This is required depending upon the Action's
+    type.
+
+
+
+Allowed Parent Components:
+    actionset
+    event
+    command
+
+
+Allowed Child Components:
+    messageset
+    message
+
+--------------------------------------------------------------------------------

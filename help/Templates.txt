@@ -1,0 +1,15 @@
+>>title=Defining Components as Templates
+>>syntax=templates
+>>tags=game development template components templates inheritance
+>>topic=Templates
+--------------------------------------------------------------------------------
+
+The term Template refers to any standard game component that is designed to
+be a 'template', or something that may be different each time the game is played
+for the first time, or when the component is cloned or spawned. Defining a
+template entails utilizing special Attribute values/types such as random or
+Attributes that point to the value of another Attribute. The Player component
+is a good example of this. It is often the case that each time a game is played
+for the first time the player has slightly different stats etc.
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,24 @@
+>>title=Building Your First %title% Game 07 : Client Setup
+>>syntax=tutorial client setup
+>>tags=client setup client autoplay client default game branding splash screen tutorials building your first game build your first game development game authoring game building
+>>related=creating a game
+>>topic=tutorials
+--------------------------------------------------------------------------------
+
+01) Configure the Client to play MazeMaster by default. Navigate to:
+
+<WorldWeaverClient>
+|__ Config
+
+
+03) Edit the Global.config file. Add the following:
+
+init_game=Maze_Master
+
+
+--------------------------------------------------------------------------------
+
+Next step:
+help tutorial client setup
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,32 @@
+>>title=How to Distribute Your Games
+>>syntax=distributing games
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+Once a game has been compiled, it can be made available for playing. This is
+done by locating the resulting game database within the following directory:
+
+<%title% Admin>
+  |__ Data
+      |__ Games
+
+The database name is set according to the build command. For information on
+building games use:
+
+help compiling games
+
+
+The game database can be made available on websites or other public location
+that people can download it from. To install the game, it must be copied into
+the following client directory:
+
+<%title% Client>
+  |__ Data
+      |__ Games
+
+It will then be shown in the available games list. For more information on
+installing games use:
+
+help installing games
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,24 @@
+>>title=Travel Modes
+>>syntax=travel mode types
+>>tags=npc travelsets travel mode npc travel modes npc travelset modes path follow random repeat
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+follow
+    Causes the npc to follow the player. This can be stopped by setting the
+    TravelSet's active Attribute to false.
+
+path
+    Causes the TravelSet to go from the first Travel node location to the last,
+    then the NPC works backward through its path.
+
+random
+    A set of Travels must be defined for the random mode, like the path and 
+    repeat modes, however the NPC randomly chooses a direction along the path
+    with each move.
+
+repeat
+    Causes the TravelSet to go from the first Travel node location to the last,
+    then it works backward to the first one and starts over.
+
+--------------------------------------------------------------------------------

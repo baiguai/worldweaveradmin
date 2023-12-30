@@ -1,0 +1,68 @@
+>>title=Inline Logic
+>>syntax=inline logic
+>>tags=messages inline logic inline message logic
+>>topic=Components
+--------------------------------------------------------------------------------
+
+Logic can be performed within a Message's text.
+
+DISPLAYING AN ATTRIBUTES VALUE
+    Attribute values can be shown within a Message's text using the following
+    syntax:
+
+    [att]<element alias>:<attribute alias>[/att]
+
+
+DISPLAYING AN NPCS INVENTORY
+    The items currently carried by an NPC can be listed within a Message's
+    text using the following syntax:
+
+    [inv]<npc alias>[/inv]
+
+
+LOGICAL COMPARISON OF AN ATTRIBUTE'S VALUE
+    A logical check of an Attribute's value can be performed within a Message's
+    text using the following syntax:
+
+    [att?<element alias>:<attribute alias>=<value>] ... [/att]
+
+    For example:
+
+    [message
+You see a torch.
+[att?torch:lit=true]It is lit.[/att]
+[att?torch:lit!=true]It is not lit.[/att]
+[att?{player}:hints=true]This is a hint.[/att]
+    ]
+
+    Note that the text within inline Attribute text is a bit more limited than
+    standard message text. These should be used for basic text output.
+    For more complex messages, use an eval check within a message event or
+    similar.
+
+    For a list of possible comparison operands use:
+    help inline operands
+
+
+REFERENCING REUSABLE MESSAGESETS
+    Objects can be created solely to house a reusable Messageset. These Objects
+    can be given the type of message, and should contain only one Messageset.
+    They can contain other elements, but must have a single Messageset. To
+    reference these reusable Messagesets use the following syntax:
+    [msg:<object alias>]
+
+
+PLAYER ATTRIBUTE VALUE
+    One of the Player's Attribute values can be output into the Message using
+    the following syntax:
+
+    {player:<attribute alias>}
+
+
+OBJECT / NPC LOCATION
+    This is primarily to aid in testing NPC Travel. It displays the specified
+    Object or Npc location:
+
+    {location:<object/npc alias>}
+
+--------------------------------------------------------------------------------

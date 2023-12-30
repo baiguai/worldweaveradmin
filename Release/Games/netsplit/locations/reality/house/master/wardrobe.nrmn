@@ -1,0 +1,199 @@
+{object, alias=mst_wardrobe, label=Wardrobe, type=container, meta=*wardrobe*, location=master
+    {attr, alias=open, value=false }
+
+    {evt, type=enter|look
+        [msg
+            In the center of the north wall stands a tall wardrobe.
+        ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the wardrobe. It is nearly as tall as the room itself and is made
+            of dark reddish colored wood with brushed metal components throughout.
+        ]
+    }
+
+    {evt, type=examine|look
+        {lset
+            [@eval
+                attribute@{self}:open=true
+            ]
+            [fail
+                It is closed.
+            ]
+        }
+
+        [msg==It is open. ]
+    }
+
+    {evt, type=behind
+        [msg==You look behind the wardrobe. There is nothing there. ]
+    }
+
+    {evt, type=under
+        [msg==You kneel down and look under the wardrobe. You don't see anything. ]
+    }
+
+    {evt, type=inside
+        {lset
+            [@eval
+                attribute@{self}:open=true
+            ]
+            [fail
+                The wardrobe is closed.
+            ]
+        }
+
+        [msg
+            You look inside the wardrobe. Expensive looking clothes hang from a
+            brushed metal bar in the top of its interior.
+            Beneath the clothes are shelves and beneath those are wide drawers.
+            Sittin on the base of the wardrobe are dress shoes and expensive high heels.
+        ]
+    }
+
+    {evt, type=open
+        {lset
+            [@eval
+                attribute@{self}:open=false
+            ]
+            [fail
+                The wardrobe is already open.
+            ]
+        }
+
+        {act, type=attribute, source={self}:open, newvalue=true
+            [msg==You pull the doors of the wardrobe open. ]
+        }
+    }
+
+    {evt, type=close
+        {lset
+            [@eval
+                attribute@{self}:open=true
+            ]
+            [fail
+                The wardrobe is already closed.
+            ]
+        }
+
+        {act, type=attribute, source={self}:open, newvalue=false
+            [msg==You close the wardrobe doors. ]
+        }
+    }
+
+
+    {cmd, syntax=*x* wardrobe*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*behind *wardrobe*|*back* wardrobe*
+        {act, type=object_event, value=behind }
+    }
+
+    {cmd, syntax=*under* wardrobe*|*beneath* wardrobe*
+        {act, type=object_event, value=under }
+    }
+
+    {cmd, syntax=*in *wardrobe*|*inside* wardrobe*
+        {act, type=object_event, value=inside }
+    }
+
+    {cmd, syntax=*open* wardrobe*
+        {act, type=object_event, value=open }
+    }
+
+    {cmd, syntax=*close* wardrobe*
+        {act, type=object_event, value=close }
+    }
+
+
+
+    // CLOTHES
+    {evt, type=x_clothes
+        {lset
+            [@eval
+                attribute@{self}:open=true
+            ]
+            [fail
+                You don't see any clothes.
+            ]
+        }
+
+        [msg
+            You examine the clothes inside the wardrobe.
+            You don't recognize any of them. Strange.
+            They appear to be extremely expensive. Most of them are tailored suits
+            and elegant evening gowns.
+        ]
+    }
+
+    {evt, type=x_shelves
+        {lset
+            [@eval
+                attribute@{self}:open=true
+            ]
+            [fail
+                You don't see any shelves.
+            ]
+        }
+
+        [msg
+            You examine the shelves below the hanging clothes inside the wardrobe.
+        ]
+    }
+
+    {evt, type=x_drawers
+        {lset
+            [@eval
+                attribute@{self}:open=true
+            ]
+            [fail
+                You don't see any drawers.
+            ]
+        }
+
+        [msg
+            You open the drawers in the bottom of the wardrobe.
+            One contains luxury watches, encased within a locked glass
+            case. Another contains cuff links and jewelry and other odds and ends.
+            The last drawer contains intimates and socks.
+        ]
+    }
+
+    {evt, type=x_shoes
+        {lset
+            [@eval
+                attribute@{self}:open=true
+            ]
+            [fail
+                You don't see any shoes.
+            ]
+        }
+
+        [msg
+            You examine the shoes and high heels sitting on the bottom of the
+            inside of the wardrobe. They are expensive looking and apparently
+            have never been worn.
+        ]
+    }
+
+
+
+    {cmd, syntax=*x* clothes*
+        {act, type=object_event, value=x_clothes }
+    }
+
+    {cmd, syntax=*x* shel*
+        {act, type=object_event, value=x_shelves }
+    }
+
+    {cmd, syntax=*x* drawer*
+        {act, type=object_event, value=x_drawers }
+    }
+
+    {cmd, syntax=*x* shoes*|*x* heel*
+        {act, type=object_event, value=x_shoes }
+    }
+}

@@ -1,0 +1,35 @@
+{help, syntax=--help player, title=Player
+    [@topic
+In WorldWeaver, games can be played either single player locally, or multi-player
+online. Because of this players must be created first, then those players can
+be connected to games.
+\n
+\n
+\n
+REGISTERING PLAYERS
+To register a new player, use the register command. This command takes the
+following parameters, separated by commas:
+\n
+name
+The player's identifying name (Must be one word).
+\n
+display name
+The player's friendly name.
+\n
+password
+A password for verifying the player.
+\n
+email
+An email used to validate the registration.
+\n
+\n
+\n
+IDENTIFYING PLAYERS
+If you have registered more than one player you can choose which player to use
+in the loaded game using:
+ident [player name], [password]
+\n
+To see which player you are currently using use:
+player
+    ]
+}

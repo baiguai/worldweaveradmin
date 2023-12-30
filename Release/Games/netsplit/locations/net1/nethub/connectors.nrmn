@@ -1,0 +1,49 @@
+// WEST PORTAL - NetHome
+{object, alias=nhb_door_w, label=West Portal, type=connector, location=nethub
+    {evt, type=enter|look
+        [msg==In the west end of the room you see a large glowing portal.]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the west portal.
+            It is large and glowing brilliantly.
+        ]
+    }
+
+
+    {cmd, syntax=*x* w* portal*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *w* portal*|west|w
+        {act, type=travel, newvalue=nethome
+            [msg==You step through the portal. Everything flashes white.]
+        }
+    }
+}
+
+// EAST PORTAL - EastAlley
+{object, alias=nhb_door_e, label=East Portal, type=connector, location=nethub
+    {evt, type=enter|look
+        [msg==In the east end of the room you see a large glowing portal.]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the east portal.
+            It is large and glowing brilliantly.
+        ]
+    }
+
+
+    {cmd, syntax=*x* e* portal*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *e* portal*|east|e
+        {act, type=travel, newvalue=eastalley
+            [msg==You step through the portal. Everything flashes white.]
+        }
+    }
+}

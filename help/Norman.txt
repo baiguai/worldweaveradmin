@@ -1,0 +1,22 @@
+>>title=Norman Notation
+>>syntax=norman
+>>tags=about norman notation about norman script
+>>topic=Norman
+--------------------------------------------------------------------------------
+
+Norman notation is a declarative language created specifically for defining
+%title% games. It was created as a means to easily define games and game
+elements with a minimal amount of code. This language has replaced XML as
+the language used to define games.
+
+For more information on Norman Notation use:
+help norman
+help norman notation
+help norman properties
+help norman elements
+help norman escape
+help norman properties
+help norman special characters
+help norman examples
+
+--------------------------------------------------------------------------------

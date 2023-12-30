@@ -1,0 +1,60 @@
+{room, alias=main_street_w_houses, label=Kalisto Houses
+    {evt, type=enter
+        {mset
+            [msg
+                You approach the houses on the south side of the main street.
+                \n
+                They are of simple construction, comprised of brick and wood.
+                \n
+                [att?{player}:is_day=false]Since it is night, all the windows are dark. It appears everyone in Kalisto is asleep.[/att]
+                [att?{player}:is_day=true]Some of the houses have smoke trailing up into the sky from their chimneys and you see a few people out in their yards or sitting in front of their houses.[/att]
+                \n
+                \n
+                North of you is the main street of kalisto.
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset
+            [msg
+                You look at the houses.
+                They are fairly small and of a basic construction.
+                \n
+                \n
+                To the north of you is the main street of Kalisto.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=n|*north
+        {act, type=travel, newvalue=kalisto_main_street_w }
+
+        {mset
+            [msg
+You return to the main road.
+            ]
+        }
+    }
+}
+
+
+
+
+// --------------------------------------------------------------------------------
+// Admin Notes, Etc
+// --------------------------------------------------------------------------------
+{log, type=todo
+    [text
+Allow the player to explore the houses and mundane areas of the village more.
+    ]
+}

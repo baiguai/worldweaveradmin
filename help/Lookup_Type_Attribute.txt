@@ -1,0 +1,23 @@
+>>title=Possible Attribute Types
+>>syntax=attribute types
+>>tags=lookup attribute types types of attributes random attributes
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+Attributes can derive their values according to their type property. The
+possible Attribute types are:
+
+random:
+    Random Attributes randomly choose their values initially. The random value
+    is limited to the range specified by the Attribute's value using the
+    following syntax:
+
+    <min value>\,<max value>
+
+    If you need an Attribute to use a random value every time its value is
+    read, use the random special value instead of the random type. For more
+    information use:
+
+    help special attribute values
+
+--------------------------------------------------------------------------------

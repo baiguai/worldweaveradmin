@@ -1,0 +1,59 @@
+{room, alias=kalisto_main_street_w, label=Kalisto Main Street West
+    {evt, type=enter
+        {mset
+            [msg
+You are standing in the west end of the main street in Kalisto.
+The street extends east further in the village and west, exiting Kalisto.
+            ]
+        }
+
+        {act, type=event, value=navigation }
+    }
+
+    {evt, type=look
+        {mset
+            [msg
+You look around. The road extends east into the village and west, exiting Kalisto.
+            ]
+        }
+
+        {act, type=event, value=navigation }
+    }
+
+
+    {evt, type=navigation
+        {mset
+            [msg
+\n\n
+East of you, the road extends deeper into the village.
+\n
+West of you, the road exits Kalisto.
+\n
+North of you is the Old Oak Inn.
+\n
+South of you are some houses.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=n|*north
+        {act, type=travel, newvalue=old_oak_inn_gen }
+    }
+
+    {cmd, syntax=s|*south
+        {act, type=travel, newvalue=main_street_w_houses }
+    }
+
+    {cmd, syntax=e|*east
+        {act, type=travel, newvalue=kalisto_main_street_e }
+    }
+}

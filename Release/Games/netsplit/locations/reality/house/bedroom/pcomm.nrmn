@@ -1,0 +1,146 @@
+{object, alias=pcomm, label=PComm, type=object, location=br_desk, parent_type=object
+    {attr, alias=moved, value=false }
+    {attr, alias=timepass, value=0 }
+    {attr, alias=locked, value=true }
+    {attr, alias=has_teleport, value=false }
+
+    {evt, type=on_desk
+        {lset
+            [@eval
+                attribute@{self}:moved=false
+            ]
+        }
+
+        [msg
+            You see a Personal Communicator (PComm).
+        ]
+
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:locked=false
+                ]
+                [fail
+                    The PComm is locked.
+                ]
+            }
+        }
+    }
+
+    {evt, type=examine_pcomm
+        [msg
+            You examine the PComm.
+        ]
+
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:locked=false
+                ]
+                [fail
+                    The PComm is locked (To unlock it enter pc:<password>).
+                ]
+            }
+
+            [msg
+                The PComm is unlocked.
+                \n
+                To view its contents use: pc:ls
+                \n
+                To execute an application on the PComm use: pc:<application name>
+                \n
+                TODO: Define the application executions.
+            ]
+        }
+    }
+
+    {evt, type=unlock_pcomm
+        {lset
+            [@eval
+                attribute@{self}:locked=true
+            ]
+            [fail
+                The PComm is already unlocked.
+            ]
+        }
+
+        {act, type=attribute, source={self}:locked, newvalue=false
+            [msg
+                You enter the PComm password and unlock it.
+            ]
+        }
+    }
+
+    {evt, type=take
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+            [fail
+                You are already carrying the PComm.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:moved, newvalue=true }
+            {act, type=move, source={self}, newvalue={player}
+                [msg
+                    You pick up the PComm.
+                ]
+            }
+        }
+    }
+
+    {evt, type=drop
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying the PComm.
+            ]
+        }
+
+        {act, type=move, source={self}, newvalue={room}
+            [msg
+                You drop the PComm.
+            ]
+        }
+    }
+
+    {evt, type=list
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:has_teleport=true
+                ]
+            }
+            [msg==teleport]
+        }
+    }
+
+
+    {cmd, syntax=*x* pcomm*
+        {act, type=object_event, value=examine_pcomm }
+    }
+
+    {cmd, syntax=pc:nxciz5
+        {act, type=object_event, value=unlock_pcomm }
+    }
+
+    {cmd, syntax=take *pcomm*
+        {act, type=object_event, value=take }
+    }
+
+    {cmd, syntax=drop *pcomm*
+        {act, type=object_event, value=drop }
+    }
+
+    {cmd, syntax=pc:nxciz5
+        {act, type=object_event, value=unlock_pcomm }
+    }
+
+    {cmd, syntax=pc:ls
+        {act, type=object_event, value=list }
+    }
+}

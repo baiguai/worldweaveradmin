@@ -1,0 +1,10 @@
+>>title=%title% Links
+>>syntax=links
+>>tags=about worldweaver links
+>>topic=Information
+--------------------------------------------------------------------------------
+
+Interactive Fiction, general information:
+https://en.wikipedia.org/wiki/Interactive_fiction
+
+--------------------------------------------------------------------------------

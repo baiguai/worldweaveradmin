@@ -1,0 +1,63 @@
+{object, alias=db_shelves, label=Shelves, type=container, meta=*shel*, location=databank
+    {evt, type=enter|look
+        [msg
+            Along all the walls you see towering shelves.
+        ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the shelves. They are made completely of smoke-tinted glass.
+            Arranged neatly along them are plates of glass encoded with data.
+            \n
+            (They can be inserted into the terminals throughout the databank.)
+        ]
+    }
+
+    {evt, type=ex_plates
+        [msg
+            You examine the plates. They are arranged by topic. Perhaps once you've tracked
+            down the hacker who attacked you reading through them might be an enjoyable passtime.
+        ]
+    }
+
+    {evt, type=on
+        [msg
+            The shelves are far too tall to see what might be sitting on top of them.
+        ]
+    }
+
+    {evt, type=under
+        [msg
+            You kneel down and look under the shelves. There is a small gap between them and the
+            floor, however you don't see anything.
+        ]
+    }
+
+    {evt, type=behind
+        [msg
+            You look behind the shelves. There is nothing there.
+        ]
+    }
+
+
+    {cmd, syntax=*x* shel*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*x* plate*
+        {act, type=object_event, value=ex_plates }
+    }
+
+    {cmd, syntax=*on* shel*
+        {act, type=object_event, value=on }
+    }
+
+    {cmd, syntax=*under* shel*|*beneath* shel*|*below* shel*
+        {act, type=object_event, value=under }
+    }
+
+    {cmd, syntax=*behind* shel*|*back* shel*
+        {act, type=object_event, value=behind }
+    }
+}

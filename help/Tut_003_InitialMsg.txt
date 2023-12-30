@@ -1,0 +1,38 @@
+>>title=Building Your First %title% Game 03 : Initial Message
+>>syntax=tutorial init message
+>>tags=initial game message initial message initial event tutorials building your first game build your first game development game authoring game building
+>>related=creating a game
+>>topic=tutorials
+--------------------------------------------------------------------------------
+
+01) Define the Game's initial Event.
+    We will define the initial Message in the following file:
+
+<WorldWeaverAdmin>
+|__ Games
+    |__ MazeMaster
+        |__ game.nrmn
+
+
+    Right after the Player object enter the following:
+
+{evt, type=game_init
+    [msg
+        You have arrived at the entrance to the ancient maze you have heard
+        about only in legends. It is said that treasure beyond measure lies
+        within its center, deep within the ground. Many have attempted to
+        plunder it.
+        \n
+        All of them have died.
+        \n
+        \n
+    ]
+}
+
+
+--------------------------------------------------------------------------------
+
+Next step:
+help tutorial start location
+
+--------------------------------------------------------------------------------

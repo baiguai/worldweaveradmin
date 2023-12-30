@@ -1,0 +1,38 @@
+>>title=How to Compile %title% Games
+>>syntax=compiling games
+>>tags=game development compile games compiling games building games
+>>related=scripts
+>>related=game development
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+build Dungeon_Explorer, DungeonExplorer
+
+
+Description:
+Before %title% games can be played they must be compiled. This will parse
+the definition files and generate a game database. The resulting database is
+automatically imported into the %title%Admin Client tool. This is a copy
+of the %title%Client tool used to run and test games. A script has been
+included to launch this client. See:
+
+help scripts
+
+
+Syntax:
+build <output file name>, <game directory>
+
+
+Required Parameters:
+    output file:
+    Specifies the file name for the resulting game database. This value must be
+    an allowable file name. Since %title% is cross platform, be sure the
+    file name is allowed in the operating systems you want it playable in.
+
+    game directory:
+    Specifies the directory within the Games folder. This is the directory that
+    contains the game definition files. See:
+
+    help game development
+
+--------------------------------------------------------------------------------

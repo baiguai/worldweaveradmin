@@ -1,0 +1,88 @@
+>>title=Game Development Troubleshooting
+>>syntax=troubleshooting
+>>tags=troubleshooting debugging bugs errors mistakes pitfalls trouble shooting
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+Sometimes while authoring a game you will run into bugs and unexpected behavior.
+These issues can be tough to track down.
+
+Actions Cause Unwanted Events to Fire:
+    Sometimee Events with LogicSets in them designed to perform an 'or'
+    check will cause multiple Events to fire if an Attribute is changed
+    causing downstream LogicSets to pass. See:
+    help fail event
+
+Attribute Logic:
+    If you have an Attribute Logic block that isn't behaving as expect, make
+    sure the Attribute has a closing curly brace (}). If this is missing, it
+    will cause game elements to not be properly parsed. Similar errors could
+    occur with any game element.
+
+Attributes Not Being Set,
+Events Not Firing Right:
+    Be sure that the Object or Npc has a unique alias specified for it.
+    The Norman parser attempts to recognize duplicate aliases, but
+    sometimes different types like Object and Npc can have the same
+    alias without triggering an error.
+
+Attributes Not Incrementing:
+    If you have an Action that increments or sets an Attribute value,
+    but the end result is a blank value - be sure you've specified the new
+    value in a newvalue attribute, not a value attribute.
+
+Commands Not Firing:
+    This is usually caused by a syntax error somewhere. Missing braces or
+    similar. To find out where, you can remove items from the room, then
+    re-add them until it breaks. Then you will know what code to look at.
+
+    Also:
+    If you have defined a Command and it isn't firing in spite of the syntax
+    and other aspects appearing correct - if it is calling an action, be sure
+    the action is wrapped in an action set.
+
+    Travel Commands
+    If you have a command and the syntax appears to be correct, but it still
+    isn't firing in the game. If the command's action is Travel, be sure the
+    destination room exists.
+
+
+Compiling:
+    Sometimes games will fail to compile. If this happens %title% will
+    sometimes display an error message that helps to pin point the problem.
+    In future updates this will become more thorough.
+
+Event Firing On Enter:
+    If you have Events that are firing upon entering a room - even though
+    they are not set as enter or look - Be sure the Event is encapsulated in
+    curly brackets {} not parentheses ().
+
+Events Looping Forever:
+    If an Event has a Logicset with a fail event equal to the Event, the
+    result will be an endless loop. There is currently no safety against
+    this, so be careful not to write such definitions.
+
+Null Error on Travel
+    If you get a Null error and the game crashes when travelling, double check
+    the newvalue. It is most likely referencing a room alias that doesn't exist.
+    This can also happen when referencing an Object or other game element that
+    doesn't exist.
+
+Parsing Order:
+    The order in which components are defined in the game definition files is
+    important, as is the order in which components are fired. Be careful when
+    using LogicSets in conjunction with Actions or Events.
+
+Messages Not Showing:
+    If you are using the [msg==...] shorthand, be sure you have used double
+    equals (==) as opposed to a single equals.
+
+Game State:
+    Become familiar with the admin tools. They will help identify the current
+    state of Attributes and other aspects of the game. The map commands will
+    help give you a picture of the game world's structure.
+
+Logs:
+    Use logs to keep track of clues, ToDo's, codes in the game etc.
+
+--------------------------------------------------------------------------------

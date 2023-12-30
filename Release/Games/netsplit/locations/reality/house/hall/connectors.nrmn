@@ -1,0 +1,113 @@
+// NORTH WEST DOOR
+{object, alias=hall_door_nw, label=North West Door, type=connector, location=hall
+    {evt, type=enter|look
+        [msg==Set into the west end of the north wall you see a door (north west door). ]
+    }
+
+    {evt, type=examine
+        [msg==You examine the north west door. It is narrow and made of wood. ]
+    }
+
+
+    {cmd, syntax=*x* n* w* door*|*x* nw*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *n *w *door*|northwest|nw
+        {act, type=travel, newvalue=master
+            [msg==You step through the door in the west section of the north wall. ]
+        }
+    }
+}
+
+// NORTH DOOR
+{object, alias=hall_door_n, label=North Door, type=connector, location=hall
+    {evt, type=enter|look
+        [msg==Set into the middle of the north wall you see a door. ]
+    }
+
+    {evt, type=examine
+        [msg==You examine the north door. It is narrow and made of wood. ]
+    }
+
+
+    {cmd, syntax=*x* n* door*|*x* n*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *n *door*|north|n
+        {act, type=travel, newvalue=guestroom
+            [msg==You step through the north door. ]
+        }
+    }
+}
+
+// EAST DOOR
+{object, alias=hall_door_e, label=East Door, type=connector, location=hall
+    {evt, type=enter|look
+        [msg==Set in the east wall you see a door. ]
+    }
+
+    {evt, type=examine
+        [msg==You examine the east door. It is narrow and made of wood. ]
+    }
+
+
+    {cmd, syntax=*x* e* door*|*x* e*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *e *door*|east|e
+        {act, type=travel, newvalue=livingroom
+            [msg==You step through the east door. ]
+        }
+    }
+}
+
+// SOUTH WEST DOOR
+{object, alias=hall_door_sw, label=South West Door, type=connector, location=hall
+    {evt, type=enter|look
+        [msg==Set into the west end of the south wall you see a door (south west door). ]
+    }
+
+    {evt, type=examine
+        [msg==You examine the south west door. It is narrow and made of wood. ]
+    }
+
+
+    {cmd, syntax=*x* s* w* door*|*x* sw*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *s *w *door*|southwest|sw
+        {act, type=travel, newvalue=bedroom
+            [msg==You step through the door in the west section of the south wall. ]
+        }
+    }
+}
+
+// SOUTH DOOR
+{object, alias=hall_door_s, label=South Door, type=connector, location=hall
+    {evt, type=enter|look
+        [msg==Set into the center of the south wall you see double doors. ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the double doors in the south wall.
+            They are painted bright orange. Brushed metal door knobs protrude
+            from the center of the doors.
+        ]
+    }
+
+
+    {cmd, syntax=*x* s* door*|*x* s*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter *s *door*|enter *double*|south|s
+        {act, type=travel, newvalue=yard
+            [msg==You step through the double doors. ]
+        }
+    }
+}

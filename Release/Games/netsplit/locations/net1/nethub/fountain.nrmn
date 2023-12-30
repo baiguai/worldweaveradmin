@@ -1,0 +1,31 @@
+{object, alias=nhb_fountain, label=Fountain, type=fixture, location=nethub
+    {evt, type=enter|look
+        [msg
+            In the center of the NET Hub is a large circular fountain.
+            The water has a curious blue hue to it.
+            Thin jets of water shoot up into the air from various locations
+            within it.
+        ]
+    }
+
+    {evt, type=in
+        [msg==You look into the water of the fountain.]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the fountain. It is large and circular in shape.
+            The water has a curious blue hue.
+            You see thin jets of water here and there, shooting water into the air.
+        ]
+    }
+
+
+    {cmd, syntax=*x* fountain*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*in* fountain*
+        {act, type=object_event, value=in }
+    }
+}

@@ -1,0 +1,43 @@
+>>title=Building Your First %title% Game 04 : Start Location
+>>syntax=tutorial start location
+>>tags=initial location start location tutorials building your first game build your first game development game authoring game building
+>>related=creating a game
+>>topic=tutorials
+--------------------------------------------------------------------------------
+
+01) Create the locations directory in the following location:
+
+<WorldWeaverAdmin>
+|__ Games
+    |__ MazeMaster
+        |__ locations
+
+
+03) Create a directory called entrance within the locations directory.
+
+
+03) Within the entrance directory create the following file: entrance.nrmn
+
+
+04) In the entrance.nrmn file enter the following:
+
+{room, alias=entrance, label=Entrance
+    {evt, type=enter|look
+        [msg
+            You are standing at the entrance to the ancient maze of Oroth.
+        ]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+}
+
+
+--------------------------------------------------------------------------------
+
+Next step:
+help tutorial macro
+
+--------------------------------------------------------------------------------

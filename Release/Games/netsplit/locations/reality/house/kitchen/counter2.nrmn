@@ -1,0 +1,42 @@
+{object, alias=kt_counter2, label=Counter, type=platform, location=kitchen
+    {evt, type=enter|look
+        [msg==Along the north wall you see a wide counter (north counter).]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the counter along the north wall.
+            It spans the width of the room. The counter top is made of brushed metal
+            and it stands on thick brushed metal cylinders.
+        ]
+    }
+
+    {evt, type=on
+        [msg==You look on the north counter. There is nothing there.]
+    }
+
+    {evt, type=under
+        [msg==You look under the north counter. You don't see anything there.]
+    }
+
+    {evt, type=behind
+        [msg==You look behind the north counter. There is nothing there.]
+    }
+
+
+    {cmd, syntax=*x* n* counter*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*on *n* counter*|*top *n* counter*
+        {act, type=object_event, value=on }
+    }
+
+    {cmd, syntax=*under *n* counter*|*beneath *n* counter*
+        {act, type=object_event, value=under }
+    }
+
+    {cmd, syntax=*behind *n* counter*|*back *n* counter*
+        {act, type=object_event, value=behind }
+    }
+}

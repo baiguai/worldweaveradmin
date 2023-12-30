@@ -1,0 +1,64 @@
+>>title=How to Call Events
+>>syntax=calling events
+>>tags=calling events firing events event actions
+>>related=action types
+>>related=event types
+>>topic=Components
+--------------------------------------------------------------------------------
+
+{event, type=examine_torch
+    ...
+}
+
+{actionset
+    {action, type=object_event, newvalue=examine_torch }
+}
+
+
+Events can be called by Actions, using the event and object_event types. For
+information on available Action types use:
+
+help action types
+
+
+Built in Events are fired automatically in certain scenarios. For examine the
+enter / init Event type is fired whenever the player enters a Room. Actions,
+Logic, Messages can be defined whthin an Event of this or other pre-defined
+types and those will be processed. For example, to display a message when the
+player enters a Room, you could do something like:
+
+{evt, type=enter
+    {mset
+        [msg
+            You are now standing in the spacious dungeon entrance.
+        ]
+    }
+}
+
+For more a list of the pre-defined Event types use:
+
+help event types
+
+
+NOTE:
+In most cases %title% relies on the game author to define Commands and
+Events etc. Very little is done automatically. For example, new Rooms do not
+have built in 'look' Commands so the author must define these:
+
+{room, alias=dungeon_entrance, label=Entrance
+    {evt, type=look
+        {mset
+            [msg
+                You look around.
+            ]
+        }
+    }
+
+    {cmd, syntax=l|look
+        {aset
+            {act, type=event, newvalue=look }
+        }
+    }
+}
+
+--------------------------------------------------------------------------------

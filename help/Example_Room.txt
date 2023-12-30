@@ -1,0 +1,40 @@
+>>title=Sample Room
+>>syntax=room example
+>>tags=rooms example room sample
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+
+{room, alias=arsenal, label=Arsenal
+    // EVENTS
+    {evt, type=enter
+        {aset
+            {act, type=spawn, source=pulse_grenade, repeat=1 }
+            {act, type=spawn, source=healthcap_5, repeat=1 }
+        }
+    }
+
+    {evt, type=look|enter
+        {aset
+            {act, type=spawn, source=robot_lvl3_multi, repeat=3 }
+        }
+    }
+
+    {evt, type=init|look
+        {mset
+            [msg
+                You are in a large arsenal store. Dim service lights, encaged in metal, shine
+                down from the ceiling far overhead.
+            ]
+        }
+    }
+
+    // COMMANDS
+    {cmd, syntax=l|look
+        {aset
+            {act, type=event, newvalue=look }
+        }
+    }
+}
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,30 @@
+>>title=Special Values
+>>syntax=special values
+>>tags=special values
+>>topic=Lookups
+--------------------------------------------------------------------------------
+
+In various components such as Logic blocks, Actions, or Attributes special
+values can be used to denote game elements without specifying their actual
+aliases. Possible special values include:
+
+{armed}
+    Specifies the player's currently armed weapon (If the game uses weapons).
+
+{input}
+    Replaces {input} with the user's input. This can be used when generic
+    input is expected such as numbers etc. I can only be used for the newvalue
+    of Actions or Message text within a Command element.
+    (See NetSplit's Apartments Elevator)
+
+{player}
+    Specifies the current Player.
+
+{room}
+    Specifies the Room the Player is currently in.
+
+{self}
+    Specifies the Game, Npc, Player, Object, or Room the current element is
+    a child of.
+
+--------------------------------------------------------------------------------

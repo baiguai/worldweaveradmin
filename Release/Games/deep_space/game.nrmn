@@ -1,0 +1,210 @@
+{game, name=Deep Space, initial_location=lounge31, stats_aliases=goal|life|max_life|points|level|credits, admin_password=admd
+    // {attr, alias=display_mode, value=clear }
+    {attr, alias=wrap_width, value=80 }
+
+    // PLAYER
+    {player
+        {attr, alias=goal, value=None }
+        {attr, alias=goalid, value=init }
+        {attr, alias=task, value=None }
+        {attr, alias=taskid, value=none }
+        {attr, alias=life, type=random, value=10\,20 }
+        {attr, alias=max_life, type=attribute, value={player}:life }
+        {attr, alias=points, value=0 }
+        {attr, alias=level, value=1 }
+        {attr, alias=hints, value=false }
+        {attr, alias=credits, value=0 }
+        {attr, alias=piratecut, value=0 }
+
+        // Time Vars
+        {attr, alias=cur_time, value=15 }
+        {attr, alias=cur_mins, value=00 }
+        {attr, alias=is_day, value=true }
+
+        // The player's choices alter aspects of the game using these values
+        {attr, alias=lawful, value=0 }
+        {attr, alias=good, value=0 }
+        {attr, alias=honest, value=0 }
+
+        // OBJECTS
+        {object, alias=fist, label=Fist, type=weapon
+            {attr, alias=damage, value={random}|2\,4}
+            {attr, alias=accuracy, value=30}
+
+            {cmd, syntax=punch *
+                {act, type=object_event, source={params}, value=punch}
+            }
+        }
+
+        // COMMANDS
+        {cmd, syntax=time
+            {mset
+                {lset
+                    [@eval
+                        attribute@{player}:cur_mins>9
+                    ]
+                }
+                [msg
+                    Current time = [att]{player}:cur_time[/att]:[att]{player}:cur_mins[/att]
+                ]
+            }
+            {mset
+                {lset
+                    [@eval
+                        attribute@{player}:cur_mins<10
+                    ]
+                }
+                [msg
+                    Current time = [att]{player}:cur_time[/att]:0[att]{player}:cur_mins[/att]
+                ]
+            }
+
+            {mset
+                [msg
+                    Is Day = [att]{player}:is_day[/att]
+                ]
+            }
+        }
+
+        {cmd, syntax=inv|inventory
+            {aset
+                {act, type=inventory }
+            }
+        }
+
+        {cmd, syntax=stats
+            {aset
+                {act, type=stats }
+            }
+        }
+
+        {cmd, syntax=arm*
+            {aset
+                {act, type=arm }
+            }
+        }
+
+        {cmd, syntax=goal
+            {mset
+                [msg
+                    Goal:
+                    \n
+                    {player:goal}
+                ]
+            }
+
+            {mset
+                {lset
+                    {lgc
+                        [@eval
+                            attribute@{self}:taskid!=none
+                        ]
+                    }
+                }
+                [msg
+                    \n
+                    Your current task (Short term goal) is:
+                    \n
+                    {player:task}
+                ]
+            }
+        }
+
+        {cmd, syntax=quit
+            {aset
+                {act, type=quit }
+            }
+        }
+
+        {cmd, syntax=hints
+            {aset
+                {act, type=attribute, source={player}:hints, newvalue={!} }
+            }
+
+            {mset
+                [msg
+                    Hints have been set to: [att?{player}:hints=true]true[/att][att?{self}:hints=false]false[/att].
+                ]
+            }
+        }
+    }
+
+    // EVENTS
+    {evt, type=game_init
+        {mset
+            [msg
+                You are the fearless space adventurer {player:name}.
+                You are generally without employment, making money however you can. Typically from wild, legally questionable missions.
+                It's been a while since you've stumbled upon such a task so your funds are getting pretty low.
+                You need to make some money in - deep space.
+                \n
+                \n
+                (Note: When you see the text 'more...' use the command more to read the additional text)
+                \n
+                \n
+            ]
+        }
+    }
+
+    {evt, type=enter|look
+        {aset
+            {act, type=event, value=min_passed }
+            {act, type=event, value=day_check }
+        }
+    }
+
+    {evt, type=min_passed
+        {lset, fail_event=min_passed_new_hour
+            [@eval
+                attribute@{player}:cur_mins<45
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={player}:cur_mins, newvalue={+=15} }
+        }
+    }
+    {evt, type=min_passed_new_hour
+        {aset
+            {act, type=attribute, source={player}:cur_time, newvalue={++} }
+            {act, type=attribute, source={player}:cur_mins, newvalue=0 }
+            {act, type=event, value=time_passed }
+        }
+    }
+
+    {evt, type=time_passed
+        {lset, fail_event=time_passed_new_day
+            [@eval
+                attribute@{self}:cur_time<24
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={player}:cur_time, newvalue={++} }
+        }
+    }
+    {evt, type=time_passed_new_day
+        {aset
+            {act, type=attribute, source={player}:cur_time, newvalue=0 }
+        }
+    }
+
+    {evt, type=day_check
+        {lset, fail_event=day_check_night
+            [@eval
+                attribute@{player}:cur_time>5
+                &&
+                attribute@{player}:cur_time<21
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={player}:is_day, newvalue=true }
+        }
+    }
+    {evt, type=day_check_night
+        {aset
+            {act, type=attribute, source={player}:is_day, newvalue=false }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+>>title=Special Characters in Norman Notation
+>>syntax=norman special characters
+>>tags=norman notation game definitions game authoring game coding special characters
+>>topic=Norman
+--------------------------------------------------------------------------------
+
+Within any text block (Either in text elements or standard ones), there are
+special characters that can be used to alter how that text is displayed in the
+game.
+
+LINE BREAKS
+    To add a manually specified line break use a backslash followed by an n:
+    \n
+    A linebreak can be used on a blank line (blank lines in Norman files are
+    removed. For example:
+
+    [description
+You see a door.
+
+It is made of wood.
+    ]
+
+    Would display:
+You see a door.
+It is made of wood.
+
+    Where as:
+
+    [description
+You see a door.
+\n
+It is made of wood.
+    ]
+
+    Would display:
+You see a door.
+
+It is made of wood.
+
+--------------------------------------------------------------------------------

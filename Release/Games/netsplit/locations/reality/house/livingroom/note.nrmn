@@ -1,0 +1,103 @@
+{object, alias=lr_note, label=Note, type=item, location=lr_table, parent_type=object
+    {attr, alias=moved, value=false }
+    {attr, alias=found, value=false }
+
+    {evt, type=enter|look
+        {lset
+            [@eval
+                attribute@{self}:moved=true
+                &&
+                location@{self}={room}
+            ]
+        }
+
+        [msg==You see a note sitting on the ground.]
+    }
+
+    {evt, type=on
+        {lset
+            [@eval
+                attribute@{self}:moved=false
+            ]
+        }
+
+        {act, type=attribute, source={self}:found, newvalue=true
+            [msg==Sitting on the table is a small note.]
+        }
+    }
+
+    {evt, type=examine_note
+        {lset
+            [@eval
+                attribute@{self}:found=true
+            ]
+        }
+
+        [msg
+            You examine the note.
+            Handwritten on it is the following:
+            \n
+            To enable the jack use: systemctl netjack enable
+            \n
+            To disable the jack use: systemctl netjack disable
+            \n
+            To jack in use: jackin
+            \n
+        ]
+    }
+
+    {evt, type=take
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+            [fail
+                You are already carrying the note.
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:moved, newvalue=true }
+            {act, type=move, source={self}, newvalue={player}
+                [msg==You pick up the note.]
+            }
+        }
+    }
+
+    {evt, type=drop
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a note.
+            ]
+        }
+
+        {act, type=move, source={self}, newvalue={room}
+            [msg==You drop the note.]
+        }
+    }
+
+
+    {cmd, syntax=*x* note
+        {act, type=object_event, value=examine_note }
+    }
+
+    {cmd, syntax=take *note|pick up *note
+        {lset
+            [@eval
+                attribute@{self}:found=true
+            ]
+            [fail
+                I'm not sure what you are trying to take.
+            ]
+        }
+
+        {act, type=object_event, value=take }
+    }
+
+    {cmd, syntax=drop *note
+        {act, type=object_event, value=drop }
+    }
+}

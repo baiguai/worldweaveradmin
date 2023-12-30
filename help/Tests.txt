@@ -1,0 +1,68 @@
+>>title=Defining Tests
+>>syntax=tests
+>>tags=tests testing admin tools administrative tools author tools developer tools macros
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+{test, name=win
+    [@commands
+        ...
+    ]
+}
+
+
+Description:
+Tests are a very powerful tool available to game authors. They are essentially
+macro files of input commands and admin tools inputs. For example, a test could
+be written to pick up a torch (No matter where it is located) and move the
+player to any Room within the game:
+
+_take torch
+_move lower_level_entrance
+
+Test files can be placed anywhere within the game's directories and are a .nrmn
+file like other game definition files.
+
+Note:
+A test can utilize other tests - just like any other admin command. Simply
+call the test:
+_test sometest
+
+
+NOTE:
+You can use the command record Admin tool to help define tests. The admin tools
+help in the %title% Client also discusses this tool. To begin recording
+you must be playing a game. Enter admin mode. Then use the following syntax
+to begin a recording:
+
+_rec on
+
+Then simply play the game as you would like your test to do. When you are done
+use the following syntax to stop recording and output the commands to enter
+in your test's definition:
+
+_rec off
+
+WARNING:
+Do not use the _rec commands in your test commands themselves.
+
+
+
+Syntax:
+    Tests are defined as a component, using curly braces {} to denote them. The
+    commands component is defined as a multi-line text element (Be sure to use
+    an at @ symbol right after the open brace), square braces [] are used to
+    denote it.
+
+
+Required Properties:
+    name:
+    The name property is how a test is called:
+
+    _test win
+
+
+Allowed Child Components:
+    commands
+
+--------------------------------------------------------------------------------

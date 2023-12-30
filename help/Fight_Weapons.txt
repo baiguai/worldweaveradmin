@@ -1,0 +1,116 @@
+>>title=Defining Weapons
+>>syntax=weapons
+>>tags=game development fighting weapons objects weapons objects
+>>topic=Fighting
+--------------------------------------------------------------------------------
+
+A basic weapon must be defined with the following characteristics:
+
+Proper Type:
+Weapons should be Objects with a type property set to weapon:
+
+{object, alias=sword, type=weapon
+    ...
+}
+
+Damage Attribute:
+Weapons should have an Attribute with the alias damage. For this Attribute, a
+fixed value can be use, however to make it more interesting, it is a good idea
+to make this value random:
+
+{object, alias=sword, type=weapon, label=Sword
+    {attr, alias=damage, type=random, value=1\,3 }
+    ...
+}
+
+Or better yet, random every time the damage Attribute value is retrieved:
+
+{object, alias=sword, type=weapon, label=Sword
+    {attr, alias=damage, value={random}|1\,3 }
+    ...
+}
+
+
+Well designed weapons should also have an accuracy Attribute. This value changes
+the probability that the weapon attack was successful. This value should be a
+number between 0 and 50. The higher the number, the higher the chance of
+success. This can also be a random value, or a fixed value. If this value is
+set to 50 the attack will always be successful:
+
+{object, alias=sword, type=weapon, label=Sword
+    {attr, alias=damage, type=random, value=1\,3 }
+    {attr, alias=accuracy, value=20 }
+    ...
+}
+
+
+Non-Fighting Attacks:
+Weapons can be used outside of a fight. For example, guns can shoot Objects in
+the game, or swords can slash Objects in the game. To accomplish this, add a
+Command to the weapon element similar to:
+
+{cmd, syntax=slash *
+    {lset
+        [@eval
+            armed@{self}
+        ]
+    }
+
+    {act, type=object_event, source={params}, value=slash }
+}
+
+In this case, any Object that can be 'slashed' by a sword would have an Event
+of the type: slash
+In this Event damage to the Object or other Actions can be performed.
+
+Note:
+Be sure to set the shootable Object's meta property, this is used by the Player
+to specify the Object like: 
+
+{object, alias=fountain, meta=*fountain*
+    ...
+}
+
+shoot fountain
+
+
+Fight Messages:
+When fighting remember that the game doesn't know exactly what you are fighting
+so the messages should be written with this in mind. To deal with this enemies
+should have some helpful Attributes that are referenced in the fight-related
+Messages. These Attributes include:
+
+fight_label
+The fight_label Attribute should be defined in the enemy Npc elements. This
+Attribute value is the name of the enemy to be displayed in the middle of
+sentences like:
+
+{attr, alias=fight_label, value=warrior }
+
+These Attributes can be referenced in fight messages like:
+
+{mset
+    [msg
+        You have struck the {enemy:fight_label} reducing their life to
+        {enemy:life}.
+    ]
+}
+
+
+fight_proper_label
+The fight_proper_label Attribute should be defined in the enemy Npc elements.
+This Attribute value is the name of the enemy to be displayed at the start of
+sentences like:
+
+{attr, alias=fight_proper_label, value=Warrior }
+
+These Attributes can be referenced like:
+
+{mset
+    [msg
+        {enemy:fight_proper_label} has been struck, reducing their life to
+        {enemy:life}.
+    ]
+}
+
+--------------------------------------------------------------------------------

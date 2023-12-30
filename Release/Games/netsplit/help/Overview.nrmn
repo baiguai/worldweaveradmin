@@ -1,0 +1,33 @@
+{help, syntax=help overview, title=Overview
+    [@topic
+If you are new to Interactive Fiction (IF) it can be a bit intimidating at
+first. 
+\n
+Note:
+NetSplit was built in WorldWeaver and some of the game's behaviors are
+not specific to NetSplit (Such as fighting or how keys are handled etc)
+To view the WorldWeaver help system use: --help.
+For the WorldWeaver IF overview use: --help getting started.
+\n
+\n
+Below are listed some basic commands or types of wording to help get
+you started. Most commands also have corresponding shorthand versions to make
+them even easier to utilize. These variations are listed with pipes | dividing
+them. They are sorted in order of how common the commands are:
+\n
+\n
+Notes:
+During a game the player can take notes of information that has been gathered.
+For more information use: --help getting started
+\n
+\n
+Warning!
+Although NetSplit saves your progress through the game as you go, there is
+no 'restart' feature. If you die during the game you will have to start at the
+beginning.
+\n
+\n
+For basic IF commands use:
+help commands
+    ]
+}

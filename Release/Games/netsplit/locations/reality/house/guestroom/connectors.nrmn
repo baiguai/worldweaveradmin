@@ -1,0 +1,23 @@
+// SOUTH DOOR
+{object, alias=gst_door_s, label=South Door, type=connector, location=guestroom
+    {evt, type=enter|look
+        [msg
+            Set into the south wall you see a door.
+        ]
+    }
+
+    {evt, type=examine
+        [msg==You examine the south door. It is narrow and made of wood. ]
+    }
+
+
+    {cmd, syntax=*x* s* door*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=enter s* door*|south|s
+        {act, type=travel, newvalue=hall
+            [msg==You step through the door in the south wall. ]
+        }
+    }
+}

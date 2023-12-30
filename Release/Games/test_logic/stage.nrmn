@@ -1,0 +1,138 @@
+{room, alias=stage, label=Testing Stage
+    {attr, alias=lapsed, value=0 }
+    {attr, alias=checked, value=false}
+
+    {evt, type=look
+        {aset
+            {act, type=attribute, source={self}:lapsed, newvalue={++} }
+        }
+    }
+
+    {evt, type=enter|look
+        {mset
+            [msg
+                TESTS:
+                \n
+                multi
+            ]
+        }
+    }
+
+    {evt, type=enter|look
+        {mset
+            [msg
+                Let's test some logic...
+            ]
+        }
+    }
+
+    {evt, type=test_multiple
+        {mset
+            [msg
+                Multiple msg w/ logic check:
+                \n
+                First should fail, second should pass.
+            ]
+        }
+
+        {mset
+            {lset
+                {lgc
+                    [@eval
+                        attribute@{self}:lapsed<0
+                    ]
+                }
+            }
+
+            [msg
+                This should always fail.
+            ]
+        }
+
+        {mset
+            {lset
+                {lgc
+                    [@eval
+                        attribute@{self}:checked=false
+                    ]
+                }
+            }
+
+            [msg
+                This should always pass.
+            ]
+        }
+    }
+
+    {evt, type=test1
+        {lset
+            {lgc
+                [@eval
+                    attribute@{self}:lapsed>1
+                    ||
+                    attribute@{self}:checked=false
+                ]
+            }
+            [fail
+                Time hasn't lapsed AND checked is true.
+            ]
+        }
+
+        {mset
+            [msg
+                Time has lapsed OR checked is false.
+            ]
+        }
+
+        {mset
+            {lset
+                {lgc
+                    [@eval
+                        attribute@{self}:lapsed>1
+                    ]
+                }
+                [fail
+                    Time hasn't lapsed.
+                ]
+            }
+
+            [msg
+                This should only show when time has lapsed.
+            ]
+        }
+    }
+
+    {evt, type=test2
+        {lset
+            {lgc
+                [@eval
+                    attribute@{self}:lapsed>1
+                    &&
+                    attribute@{self}:checked=false
+                ]
+            }
+            [fail
+                Time hasn't lapsed OR checked is not false.
+            ]
+        }
+
+        {mset
+            [msg
+                This should show when checked is false AND time has lapsed.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=look|l
+        {aset
+            {act, type=event, newvalue=look }
+        }
+    }
+
+    {cmd, syntax=multi
+        {aset
+            {act, type=object_event, newvalue=test_multiple }
+        }
+    }
+}

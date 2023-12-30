@@ -1,0 +1,84 @@
+{object, alias=br_wardrobe, label=Wardrobe, type=object, location=bedroom
+    {attr, alias=open, value=false }
+
+    {evt, type=enter|look
+        [msg==Set against the north wall you see a large wardrobe. ]
+    }
+
+    {evt, type=examine
+        {lset
+            [@eval
+                attribute@{self}:open=true
+            ]
+            [fail
+                You examine the wardrobe.\n
+                It is closed.
+            ]
+        }
+
+        [msg==You examine the wardrobe. It is large and made of a dark gray-stained wood. ]
+    }
+
+    {evt, type=open
+        {lset
+            [@eval
+                attribute@{self}:open=false
+            ]
+            [fail
+                The wardrobe is already open.
+            ]
+        }
+
+        {act, type=attribute, source={self}:open, newvalue=true
+            [msg==You open the wardrobe. ]
+        }
+    }
+
+    {evt, type=close
+        {lset
+            [@eval
+                attribute@{self}:open=true
+            ]
+            [fail
+                The wardrobe is already closed.
+            ]
+        }
+
+        {act, type=attribute, source={self}:open, newvalue=false
+            [msg==You close the wardrobe. ]
+        }
+    }
+
+    {evt, type=in_wardrobe
+        {lset
+            [@eval
+                attribute@{self}:open=true
+            ]
+            [fail
+                The wardrobe is closed.
+            ]
+        }
+
+        [msg
+            You look inside the wardrobe.
+            Clothes are hanging neatly on various chrome hangers.
+        ]
+    }
+
+
+    {cmd, syntax=*x* wardrobe*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*open* wardrobe*
+        {act, type=object_event, value=open }
+    }
+
+    {cmd, syntax=*close* wardrobe*
+        {act, type=object_event, value=close }
+    }
+
+    {cmd, syntax=*in *wardrobe*
+        {act, type=object_event, value=in_wardrobe }
+    }
+}

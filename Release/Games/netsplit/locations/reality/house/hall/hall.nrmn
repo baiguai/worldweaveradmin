@@ -1,0 +1,13 @@
+{room, alias=hall, label=Hall
+    {evt, type=enter|look
+        [msg
+            You are in the hall.
+            It extends east and west. It is completely empty.
+        ]
+    }
+
+
+    {cmd, syntax=look|l
+        {act, type=event, value=look }
+    }
+}

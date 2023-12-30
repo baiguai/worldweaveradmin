@@ -1,0 +1,18 @@
+>>title=Rebuilding the Help System Topics
+>>syntax=refresh help
+>>tags=rebuilding help system updating help system refreshing help system
+>>topic=Using Help
+--------------------------------------------------------------------------------
+
+If for any reason this help system needs to be rebuilt, remove the following
+file:
+
+<%title% Admin>
+  |__ Data
+      |__ Help
+
+Then re-launch the admin tool. It will rebuild the help system. This is useful
+when updating %title% - or if you are a developer and have updated or new
+help topics to load into the help system.
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,293 @@
+{game, name=Darkworld, initial_location=local_tavern, stats_aliases=goal|life|max_life|armor|speed|dexterity|lawful|good|points|level|credits, admin_password=admd
+    {attr, alias=wrap_width, value=80 }
+
+    // PLAYER
+    {player
+        {attr, alias=goal, value=None }
+        {attr, alias=goalid, value=init }
+        {attr, alias=task, value=None }
+        {attr, alias=taskid, value=none }
+        {attr, alias=life, type=random, value=10\,20 }
+        {attr, alias=max_life, type=attribute, value={player}:life }
+        {attr, alias=armor, type=random, value=5\,10 }
+        {attr, alias=speed, type=random, value=7\,14 }
+        {attr, alias=dexterity, type=random, value=6\,18 }
+        {attr, alias=points, value=0 }
+        {attr, alias=level, value=1 }
+        {attr, alias=hints, value=true }
+        {attr, alias=credits, type=random, value=7\,25 }
+
+        // Time Vars
+        {attr, alias=cur_days, value=0 }
+        {attr, alias=cur_time, value=15 }
+        {attr, alias=cur_mins, value=00 }
+        {attr, alias=is_day, value=true }
+
+        // The player's choices alter aspects of the game using these values
+        {attr, alias=good_alignment, value=true }
+        {attr, alias=lawful, value=0 }
+        {attr, alias=good, value=0 }
+        {attr, alias=honest, value=0 }
+        {attr, alias=selfless, value=0 }
+        {attr, alias=trusting, value=0 }
+
+        // Global attributes regarding the other characters in the adventure
+
+        // OBJECTS
+        // Short sword
+        {object, alias=short_sword, label=short sword, type=weapon, meta=short *sword*, location={player}
+            {attr, alias=damage, type=random, value=2\,4 }
+
+            {event, type=examine_shortsword
+                {messageset
+                    [message
+                        You examine the short sword. It is rusty, old and somewhat dull.
+                    ]
+                }
+            }
+
+            {event, type=attack
+                {actionset
+                    {action, type=attribute, source={enemy}:life, newvalue={random}|2\,4
+                        {messageset
+                            [message
+                                You have sliced at the {enemy:name} reducing their life to {enemy:life}.
+                            ]
+                        }
+                    }
+                }
+            }
+
+            {event, type=miss
+                {messageset
+                    [message
+                        You swiped at the {enemy:name} but miss.
+                    ]
+                }
+            }
+
+            {event, type=kill
+                {messageset
+                    [message
+                        You have {enemy:kill_verb} the {enemy:name}.
+                    ]
+                }
+            }
+
+            // COMMANDS
+            {command, syntax=*x* *short sword*
+                {actionset
+                    {action, type=object_event, newvalue=examine_shortsword }
+                }
+            }
+
+            {command, syntax=attack*
+                {logicset
+                    {logic
+                        [@eval
+                            armed@{self}
+                        ]
+                    }
+                }
+
+                {actionset
+                    {action, type=object_event, source={params}, newvalue=attack }
+                }
+            }
+        }
+
+        // COMMANDS
+        {cmd, syntax=time
+            {mset
+                {lset
+                    [@eval
+                        attribute@{player}:cur_mins>9
+                    ]
+                }
+                [msg
+                    Current time = [att]{player}:cur_time[/att]:[att]{player}:cur_mins[/att]
+                ]
+            }
+            {mset
+                {lset
+                    [@eval
+                        attribute@{player}:cur_mins<10
+                    ]
+                }
+                [msg
+                    Current time = [att]{player}:cur_time[/att]:0[att]{player}:cur_mins[/att]
+                ]
+            }
+
+            {mset
+                [msg
+                    Is Day = [att]{player}:is_day[/att]
+                ]
+            }
+
+            {mset
+                [msg
+                    Days journeying = [att]{player}:cur_days[/att]
+                ]
+            }
+        }
+
+        {cmd, syntax=inv|inventory
+            {aset
+                {act, type=inventory }
+            }
+        }
+
+        {cmd, syntax=stats
+            {aset
+                {act, type=stats }
+            }
+        }
+
+        {cmd, syntax=arm*
+            {aset
+                {act, type=arm }
+            }
+        }
+
+        {cmd, syntax=goal
+            {mset
+                [msg
+                    Goal:
+                    \n
+                    {player:goal}
+                ]
+            }
+
+            {mset
+                {lset
+                    {lgc
+                        [@eval
+                            attribute@{self}:taskid!=none
+                        ]
+                    }
+                }
+                [msg
+                    \n
+                    Your current task (Short term goal) is:
+                    \n
+                    {player:task}
+                ]
+            }
+        }
+
+        {cmd, syntax=quit
+            {aset
+                {act, type=quit }
+            }
+        }
+
+
+        {cmd, syntax=hints
+            {act, type=attribute, source={player}:hints, newvalue={!} }
+            // The change won't be applied before the message goes out, so state the opposite.
+            {mset
+                [msg
+                    Hints have been set to: [att?{player}:hints=true]false[/att][att?{self}:hints=false]true[/att].
+                ]
+            }
+        }
+    }
+
+    // EVENTS
+    {evt, type=game_init
+        {mset
+            [msg
+                You are sitting at the rough-hewn bar of your local tavern. The mead is especially satisfying this night.
+                Someone taps you on the shoulder.
+                You turn and see a dark figure in a hooded cloak.
+                \n
+                "Urgent. For you."
+                \n
+                The figure hands you a folded bit of parchment and walks out of the tavern.
+                You unfold the paper and read it.
+                \n
+                \n
+                "Kalisto. Old Oak Inn. Four nights from now."
+                \n
+                \n
+                --------------------------------------------------------------------------------
+                \n
+                Welcome to Darkworld.
+                \n
+                --------------------------------------------------------------------------------
+                \n
+                \n
+                \n
+                \n
+                (Note: When you see the text 'more...' to read the additional text using: more)
+                \n
+                (Note: To replay the story's message use the command: story)
+                \n
+                \n
+            ]
+        }
+    }
+
+    {evt, type=enter
+        {aset
+            {act, type=event, value=min_passed }
+            {act, type=event, value=day_check }
+        }
+    }
+
+    {evt, type=min_passed
+        {lset, fail_event=min_passed_new_hour
+            [@eval
+                attribute@{player}:cur_mins<45
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={player}:cur_mins, newvalue={+=15} }
+        }
+    }
+    {evt, type=min_passed_new_hour
+        {aset
+            {act, type=attribute, source={player}:cur_mins, newvalue=0 }
+            {act, type=event, value=time_passed }
+        }
+    }
+
+    {evt, type=time_passed
+        {lset, fail_event=time_passed_new_day
+            [@eval
+                attribute@{self}:cur_time<24
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={player}:cur_time, newvalue={++} }
+        }
+    }
+    {evt, type=time_passed_new_day
+        {aset
+            {act, type=attribute, source={player}:cur_time, newvalue=0 }
+            {act, type=attribute, source={player}:cur_days, newvalue={++} }
+        }
+    }
+
+    {evt, type=day_check
+        {lset, fail_event=day_check_night
+            [@eval
+                attribute@{player}:cur_time>5
+                &&
+                attribute@{player}:cur_time<21
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={player}:is_day, newvalue=true }
+        }
+    }
+    {evt, type=day_check_night
+        {aset
+            {act, type=attribute, source={player}:is_day, newvalue=false }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+>>title=Sample Logic Block
+>>syntax=logic example
+>>tags=logic example logic sample
+>>topic=Examples
+--------------------------------------------------------------------------------
+
+{logicset
+    {logic, type=attribute, source={self}:shot, sourcevalue=0, operand== }
+    [fail
+        The display has been shot and destroyed. It is black.
+    ]
+}
+
+--------------------------------------------------------------------------------

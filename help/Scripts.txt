@@ -1,0 +1,70 @@
+>>title=%title% Admin Scripts
+>>syntax=scripts
+>>tags=game development tools scripts launchers
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+Both the %title% Admin and %title% Client tools come with some helpful
+scripts (Geared primarily toward developers). These can be executed in a bash
+shell using: sh <script file name> or in a Window command window
+using: <.bat script file name>
+Some of the scripts available are:
+
+Admin:
+
+_build
+    Rebuilds the %title% Admin tool.
+
+_client
+    Launches the %title% Client that is packaged with the admin tool.
+
+_cp_game
+    Copies specified games to specified locations. You will need to adjust this
+    according to your file structure. It is designed to install games to a
+    client outside of the admin tool's directories.
+
+_db
+    Launches sqlite3 to the specified game db. This will need to be adjusted
+    to open the game db you need.
+
+_macro
+    Launches the %title% Admin tool with the -m parameter to run a macro.
+    The one parameter passed into the script is the macro's name. If you have
+    a macro called 'dungeon' you would run its macro using:
+    _macro.sh dungeon
+    _macro.bat dungeon
+
+_rmhelp
+    Clears out the help system so the next time the Admin tool is ran the help
+    system is rebuilt.
+
+_run
+    Launches the %title% Admin tool.
+
+_yed
+    Launches the Yed diagram application. See yWork's website:
+    https://www.yworks.com/products/yed
+
+
+Client:
+
+_brand
+    Demonstrates launching a game with its own branding - In this case Escape
+    Apsis is launched.
+
+_build
+    Rebuilds the %title% Client tool.
+
+_cp_client
+    When developing the client tool, this will copy the compiled tool into the
+    %title% Admin tool's packaged client directory. You will need to adjust
+    this according to your file structure.
+
+_db
+    Launches sqlite3 to the specified game db. This will need to be adjusted
+    to open the game db you need.
+
+_run
+    Launches the %title% Client tool.
+
+--------------------------------------------------------------------------------

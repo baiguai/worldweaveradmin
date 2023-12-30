@@ -1,0 +1,2 @@
+build NetSplit,netsplit
+copyfile Data/Games/NetSplit, ../../WorldWeaverClient/release/Data/Games/NetSplit

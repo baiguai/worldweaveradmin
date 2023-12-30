@@ -1,0 +1,29 @@
+>>title=Output Order
+>>syntax=output order
+>>tags=commands messagesets events sorting output order
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+When defining Commands or Events it is important to be aware of the order in
+which the game processes the various elements. For example, if you want an Event
+to output a Message THEN fire another Object_Event, you will want to put the
+Message in an Event and in the Command call the Message Event then the second
+Event you want fired. If you put the Message and the second Event in the same
+Event the game will process the Actionsets in the Event first followed by the
+Messag(s) in that Event - resulting in them being output in the wrong order.
+
+In general elements are processed in this order:
+
+Commands
+Events
+Actionsets
+Messagesets
+
+Elements are output in the order they are defined within the files. However
+if the elements are defined in different files the order isn't predictable.
+For example Connector Objects are output last to make it easier for the player
+to read. If you need Objects to be output in a specific order, place them within
+the same file. However Connector Objects will still be output last, but in the
+order that they are defined amongst that Object type.
+
+--------------------------------------------------------------------------------

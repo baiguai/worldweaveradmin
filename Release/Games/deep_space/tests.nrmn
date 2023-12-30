@@ -1,0 +1,9 @@
+{test, name=tosat
+    [@commands
+        more
+        more
+        greet
+        yes
+        yes
+    ]
+}

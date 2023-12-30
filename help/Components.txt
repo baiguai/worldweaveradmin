@@ -1,0 +1,93 @@
+>>title=%title% Game Components
+>>syntax=components
+>>tags=game elements game components game objects
+>>topic=Components
+--------------------------------------------------------------------------------
+
+%title% games are made up of the following components:
+
+Game Component:
+    Defines the game itself. Defined in the game.nrmn file.
+    help game component
+
+Player Component:
+    The Player component defines a template that tells the game how to generate
+    new players.
+    help player component
+
+Room Component:
+    Room components define anything the player can enter.
+    help room component
+
+Npc Component:
+    Npc's are Non Player Characters.
+    help npc component
+
+Objects Component:
+    Objects can be anything within the game.
+    help object component.
+
+Attributes:
+    Attributes extend Objects, Games, Npcs, Rooms, and Players.
+    help attributes
+
+Event Component:
+    Defines game Events.
+    help event component
+
+Command Component:
+    Commands define the input the player can enter.
+    help command component
+
+ActionSet Component:
+    ActionSets are used to group Action components.
+    help actionset component
+
+Action Component:
+    Actions are used to make changes to the game state.
+    help action component
+
+LogicSet Component:
+    Defines a group of Logic components.
+    help logicset component
+
+Logic Component:
+    Performs logic checks.
+    help logic component
+
+MessageSet Component:
+    Defines a group of Message components.
+    help messageset component
+
+Message Component:
+    Defines output that the game displays to the player.
+    help message component
+
+Link Components:
+    Link components allow authors to split an Element's components
+    into multiple files for legibility reasons.
+    help link component
+
+Sort Component:
+    Defines the order in which to describe multiple elements
+    within a parent element.
+    help sort component
+
+Help Component
+    Degines the in-game help system.
+    help help component
+
+Tests
+    Game developer tests that can be run.
+    help tests
+
+
+Suggested Help Searches:
+help connector
+help elevator
+help weapon
+help fighting
+help timed
+help global
+
+--------------------------------------------------------------------------------

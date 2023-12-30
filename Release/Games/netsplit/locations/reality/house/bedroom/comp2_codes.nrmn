@@ -1,0 +1,244 @@
+{link, parent=br_comp2, parent_type=object
+    // Computer command events
+    {evt, type=activate_jack
+        {lset
+            [@eval
+                attribute@br_jack:activated=false
+            ]
+            [fail
+                The Net Jack is already activated.
+            ]
+        }
+
+        {act, type=attribute, source=br_jack:activated, newvalue=true
+            [msg
+                You enter the command to enable the netjack service.
+                Immediately the lights on the Net Jack flicker then begin to glow green.
+            ]
+        }
+    }
+
+    {evt, type=deactivate_jack
+        {lset
+            [@eval
+                attribute@br_jack:activated=true
+            ]
+            [fail
+                The Net Jack is already inactive.
+            ]
+        }
+
+        {act, type=attribute, source=br_jack:activated, newvalue=false
+            [msg
+                You enter the command to disable the netjack service.
+                The lights on the Net Jack go dark.
+            ]
+        }
+    }
+
+    {evt, type=showpath
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:path=root
+                ]
+            }
+            [msg
+                /
+            ]
+        }
+
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:path!=root
+                ]
+            }
+            [msg
+                /[att]{self}:path[/att]
+            ]
+        }
+    }
+
+    {evt, type=fix_dir
+        {lset, fail_event=change_dir
+            [@eval
+                attribute@{self}:path=/
+            ]
+        }
+
+        {aset
+            {act, type=attribute, source={self}:path, newvalue=root }
+            {act, type=object_event, value=change_dir }
+        }
+    }
+    {evt, type=change_dir
+        [msg
+            You change directories to [att]{self}:path[/att].
+        ]
+    }
+
+    {evt, type=list
+        {aset
+            {act, type=object_event, value=list_root }
+            {act, type=object_event, value=list_bin }
+            {act, type=object_event, value=list_dev }
+            {act, type=object_event, value=list_sys }
+            {act, type=object_event, value=list_usr }
+        }
+    }
+    {evt, type=list_root
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:path=root
+                ]
+            }
+            [msg
+                Among the list of root level contents you see the following directories:
+                \n
+                bin
+                \n
+                dev
+                \n
+                sys
+                \n
+                usr
+            ]
+        }
+    }
+    {evt, type=list_bin
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:path=bin
+                ]
+            }
+            [msg
+                The contents of the bin directory are binary files present on the computer.
+                The list is very large.
+            ]
+        }
+    }
+    {evt, type=list_dev
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:path=dev
+                ]
+            }
+            [msg
+                The contents of the dev directory are the system's device objects.
+                The list is very large.
+            ]
+        }
+    }
+    {evt, type=list_sys
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:path=sys
+                ]
+            }
+            [msg
+                The sys directory contains kernel interface objects.
+                The list is very large.
+            ]
+        }
+    }
+    {evt, type=list_usr
+        {mset
+            {lset
+                [@eval
+                    attribute@{self}:path=usr
+                ]
+            }
+            [msg
+                The usr directory contains read only user binaries.
+                The list is very large.
+            ]
+        }
+    }
+    //
+
+
+
+    // Computer commands
+    {cmd, syntax=systemctl netjack enable
+        {lset
+            [@eval
+                attribute@{self}:locked=false
+            ]
+            [fail
+                The computer is locked.
+            ]
+        }
+
+        {act, type=object_event, value=activate_jack }
+    }
+
+    {cmd, syntax=systemctl netjack disable
+        {lset
+            [@eval
+                attribute@{self}:locked=false
+            ]
+            [fail
+                The computer is locked.
+            ]
+        }
+
+        {act, type=object_event, value=deactivate_jack }
+    }
+
+    {cmd, syntax=pwd
+        {lset
+            [@eval
+                attribute@{self}:locked=false
+            ]
+            [fail
+                The computer is locked.
+            ]
+        }
+
+        {act, type=object_event, value=showpath }
+    }
+
+    {cmd, syntax=ls
+        {lset
+            [@eval
+                attribute@{self}:locked=false
+            ]
+            [fail
+                The computer is locked.
+            ]
+        }
+
+        {act, type=object_event, value=list }
+        {act, type=event, value=comp_read_chip }
+    }
+
+    {cmd, syntax=cd *
+        {aset
+            {act, type=attribute, source={self}:path, newvalue={params} }
+            {act, type=object_event, value=fix_dir }
+        }
+    }
+
+    {cmd, syntax=cd ctx
+        {lset
+            [@eval
+                attribute@{self}:locked=false
+            ]
+            [fail
+                The computer is locked.
+            ]
+        }
+
+        {act, type=event, value=cd_ctx }
+    }
+
+    {cmd, syntax=./teleport
+        {act, type=event, value=exe_teleport }
+    }
+    //
+}

@@ -1,0 +1,39 @@
+>>title=Debugging Tools For Game Developers
+>>syntax=debugging
+>>tags=debugging admin tools administrative tools tests testing admin mode
+>>related=logs
+>>related=tests
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+%title% has various administrative tools built into it to aid in the
+debugging of games:
+
+Logging:
+    Logging allows the game developer to create notes that are useful during
+    debugging. Log messages are defined within the game definition files. For
+    more information use:
+
+    help log
+
+
+Admin Mode:
+    If the Game element has a specified admin_password value, while playing the
+    game entering this password will toggle the admin mode. While in admin mode
+    the administrative debugging tools are available. To view the possible
+    admin tools enter the command:
+
+    _admin
+
+    within the game (while in admin mode). These tools allow the tester to
+    jump to locations in the game, kill enemies with a command, analyze
+    Attributes and Rooms, even die.
+
+Tests:
+    Tests can be defined in the game definition files. Tests can be run while
+    the game is in admin mode. Tests are essentially macros that make repetative
+    tasks easier. For more information use:
+
+    help tests
+
+--------------------------------------------------------------------------------

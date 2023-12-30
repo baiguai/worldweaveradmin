@@ -1,0 +1,33 @@
+>>title=Building Your First %title% Game 01
+>>syntax=tutorial start
+>>tags=tutorials building your first game build your first game development game authoring game building
+>>related=creating a game
+>>topic=tutorials
+--------------------------------------------------------------------------------
+
+Step 01
+Preparation
+
+-- Directory Creation
+01) Navigate to:
+
+<WorldWeaverAdmin>
+|__ Games
+
+02) Create a directory called: MazeMaster
+
+03) Within the MazeMaster directory create a file called: game.nrmn
+    > Add the Game element:
+
+{game, name=Maze Master, initial_location=entrance, stats_aliases=goal|points|level|life|max_life, admin_password=admd
+    {attr, alias=display_mode, value=clear }
+    {attr, alias=wrap_width, value=80 }
+}
+
+
+--------------------------------------------------------------------------------
+
+Next step:
+help tutorial player
+
+--------------------------------------------------------------------------------

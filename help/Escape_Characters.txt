@@ -1,0 +1,25 @@
+>>title=Escape Characters
+>>syntax=escape characters
+>>tags=escape characters escaping characters escaping commas
+>>topic=Game Development
+--------------------------------------------------------------------------------
+
+Since characters such as commas or braces are used by %title% when parsing
+through game definitions there are situations when these characters must be
+treated differently. One such situation is when a comma is part of a property's
+value. Consider the following:
+
+{room, alias=redsphere, label=Sphere\, Red
+    ...
+}
+
+To escape characters precede them with a back slash \.
+
+If a brace { or [ is located at the beginning of a line of text, and it doesn't
+specify the beginning of a component, it is good to escape it, just to be save.
+The same holds true if the brace } or ] is located at the end of a line of text.
+
+If you encounter strange behavior, characters that need escaped is a possible
+reason.
+
+--------------------------------------------------------------------------------

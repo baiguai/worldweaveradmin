@@ -1,0 +1,39 @@
+{room, alias=old_oak_inn_backroom_storage, label=Backroom - Storage
+    {evt, type=enter
+        {mset
+            [msg
+You are in a dimly lit room that appears to be used for storage.
+\n
+There are shelves filled with extra candles, and dishes, and other table-setting items.
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset
+            [msg
+You are in what appears to be a storage room.
+\n
+There are shelves filled with extra candles, and dishes, and other table-setting items.
+\n
+\n
+Set into the south wall is a door.
+            ]
+        }
+    }
+
+
+
+
+    {cmd, syntax=story
+        {act, type=event, value=enter }
+    }
+
+    {cmd, syntax=*look*|l
+        {act, type=event, value=look }
+    }
+
+    {cmd, syntax=s|*south
+        {act, type=travel, newvalue=old_oak_inn_backroom_ret }
+    }
+}

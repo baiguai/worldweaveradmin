@@ -1,0 +1,50 @@
+{object, alias=gst_bed, label=Bed, type=platform, meta=*bed*, location=guestroom
+    {evt, type=enter|look
+        [msg
+            In the north east corner of the guest room you see a bed.
+        ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the bed. It is minimalistic and neatly made up in
+            orange and gray.
+        ]
+    }
+
+    {evt, type=on
+        [msg
+            You look on the bed. There is nothing on it except for an orange
+            pillow and a gray one.
+        ]
+    }
+
+    {evt, type=behind
+        [msg
+            You look behind the bed. There is nothing there.
+        ]
+    }
+
+    {evt, type=under
+        [msg
+            You look under the bed. You don't see anything there.
+        ]
+    }
+
+
+    {cmd, syntax=*x* bed*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*on* bed*|*top* bed*
+        {act, type=object_event, value=on }
+    }
+
+    {cmd, syntax=*behind* bed*|*back* bed*
+        {act, type=object_event, value=behind }
+    }
+
+    {cmd, syntax=*under* bed*|*beneath* bed*
+        {act, type=object_event, value=under }
+    }
+}

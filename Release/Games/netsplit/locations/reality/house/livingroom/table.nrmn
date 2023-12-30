@@ -1,0 +1,43 @@
+{object, alias=lr_table, label=Table, type=platform, location=livingroom
+    {evt, type=enter|look
+        [msg==Just south of the couch you see a small round table.]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the table.
+            It is small and round. The top of the table is made of a glossy glass-looking material.
+            The legs of the table are made of thin brushed metal cylinders.
+        ]
+    }
+
+    {evt, type=on
+        {lset
+            [@eval
+                attribute@lr_note:moved=false
+            ]
+            [fail
+                You look on the table. There is nothing there.
+            ]
+        }
+
+        [msg==You look on the table.]
+    }
+
+    {evt, type=under
+        [msg==You look under the table. There is nothing there.]
+    }
+
+
+    {cmd, syntax=*x* table*
+        {act, type=object_event, value=examine }
+    }
+
+    {cmd, syntax=*on* table*|*top* table*
+        {act, type=object_event, value=on }
+    }
+
+    {cmd, syntax=*under* table*|*beneath* table*
+        {act, type=object_event, value=under }
+    }
+}

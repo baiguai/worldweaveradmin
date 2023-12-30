@@ -1,0 +1,81 @@
+>>title=Defining Elements in Norman Notation
+>>syntax=norman elements
+>>tags=norman notation game definitions game authoring game coding
+>>topic=Norman
+--------------------------------------------------------------------------------
+
+Elements in Norman Notation are defined using either curly brackets:
+{ ... }
+or square brackets:
+[ ... ]
+
+Curly brackets define standard elements and square brackets define text elements.
+For examples use:
+help norman examples
+
+
+
+STANDARD ELEMENTS
+    Standard elements are defined by curly brackets. They can contain other
+    elements (standard and text), and they can also contain any number of
+    properties. For more information on properties use:
+    help norman properties
+
+    Elements can be defined on a single line, or in multiple lines:
+
+    {attribute name=damage value=-5 }
+
+    {attribute
+        name=damage
+        value=-5
+    }
+
+    If an element is on a single line be sure to put a space before the closing
+    bracket.
+
+
+TEXT ELEMENTS
+    Text elements are elements that contain only the name of the element and
+    text content. Text lines are wrapped at 80 characters, or the overridden
+    width as specified in the game. To insert additional line breaks wherever
+    you add a break to the text add an at (@) symbol right after the open bracket
+    ([):
+
+    [sword_desc
+The sword is gleaming silver.
+It is a double- handed\nsword.
+    ]
+
+    Would output:
+The sword is gleaming silver. It is a double- handed
+sword.
+
+
+    [@sword_desc
+The sword is gleaming silver.
+It is a double- handed
+sword.
+It is bloody
+    ]
+
+    Would output:
+The sword is gleaming silver.
+It is a double- handed
+sword.
+It is bloody.
+
+    Notice the \n in the text content. That is a line break character.
+    For more information use:
+    help norman special characters
+
+    NOTE:
+    Text elements can be defined on a single line - for short text strings.
+    To do so, separate the element name from the content using two double
+    quotes (==)
+
+    [sword_desc==You see a long sword]
+
+    Would output:
+You see a long sword
+
+--------------------------------------------------------------------------------

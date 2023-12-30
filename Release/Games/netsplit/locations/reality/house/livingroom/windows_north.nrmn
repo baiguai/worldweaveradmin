@@ -1,0 +1,15 @@
+{object, alias=lr_windows_n, label=North Windows, type=item, meta=*window* n*, location=livingroom
+    {evt, type=enter|look
+        [msg
+            Along the full width of the north wall you see windows. They run ceiling to floow, west to east.
+        ]
+    }
+
+    {evt, type=examine
+        [msg
+            You examine the windows in the north end of the livingroom. They fill the entire north wall,
+            from ceiling to floor, and east to west. Outside you see vast gardens. They don't look particularly
+            familiar to you, however.
+        ]
+    }
+}
