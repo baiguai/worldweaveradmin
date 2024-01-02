@@ -1,4 +1,6 @@
 {room, alias=kalisto_prison_reception, label=Prison Reception
+    {attr, alias=sethim_done, value=false }
+
     {evt, type=enter|look
         {mset, repeat=none
             [msg
@@ -6,13 +8,16 @@ There are chairs arrayed throughout what appears to be a reception room.
 There is a thin slit cut into the north wall. You can see a person sitting
 on the other side of the wall.
 \n
-"Are you here to visit a prisoner?" The person asks you.
+[att?{room}:sethim_done=false]"Are you here to visit a prisoner?" The person asks you.[/att]
+[att?{room}:sethim_done=true]"Thank you for visiting." The person says to you.[/att]
             ]
             [msg
-"I said are you here to visit a prisoner?" The person asks you.
+[att?{room}:sethim_done=false]"I said are you here to visit a prisoner?" The person asks you.[/att]
+[att?{room}:sethim_done=true]"Thank you for visiting." The person says.[/att]
             ]
             [msg
-"I'm going to have to ask you to leave."
+[att?{room}:sethim_done=false]"I'm going to have to ask you to leave."[/att]
+[att?{room}:sethim_done=true]"Thank you for visiting." The person says to you.[/att]
             ]
         }
 
@@ -39,11 +44,66 @@ Then I'm afraid I cannot help you.
     }
 
     {evt, type=sethim
-        {mset
-            [msg
+        {lset
+            [@eval
+                attribute@{room}:sethim_done=true
+            ]
+            [fail
 "Follow me."
 \n
 (You can follow her by saying "follow")
+            ]
+        }
+
+        {mset
+            [msg
+She looks at you sternly.
+\n
+"You've already visited that prisoner. I suggest you leave."
+\n
+She nods to the west of where you are standing.
+            ]
+        }
+    }
+
+    {evt, type=sethim_attr
+        {act, type=attribute, source={room}:sethim_done, newvalue=true }
+
+        {mset
+            [msg
+The receptionist leaves and opens a door to your left.
+\n
+She leads you through a hall that rounds to the right and stops at the end
+of that passage. You can hear a faint scraping in the last cell to your left.
+\n
+\n
+"Sethim you have a visitor." The receptionist yells through the cell door.
+\n
+Silence.
+\n
+Then you hear a whispery voice simply say:
+\n
+"Oh! Hey man! I'll let you know when it's done."
+\n
+Then silence.
+\n
+\n
+After a few moments you shrug, and the receptionist leads you back to the front
+room.
+            ]
+        }
+    }
+
+    {evt, type=follow
+        {lset, fail_event=sethim_attr
+            [@eval
+                attribute@{room}:sethim_done=true
+            ]
+        }
+
+        {mset
+            [msg
+"I'm going to have to ask you to leave."
             ]
         }
     }
@@ -69,6 +129,10 @@ Then I'm afraid I cannot help you.
 
     {cmd, syntax=*sethim*
         {act, type=event, value=sethim }
+    }
+
+    {cmd, syntax=*follow*
+        {act, type=event, value=follow }
     }
 
     {cmd, syntax=w|*west*
