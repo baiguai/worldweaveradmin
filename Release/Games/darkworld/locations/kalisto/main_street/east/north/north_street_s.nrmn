@@ -22,17 +22,7 @@ You are on the north street.
     }
 
 
-    {evt, type=navigation
-        {mset
-            [msg
-\n\n
-The road continues north.
-\n
-South of you is Kalisto's main street.
-            ]
-        }
-    }
-
+--------------------------------------------------------------------------------
 
     {cmd, syntax=story
         {act, type=event, value=enter }
@@ -54,5 +44,19 @@ You return to the main street in Kalisto.
 
     {cmd, syntax=n|*north
         {act, type=travel, newvalue=kalisto_n_street_n }
+    }
+
+
+--------------------------------------------------------------------------------
+
+    {evt, type=navigation
+        {mset
+            [msg
+\n\n
+The road continues north.
+\n
+South of you is Kalisto's main street.
+            ]
+        }
     }
 }

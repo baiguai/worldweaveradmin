@@ -19,3 +19,14 @@
         s
     ]
 }
+
+{test, name=prison
+    [@commands
+        _test kalstr
+        e
+        n
+        n
+        e
+        enter
+    ]
+}

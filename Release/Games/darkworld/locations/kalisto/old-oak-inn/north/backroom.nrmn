@@ -51,12 +51,12 @@ He reaches out and hands you the small pearlescent seed.
 \n
 You will need to discover how to use the Seed of Yinthrull there.
 \n
-A room has been reserved for you her in the Old Oak Inn, you can rest tonight and begin your journey
+A room has been reserved for you here in the Old Oak Inn, you can rest tonight and begin your journey
 \n
 in the morning. Feel free to explore Kalisto before returning to your room."
 \n
 \n
-The hooded figure waves toward the door into the tavern's main floor.
+The hooded figure waves toward the door, in the south wall, into the tavern's main floor.
 \n
 \n
 "Good luck. All of us are counting on you."
@@ -70,6 +70,7 @@ The door leading back into the main room of the inn is in the south wall.
         {act, type=attribute, source=old_oak_inn:backroom_done, newvalue=true }
         {act, type=attribute, source=onious_travel:active, newvalue=true }
         {act, type=move, source=seed_of_yinthrull, newvalue={player} }
+        {act, type=attribute, source={player}:goal, newvalue=Find the entrance to the Library of Agnoth }
     }
 
     {evt, type=look
@@ -83,10 +84,15 @@ A hooded figure stands at the head of the table.
 \n
 \n
 Set into the north wall you see a door.
+\n
+In the south wall is the door that leads back into the main area of the Old
+Oak Inn.
             ]
         }
     }
 
+
+--------------------------------------------------------------------------------
 
     {cmd, syntax=story
         {act, type=event, value=enter }
@@ -106,6 +112,9 @@ Set into the north wall you see a door.
 }
 
 
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 {room, alias=old_oak_inn_backroom_ret, label=Old Oak Inn - Back Room
     {evt, type=enter
@@ -138,6 +147,8 @@ In the south wall is the door that goes back into the main room of the Old Oak I
         }
     }
 
+
+--------------------------------------------------------------------------------
 
     {cmd, syntax=story
         {act, type=event, value=enter }

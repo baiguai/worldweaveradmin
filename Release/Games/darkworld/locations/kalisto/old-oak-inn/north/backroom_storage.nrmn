@@ -23,7 +23,7 @@ Set into the south wall is a door.
     }
 
 
-
+--------------------------------------------------------------------------------
 
     {cmd, syntax=story
         {act, type=event, value=enter }

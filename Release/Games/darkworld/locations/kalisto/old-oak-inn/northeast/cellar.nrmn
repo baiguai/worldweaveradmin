@@ -34,7 +34,7 @@ You don't see anything interesting.
     }
 
 
-
+--------------------------------------------------------------------------------
 
     {cmd, syntax=story
         {act, type=event, value=enter }

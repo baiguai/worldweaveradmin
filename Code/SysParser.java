@@ -224,11 +224,11 @@ public class SysParser
     private void AddHistory(String input)
     {
         History = input;
-        historyList.add(input);
+        historyList.add(0, input);
 
-        if (historyList.size() > 20)
+        if (historyList.size() > 50)
         {
-            historyList.remove(9);
+            historyList.remove(historyList.size() - 1);
         }
     }
 
@@ -296,6 +296,8 @@ public class SysParser
         {
             for (String s : mac)
             {
+                System.out.println("Running macro...\n\n");
+
                 CallListener(s);
             }
         }

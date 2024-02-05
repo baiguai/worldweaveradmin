@@ -1,8 +1,8 @@
-{room, alias=kalisto_main_street_w, label=Kalisto Main Street West
+{room, alias=kalisto_n_street_n, label=North Street
     {evt, type=enter
         {mset
             [msg
-You are standing in the west end of the main street in Kalisto.
+You continue, headed north.
             ]
         }
 
@@ -12,7 +12,7 @@ You are standing in the west end of the main street in Kalisto.
     {evt, type=look
         {mset
             [msg
-You look around.
+You are in the northern-most end of the street.
             ]
         }
 
@@ -26,20 +26,24 @@ You look around.
         {act, type=event, value=enter }
     }
 
-    {cmd, syntax=look|l
+    {cmd, syntax=l|look
         {act, type=event, value=look }
     }
 
     {cmd, syntax=n|*north
-        {act, type=travel, newvalue=old_oak_inn_gen }
-    }
-
-    {cmd, syntax=s|*south
-        {act, type=travel, newvalue=main_street_w_houses }
+        {mset
+            [msg
+You cannot go that way, the road has ended.
+            ]
+        }
     }
 
     {cmd, syntax=e|*east
-        {act, type=travel, newvalue=kalisto_main_street_e }
+        {act, type=travel, newvalue=kalisto_prison_outside }
+    }
+
+    {cmd, syntax=s|*south
+        {act, type=travel, newvalue=kalisto_n_street_s }
     }
 
 
@@ -49,13 +53,11 @@ You look around.
         {mset
             [msg
 \n\n
-East of you, the road extends deeper into the village.
+North of where you are standing the road ends.
 \n
-West of you, the road exits Kalisto.
+In the east you see a building that appears to be a prison.
 \n
-North of you is the Old Oak Inn.
-\n
-South of you are some houses.
+South of where you are the road heads back to the main street.
             ]
         }
     }

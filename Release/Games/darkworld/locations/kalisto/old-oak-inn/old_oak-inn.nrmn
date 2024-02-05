@@ -37,6 +37,8 @@ You look around the bar inside the Old Oak Inn. Circular tables are arrayed over
     }
 
 
+--------------------------------------------------------------------------------
+
     {cmd, syntax=story
         {act, type=event, value=enter }
     }
@@ -45,13 +47,14 @@ You look around the bar inside the Old Oak Inn. Circular tables are arrayed over
         {act, type=event, value=look }
     }
 
-    {cmd, syntax=n|*north
+    {cmd, syntax=n|*north|*follow*
         {act, type=travel, newvalue=old_oak_inn_backroom }
     }
 }
 
 
-
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 {room, alias=old_oak_inn_back, label=Old Oak Inn
     {evt, type=enter
@@ -83,6 +86,8 @@ In the northeast corner of the Inn, you notice a nondescript staircase leading d
     }
 
 
+--------------------------------------------------------------------------------
+
     {cmd, syntax=story
         {act, type=event, value=enter }
     }
@@ -101,7 +106,8 @@ In the northeast corner of the Inn, you notice a nondescript staircase leading d
 }
 
 
-
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 {room, alias=old_oak_inn_gen, label=Old Oak Inn
     {evt, type=enter
@@ -130,6 +136,8 @@ In the northeast corner of the Inn, you notice a nondescript staircase leading d
         }
     }
 
+
+--------------------------------------------------------------------------------
 
     {cmd, syntax=story
         {act, type=event, value=enter }
