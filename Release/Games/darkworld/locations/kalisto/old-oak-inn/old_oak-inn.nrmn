@@ -47,7 +47,7 @@ You look around the bar inside the Old Oak Inn. Circular tables are arrayed over
         {act, type=event, value=look }
     }
 
-    {cmd, syntax=n|*north
+    {cmd, syntax=n|*north|*follow*
         {act, type=travel, newvalue=old_oak_inn_backroom }
     }
 }

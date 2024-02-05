@@ -3,8 +3,6 @@
         {mset
             [msg
 You are in the center of the main street of Kalisto.
-\n
-The road extends to the east, towards a park in the east end of the village.
             ]
         }
 
@@ -28,6 +26,10 @@ It appears to have not been in use for some time.
 
     {cmd, syntax=n|*north
         {act, type=travel, newvalue=kalisto_n_street_s }
+    }
+
+    {cmd, syntax=ne|*north*east*
+        {act, type=travel, newvalue=kalisto_e_armory }
     }
 
     {cmd, syntax=w|*west

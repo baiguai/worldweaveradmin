@@ -13,6 +13,16 @@
                 North of you is the main street of kalisto.
             ]
         }
+
+        {mset
+            [msg
+                A person approaches you.
+                \n
+                "Have you visited Sethim in the prison?"
+            ]
+            [msg
+            ]
+        }
     }
 
     {evt, type=look

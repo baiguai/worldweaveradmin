@@ -1,0 +1,22 @@
+{room, alias=kalisto_e_armory, label=Armory
+    {evt, type=enter
+        {mset
+            [msg
+You enter the armory.
+            ]
+        }
+    }
+
+    {evt, type=look
+        {mset
+            [msg
+You look around the armory.
+            ]
+        }
+    }
+
+
+    {cmd, syntax=l|*look*
+        {act, type=event value=look }
+    }
+}

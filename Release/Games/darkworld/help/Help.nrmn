@@ -1,11 +1,11 @@
-{help, syntax=help, title=Apsis Help
+{help, syntax=help, title=Darkworld Help
     [@topic
-Escape from Apsis
+Darkworld
 -----------------
 Welcome to the DarkWorld help system. To view an overview of how to play
 Interactive Fiction (IF) games use: help overview.
 \n
-For DarkWorld system wide help use: --help
+Darkworld was built in WorldWeaver. For system wide help use: --help
 \n
 For a list of common commands use: help commands
 \n

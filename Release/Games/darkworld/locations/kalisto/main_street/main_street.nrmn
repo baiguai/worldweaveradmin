@@ -3,7 +3,6 @@
         {mset
             [msg
 You are standing in the west end of the main street in Kalisto.
-The street extends east further in the village and west, exiting Kalisto.
             ]
         }
 
@@ -13,7 +12,7 @@ The street extends east further in the village and west, exiting Kalisto.
     {evt, type=look
         {mset
             [msg
-You look around. The road extends east into the village and west, exiting Kalisto.
+You look around.
             ]
         }
 
