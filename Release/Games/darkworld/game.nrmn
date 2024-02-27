@@ -1,4 +1,4 @@
-{game, name=Darkworld, initial_location=local_tavern, stats_aliases=goal|life|max_life|armor|speed|strength|fitness|intelligence|lawful|good|points|level|credits, admin_password=admd
+{game, name=Darkworld, initial_location=local_tavern, stats_aliases=goal|life|max_life|armor|speed|strength|fitness|intelligence|lawful|good|points|level|coins, admin_password=admd
     {attr, alias=wrap_width, value=80 }
 
     // PLAYER
@@ -17,7 +17,7 @@
         {attr, alias=points, value=0 }
         {attr, alias=level, value=1 }
         {attr, alias=hints, value=true }
-        {attr, alias=credits, type=random, value=7\,25 }
+        {attr, alias=coins, type=random, value=75\,120 }
 
         // Time Vars
         {attr, alias=cur_days, value=0 }

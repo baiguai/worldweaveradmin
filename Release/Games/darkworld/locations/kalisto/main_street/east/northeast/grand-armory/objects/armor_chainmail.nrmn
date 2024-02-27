@@ -1,0 +1,110 @@
+{object, alias=armor_chainmail_kal, type=item, label=Chainmail Aromor, meta=*chainmail*, location=kalisto_e_armory
+    {attr, alias=moved, value=false }
+
+    {evt, type=enter
+        {lset
+            [@eval
+                location@{self}!={player}
+            ]
+        }
+
+        {mset
+            [msg
+[att?{self}:moved=false]One of the items you see for sale is a set of chainmail armor. It costs 75 coins.[/att]
+[att?{self}:moved=true]You see chainmail armor.[/att]
+            ]
+        }
+    }
+
+    {evt, type=look
+        {lset
+            [@eval
+                location@{self}={room}
+            ]
+        }
+
+        {mset
+            [msg
+You see chainmail armor.
+            ]
+        }
+    }
+
+    {evt, type=inspect_armor
+        {mset, repeat=none
+            [msg
+You inspect the armor. It is comprised of chainmail.
+            ]
+        }
+    }
+
+    {evt, type=take_armor
+        {lset, fail_event=armor_enough_coin
+            {lgc
+                [@eval
+                    attribute@{player}:coins>74
+                ]
+                [fail
+You don't have enough coin to purchase the armor.
+                ]
+            }
+        }
+
+        {act, type=event, value=armor_taken }
+
+        {mset, repeat=none
+            [msg
+You pick up and put on the chainmail armor.
+            ]
+        }
+    }
+
+    {evt, type=armor_taken
+        {aset
+            {act, type=attribute, source={self}:moved, newvalue=true }
+            {act, type=attribute, source={player}:armor, newvalue={+=3} }
+            {act, type=attribute, source={player}:coins, newvalue={-=75} }
+            {act, type=move, source={self}, newvalue={player} }
+        }
+    }
+
+
+    {cmd, syntax=*inspect*armor*|*x*armor*
+        {act, type=event, value=inspect_armor }
+    }
+
+    {cmd, syntax=*take*chainmail*
+        {lset
+            {lgc
+                [@eval
+                    location@{self}!={player}
+                ]
+                [fail
+You are already wearing the chainmail armor.
+                ]
+            }
+        }
+
+        {aset
+            {act, type=event, value=take_armor }
+        }
+    }
+
+    {cmd, syntax=*drop*chainmail*
+        {lset
+            [@eval
+                location@{self}={player}
+            ]
+            [fail
+                You aren't carrying a ring.
+            ]
+        }
+
+        {aset
+            {act, type=move, source={self}, newvalue={room}
+                [msg==You drop the chainmail armor.]
+            }
+            {act, type=attribute, source={player}:armor, newvalue={-=3} }
+        }
+    }
+}

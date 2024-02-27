@@ -30,3 +30,11 @@
         enter
     ]
 }
+
+{test, name=armory
+    [@commands
+        _test kalstr
+        e
+        ne
+    ]
+}

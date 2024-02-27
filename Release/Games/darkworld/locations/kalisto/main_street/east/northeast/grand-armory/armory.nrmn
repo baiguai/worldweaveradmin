@@ -17,6 +17,6 @@ You look around the armory.
 
 
     {cmd, syntax=l|*look*
-        {act, type=event value=look }
+        {act, type=event, value=look }
     }
 }
